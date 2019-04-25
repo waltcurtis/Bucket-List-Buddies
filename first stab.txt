@@ -1,3 +1,5 @@
+--  Group Event Tracker  --
+						
 General Nav options:
     login - get user info, if acct exists, move to planning page
     create - create acct, save current selections, move to planning page
@@ -7,59 +9,37 @@ General Nav options:
 
 Landing Page (Home)
     show Nav
-    show activity pics (clickable)
+    show activity pics (clickable) ( or icons with select button -- to be discussed)
         api call () for activity / locations, 
         move to suggestion page -> showing top 10 (up to) locations,
-        
-    ?? any other opportunities on this page ??
-	    -we may want some movement on this page 
-	    -a video or a moving slideshow... 
-	    -the slideshow in a couple of the image areas could have closely related activities that can be linked to the api
-    	-giving us the ability to have more choices in a smaller area
-    	
-	* see icon option I added
+	use active gifs, slideshow, or video -- on hover or on click?
+	none hard-coded, get all from DB    	
 
 Suggestion page (show top 10 suggested destinations)
-    for each location, add button for other local attractions
+    for each location, add button for other local attractions (or hyperlink the location text)
     local attraction click:
         api call to get top 5 local attractions other than current activity
         generate list to screen
-    ?? hyperlink selection of location ??
-     -I like this idea...not sure where it should take us, though...I don't know if we want it to take them off our page
-     * intended to just display here - between current text and next location
+    weather api call per location - info added -- maybe year round averages since we don't have dates yet
+    need selection method (where to click) to get to planning page
      
-    ?? any other opportunities on this page ??
-     -weather added maybe year round averages since we don't have dates yet
-     -this might help with decision making for the user
-     
-Planning Page (?? must be logged in ??) - preload with acct info / location
--This could be started without an account but to save/submit need to log in or create account
--to view existing planning page need to log in
-    new: 
-        capture date range
-        capture others to invite (name/email - possibly send email requesting join in group?)
-        allow invite to other existing acct (search by name or email -- consider security ramifications)
-        -invite only through email?? this means the person would have to already know the other peoples emails
-        -or do we have a feature to search account holders already in the database? 
-        -I don't know a lot about the security stuff :(
+Planning Page 
 
-		* if we have the person, dont see why we shouldnt search ourselves first, but what to do if we dont -- email was just a way of showing an invite to someone else - I would think FB would work otherwise, but not sure how much they would want to release about who is signed up with them - 2nd thought, if its a FB friend, I think you can get the friends email - or they could just tell them to go to site themselves, and we just have to come up with merge process (which we were already considering)
+	if not logged in - show as new
+	if logged in - gather info from individual and group and display current info here
+	
+	save will require acct login / create
+
+    new plan: 
+        capture date range
+        capture others to invite 
+        	need to answer specifics for getting people into group
+        allow group creation, adding to other existing acct
 		
     existing:
-        show entire group's info (highlighting who picked what)
-        show in relation to each other (?? large calendar view ??)
-        -could we collect the date ranges of each group member and set them to a calendar with a different color for each 
-        -this way the visual of who can go when has more impact??
+    	show each member of group's individual selection info
+        show group's top info (highlighting who picked what - different colors on calendar, matching name color)
 
-    ?? how to select (i.e. other person changed my mind, let me replace my selection with theirs) - or suggest compromise
-     -notes area to store communication between group members??
-     -delete button for previously saved data
-    ?? any other opportunities on this page ??
-     -sidebar with the top chosen destinations/dates/and/or activities within the group
-     -main has the individual group members saved choices in saved order
-     -link back to the data
 
 Need discussion on Profile page - 
      
-*personal suggestion:  mod project to just be a group event tracker instead of vacation planner, just to coordinate the event planning
-    --Agreed:)
