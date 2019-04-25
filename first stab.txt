@@ -10,11 +10,14 @@ Landing Page (Home)
     show activity pics (clickable)
         api call () for activity / locations, 
         move to suggestion page -> showing top 10 (up to) locations,
+        
     ?? any other opportunities on this page ??
-    -we may want some movement on this page 
-    -a video or a moving slideshow... 
-    -the slideshow in a couple of the image areas could have closely related activities that can be linked to the api
-    -giving us the ability to have more choices in a smaller area
+	    -we may want some movement on this page 
+	    -a video or a moving slideshow... 
+	    -the slideshow in a couple of the image areas could have closely related activities that can be linked to the api
+    	-giving us the ability to have more choices in a smaller area
+    	
+	* see icon option I added
 
 Suggestion page (show top 10 suggested destinations)
     for each location, add button for other local attractions
@@ -23,6 +26,8 @@ Suggestion page (show top 10 suggested destinations)
         generate list to screen
     ?? hyperlink selection of location ??
      -I like this idea...not sure where it should take us, though...I don't know if we want it to take them off our page
+     * intended to just display here - between current text and next location
+     
     ?? any other opportunities on this page ??
      -weather added maybe year round averages since we don't have dates yet
      -this might help with decision making for the user
@@ -35,13 +40,17 @@ Planning Page (?? must be logged in ??) - preload with acct info / location
         capture others to invite (name/email - possibly send email requesting join in group?)
         allow invite to other existing acct (search by name or email -- consider security ramifications)
         -invite only through email?? this means the person would have to already know the other peoples emails
-        -or do we have a feature to search account holders already in the database?
+        -or do we have a feature to search account holders already in the database? 
         -I don't know a lot about the security stuff :(
+
+		* if we have the person, dont see why we shouldnt search ourselves first, but what to do if we dont -- email was just a way of showing an invite to someone else - I would think FB would work otherwise, but not sure how much they would want to release about who is signed up with them - 2nd thought, if its a FB friend, I think you can get the friends email - or they could just tell them to go to site themselves, and we just have to come up with merge process (which we were already considering)
+		
     existing:
         show entire group's info (highlighting who picked what)
         show in relation to each other (?? large calendar view ??)
         -could we collect the date ranges of each group member and set them to a calendar with a different color for each 
         -this way the visual of who can go when has more impact??
+
     ?? how to select (i.e. other person changed my mind, let me replace my selection with theirs) - or suggest compromise
      -notes area to store communication between group members??
      -delete button for previously saved data
@@ -49,6 +58,8 @@ Planning Page (?? must be logged in ??) - preload with acct info / location
      -sidebar with the top chosen destinations/dates/and/or activities within the group
      -main has the individual group members saved choices in saved order
      -link back to the data
+
+Need discussion on Profile page - 
      
 *personal suggestion:  mod project to just be a group event tracker instead of vacation planner, just to coordinate the event planning
     --Agreed:)
