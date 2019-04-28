@@ -10,3 +10,48 @@
     messagingSenderId: "97852412014"
   };
   firebase.initializeApp(config);
+
+
+  var activityOBJ = {
+    categoryName : "",
+    activityName : "",
+    catImageURL  : "",
+    actImageURL  : "",
+    locationURL  : ""
+  }
+
+  function activityOBJ (categoryName, activityName, catImageURL, actImageURL) {
+    this.categoryName = categoryName;
+    this.activityName = activityName;
+    this.catImageURL  = catImageURL;
+    this.actImageURL  = actImageURL;
+  }
+
+  var eventObj = {
+    eventName      : "",
+    savedActivity  : "",
+    savedLocation  : "",
+    savedStartDate : "",
+    savedEndDate   : "",
+    eventBuddies   : [],
+    sharedEmails   : [],
+    notes          : []
+  }
+
+  function eventObj (eventName) {
+    this.eventName = eventName;
+  }
+
+  var buddyObj = {
+    name             : "",
+    email            : "",
+    selectedActivity : "",
+    selectedLocation : "",
+    selectedStartDate: "",
+    selectedEndDate  : ""
+  }
+
+  function buddyObj (name, email) {
+    this.name   = name;
+    this.emnail = email;
+  }
