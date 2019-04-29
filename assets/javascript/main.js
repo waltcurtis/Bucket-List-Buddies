@@ -20,29 +20,50 @@ $(document).ready(function() {
 
 // ====================================
 
-  class ActivityOBJ {
-    constructor(categoryName, activityName, catImageURL, actImageURL) {
-      this.categoryName = categoryName;
-      this.activityName = activityName;
-      this.catImageURL = catImageURL;
-      this.actImageURL = actImageURL;
+  class CategoryOBJ {
+    constructor(categoryName, catImageURL) {
+      this.categoryName     = categoryName;
+      this.catImageURL      = catImageURL;
+      this.activities       = [];
+    }
+    addActivity(activityName, activityImageURL) {
+      this.activities.push( new ActivityObj(activityName, activityImageURL) ); 
+    }
+    getActivityIdx(activityName) { 
+      this.activities.forEach(function(activity, i) {
+        var idx = -1
+        if (activity.activityName == activityName) idx = i; 
+      });
+      return idx;
+    }
+  }
+
+  class ActivityObj {
+    constructor(activityName, activityImageURL) {
+      this.activityName     = activityName;
+      this.activityImageURL = activityImageURL;
     }
   }
 
 // ====================================
 
-  function EventObj (eventName) {
-    this.eventName   = eventName;
-    this.eventBuddies     = [],  // array of eventBuddy objects
-    this.sharedEmails     = [],  // array of email addresses
-    this.notes            = [],  // array of note objects
-    this.addEventBuddy    = function(buddyName) { this.eventBuddies.push( new EventBuddyObj(buddyName) ); },
-    this.getEventBuddyIdx = function(buddyName) { 
-                                                  this.eventBuddies.forEach(function(buddy, idx) {
-                                                    if (buddy.buddyName == buddyName) return idx; 
-                                                  });
-                                                  return -1;
-                                                }
+  class EventObj {
+    constructor(eventName) {
+      this.eventName        = eventName;
+      this.eventBuddies     = [],  // array of eventBuddy objects
+      this.sharedEmails     = [],  // array of email addresses
+      this.notes            = []   // array of note objects
+    }
+    addEventBuddy(buddyName) { 
+      this.eventBuddies.push( new EventBuddyObj(buddyName) ); 
+    }
+    getEventBuddyIdx(buddyName) { 
+      var idx = -1
+      this.eventBuddies.forEach(function(buddy, i) {
+        if (buddy.buddyName == buddyName) { idx = i; }
+      })
+      return idx;
+    }
   }
 
   class EventBuddyObj {
@@ -76,40 +97,81 @@ $(document).ready(function() {
 
 // ====================================
 
-  // this function should prolly be in the act.js, instead of the common
-  function loadActivityInCatOrder() {
-    activityDB.orderByChild("categoryName").once("value", function(sn) {
-      // the commented code was just used for testing - example
-
-      // var arr = [];
-      // var ul = $("<ul>");
-
-      if (sn) {
-        sn.forEach(function(child) {
-          var actKey = child.key;
-          var actData = child.val();
-          
-          // var li = $("<li>").text(actData.categoryName + " - " + actData.activityName);
-          // ul.append(li);
-        })
-
-        // $("#act").append(ul);
-      }
-    }, function(error) {console.log("error" + error)})
-  }
-
-// ====================================
-
 
 // ====================================
 
 // this area used for testing 
 
-// activityDB.push( new ActivityOBJ("Adult Activities", "Wine Tasting", "", ""))
-// activityDB.push( new ActivityOBJ("Family Activities", "Reunion", "", ""))
-// activityDB.push( new ActivityOBJ("Summer Events", "Fishing", "", ""))
-// activityDB.push( new ActivityOBJ("Adult Activities", "Gambling", "", ""))
+  // var cat = new CategoryOBJ("Custom", "")
+  // cat.addActivity("Wine Tasting", "")
+  // cat.addActivity("Gambling", "")
+  // activityDB.push(cat)
 
-// loadActivityInCatOrder();
+  // cat = new CategoryOBJ("Family Activities", "")
+  // cat.addActivity("Reunion", "")
+  // activityDB.push(cat)
 
-});  
+  // cat = new CategoryOBJ("Summer Events", "")
+  // cat.addActivity("Hiking", "")
+  // cat.addActivity("Fishing", "")
+  // activityDB.push(cat)
+
+  // var buddy = new BuddyObj("SeanUgar", "sugar@hotmail.com")
+  // buddyDB.push(buddy)
+
+  // var event1 = new EventObj("freds get-together")
+  // event1.addEventBuddy("FredHollywood")
+  // idx = event1.getEventBuddyIdx("FredHollywood")
+  // event1.eventBuddies[idx].selections.activity  = "Gambling"
+  // event1.eventBuddies[idx].selections.location  = "Reno, Nv"
+  // event1.eventBuddies[idx].selections.startDate = new Date("04-01-2020").toJSON()
+  // event1.eventBuddies[idx].selections.endDate   = new Date("04-08-2020").toJSON()
+
+  // event1.addEventBuddy("SeanUgar")
+  // idx = event1.getEventBuddyIdx("SeanUgar")
+  // event1.eventBuddies[idx].selections.activity  = "Gambling"
+  // event1.eventBuddies[idx].selections.location  = "Las Vegas, Nv"
+  // event1.eventBuddies[idx].selections.startDate = new Date("04-01-2020").toJSON()
+  // event1.eventBuddies[idx].selections.endDate   = new Date("04-08-2020").toJSON()
+
+  // event1.sharedEmails.push("lane@hotmail.com")
+  // event1.sharedEmails.push("sugar@hotmail.com")
+  // var note = new NoteObj("fred", "this is my latest event")
+  // event1.notes.push(note);
+  // note = new NoteObj("buddyName", "have invited all of my friends")
+  // event1.notes.push(note);
+
+  // eventDB.push(event1);
+
+  function loadEvent() {
+    eventDB.once("value", function(sn) {
+      if (sn) {
+        sn.forEach(function(child) {
+          var eventKey = child.key;
+          var eventData = child.val();
+
+          var ul = $("<ul>")
+          
+          var li = $("<li>").text(eventData.eventName)
+          ul.append(li)
+
+          eventData.eventBuddies.forEach(function (buddy) {
+            let li = $("<li>").text(buddy.buddyName)
+            ul.append(li)
+
+            let li2 = $("<li>").text(buddy.selections.activity + "|" 
+                                  + buddy.selections.location + "|"
+                                  + buddy.selections.startDate + "|"
+                                  + buddy.selections.endDate )
+            ul.append(li2)
+          })
+          $("#stuff").append(ul)
+        })
+      }
+    })
+  }
+
+  // loadEvent();
+
+
+})  
