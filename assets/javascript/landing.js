@@ -47,16 +47,15 @@ function displayImage() {
     console.log(parseInt($(this).attr("data")))
     
     dataIndex = parseInt($(this).attr("data"));
-
+    clearInterval(imageInterval)
         if (dataIndex === 0) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+         imageInterval = setInterval(nextImage,5000) 
             var spring =
 
                 {
-                    picture: ['assets/javascript/images/spring/cherry_blossom.png', 'assets/javascript/images/spring/hiking.png','assets/javascript/images/spring/picnic.png'], 
+                    picture: ['assets/javascript/images/spring/cherry_blossom.png', 'assets/javascript/images/spring/hiking.png','assets/javascript/images/spring/horseback.png','assets/javascript/images/spring/picnic.png'], 
         
-                    button: ["Cherry Blossom", "Hiking", "Picnic"],
+                    button: ["Cherry Blossom", "Hiking","Horseback Riding", "Picnic"],
         
                  }
              $("#activity-selected").html("<h3>" + "Spring Activities" + "<h3>")   
@@ -64,7 +63,10 @@ function displayImage() {
                 $("#activities-images-first-row").html("<img src=" + spring.picture[0] + " width='250px' height='250px'>") 
                 $("#activities-images-second-row").html("<img src=" + spring.picture[1] + " width='250px' height='250px'>")
                 $("#activities-images-third-row").html("<img src=" + spring.picture[2] + " width='250px' height='250px'>")
-                }
+                $("#activities-images-fourth-row").html("<img src=" + spring.picture[3] + " width='250px' height='250px'>")
+         
+         
+            }
             for(let i = 0; i < spring.button.length; i++){                  
                     $("#activities-button-first-row").html("<button width='250px' class = 'btn btn-info'>" + spring.button[0] + "</button>") 
                     $("#activities-button-second-row").html("<button width='250px' class = 'btn btn-info'>" + spring.button[1] + "</button>") 
@@ -86,11 +88,10 @@ function displayImage() {
                         
                           }
                       }
-                      displayImage()
+                    
         }
         else if (dataIndex === 1) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var summer =
              
                 {
@@ -107,7 +108,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + summer.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + summer.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + summer.picture[3] + " width='250px' height='250px'>")
-                    
+                   //displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + summer.picture[count] + " width='100%' height='100%'>");
@@ -124,11 +125,10 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
+                 
         }  
         else if (dataIndex === 2) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var fall =
 
                 {
@@ -145,7 +145,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + fall.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + fall.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + fall.picture[3] + " width='250px' height='250px'>")
-                    
+                 //   displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + fall.picture[count] + " width='100%' height='100%'>");
@@ -162,11 +162,9 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
         else if (dataIndex === 3) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var winter =
 
                 {
@@ -183,7 +181,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + winter.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + winter.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + winter.picture[3] + " width='250px' height='250px'>")
-                    
+                    //displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + winter.picture[count] + " width='100%' height='100%'>");
@@ -200,11 +198,9 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
         else if (dataIndex === 4) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var outdoor =
 
                 {
@@ -221,7 +217,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + outdoor.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + outdoor.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + outdoor.picture[3] + " width='250px' height='250px'>")
-                    
+                    //displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + outdoor.picture[count] + " width='100%' height='100%'>");
@@ -238,17 +234,15 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
         else if (dataIndex === 5) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var indoor = 
 
                 {
-                    picture: ['assets/javascript/images/indoor/archery.png', 'assets/javascript/images/indoor/bowling.png','assets/javascript/images/indoor/indoor_rock_climbing.png'], 
+                    picture: ['assets/javascript/images/indoor/archery.png', 'assets/javascript/images/indoor/bowling.png','assets/javascript/images/indoor/indoor_rock_climbing.png','assets/javascript/images/indoor/museums.png'], 
         
-                    button: ["Archery", "Bowling", "Indoor Rock Climbing"],
+                    button: ["Archery", "Bowling", "Indoor Rock Climbing", "Museums"],
         
                  }
 
@@ -258,8 +252,8 @@ function displayImage() {
                     $("#activities-images-first-row").html("<img src=" + indoor.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + indoor.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + indoor.picture[2] + " width='250px' height='250px'>")
-                //    $("#activities-images-fourth-row").html("<img src=" + indoor.picture[3] + " width='250px' height='250px'>")
-                    
+                    $("#activities-images-fourth-row").html("<img src=" + indoor.picture[3] + " width='250px' height='250px'>")
+                //displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + indoor.picture[count] + " width='100%' height='100%'>");
@@ -276,11 +270,9 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
         else if (dataIndex === 6) {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var family = 
 
                 {
@@ -297,7 +289,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + family.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + family.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + family.picture[3] + " width='250px' height='250px'>")
-                    
+                   // displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + family.picture[count] + " width='100%' height='100%'>");
@@ -314,11 +306,9 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
         else {
-            clearInterval(imageInterval)
-            setInterval(nextImage,5000) 
+            imageInterval = setInterval(nextImage,5000) 
             var adult =
 
                 {
@@ -335,7 +325,7 @@ function displayImage() {
                     $("#activities-images-second-row").html("<img src=" + adult.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img src=" + adult.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img src=" + adult.picture[3] + " width='250px' height='250px'>")
-                    
+                    //displayImage()
                 }
                 function displayImage() {
                     $("#slideshow").html("<img src=" + adult.picture[count] + " width='100%' height='100%'>");
@@ -352,9 +342,9 @@ function displayImage() {
                     
                       }
                   }
-                  displayImage()
         }  
-      })
+        displayImage()   
+    })
 
       
 });
