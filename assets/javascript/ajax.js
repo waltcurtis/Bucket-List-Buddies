@@ -22,10 +22,10 @@ $.ajax({
     .then(function(response) {
 
       // Log the queryURL
-      //console.log(queryImages);
+      console.log(queryImages);
 
       // Log the resulting object
-      //console.log(response);
+      console.log(response);
 
       $('.api_image').html('<img src=' + response.urls.small + '> </img>')
 
@@ -34,6 +34,7 @@ $.ajax({
 
 // Location call (based on activity/limit 10) need about location text
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
+var activityArray = [];
 
 var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=snowboarding+united+states&type=point_of_interest&key=" + placesAPI;
 
@@ -43,18 +44,35 @@ $.ajax({
   })
     // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
-        // Log the queryPlaces
-        //console.log(queryPlaces);
-
+      var resultsLength = response.results.length
+       for(let i = 0; i < resultsLength; i++){
         // Log the resulting object
-        //console.log(response);
-        
-    });
+        console.log("Place " + i + ": " + response.results[i].name);
+    };
+  });
+
+// Wiki call using location
+var queryWiki = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Lee%20Canyon&utf8=&format=json"
+
+$.ajax({
+  url: queryWiki,
+  method: "GET"
+})
+  // We store all of the retrieved data inside of an object called "response"
+  .then(function(response) {
+      // Log the queryWiki
+      console.log(queryWiki);
+      // Log the resulting object
+      console.log("Place Title: " + response.query.search[0].title);
+      console.log("Place Info: " + response.query.search[0].snippet);
+});
+
+
 
 // Category call
 var categoryAPI = "-Ht0l2D-YjnqGHJVlEn578WeGPI1tVaiQJ1lTLzt3U3fyvMoxlBAkCqA7h0zD0XtcJyT2SX73l2PAwZ4iTEF8iocuPVvEKJwJrxBeVfJi1GDf4a1u87W7fzkACPGXHYx"
 
-var queryCategory = "https://api.yelp.com/v3/categories/search?term=snowboarding&locale=en_US";
+var queryCategory = "https://api.yelp.com/v3/categories/axethrowing";
 
 $.ajax({
     url: queryCategory,
@@ -72,3 +90,24 @@ $.ajax({
         console.log(response);
         
     });
+
+
+
+// Example on how to write out a javascript api call:
+//   var request = new XMLHttpRequest()
+
+//     request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
+//     request.onload = function() {
+//       // Begin accessing JSON data here
+//       var data = JSON.parse(this.response)
+
+//       if (request.status >= 200 && request.status < 400) {
+//         data.forEach(movie => {
+//           console.log(movie.title)
+//         })
+//       } else {
+//         console.log('error')
+//       }
+// }
+
+// request.send()
