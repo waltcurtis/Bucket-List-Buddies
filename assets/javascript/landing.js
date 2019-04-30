@@ -27,7 +27,7 @@ $("#landing_buttons").append(buttonTag )
 
 }
 
-setInterval(nextImage,5000) 
+var imageInterval = setInterval(nextImage,5000) 
 
 function nextImage(){
     count++
@@ -49,6 +49,8 @@ function displayImage() {
     dataIndex = parseInt($(this).attr("data"));
 
         if (dataIndex === 0) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var spring =
 
                 {
@@ -57,7 +59,7 @@ function displayImage() {
                     button: ["Cherry Blossom", "Hiking", "Picnic"],
         
                  }
-                
+             $("#activity-selected").html("<h3>" + "Spring Activities" + "<h3>")   
             for(let i = 0; i < spring.picture.length; i++){                  
                 $("#activities-images-first-row").html("<img src=" + spring.picture[0] + " width='250px' height='250px'>") 
                 $("#activities-images-second-row").html("<img src=" + spring.picture[1] + " width='250px' height='250px'>")
@@ -69,11 +71,28 @@ function displayImage() {
                     $("#activities-button-third-row").html("<button width='250px' class = 'btn btn-info'>" + spring.button[2] + "</button>") 
                    
                     }
+                function displayImage() {
+                        $("#slideshow").html("<img src=" + spring.picture[count] + " width='100%' height='100%'>");
+                      }
 
+                      function nextImage(){
+                          count++
+                        
+                          setTimeout(displayImage, 1000);
+                        
+                          if (count === spring.picture.length) {
+                        
+                            count = 0;
+                        
+                          }
+                      }
+                      displayImage()
         }
         else if (dataIndex === 1) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var summer =
-
+             
                 {
                     picture: ['assets/javascript/images/summer/beach.png', 'assets/javascript/images/summer/camping.png','assets/javascript/images/summer/fishing.png','assets/javascript/images/summer/hike.png'], 
         
@@ -81,7 +100,8 @@ function displayImage() {
         
                  }
                 
-            
+                $("#activity-selected").html("<h3>" + "Summer Activities" + "<h3>")  
+
                 for(let i = 0; i < summer.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + summer.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + summer.picture[1] + " width='250px' height='250px'>")
@@ -89,8 +109,26 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + summer.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + summer.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === summer.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else if (dataIndex === 2) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var fall =
 
                 {
@@ -99,6 +137,9 @@ function displayImage() {
                     button: ["Apple Orchard", "Hayride", "Hiking","Oktoberfest"],
         
                  }
+
+            $("#activity-selected").html("<h3>" + "Fall Activities" + "<h3>")     
+
              for(let i = 0; i < fall.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + fall.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + fall.picture[1] + " width='250px' height='250px'>")
@@ -106,8 +147,26 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + fall.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + fall.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === fall.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else if (dataIndex === 3) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var winter =
 
                 {
@@ -116,6 +175,9 @@ function displayImage() {
                     button: ["Ice Skating", "Mnt Climbing", "Skiing","Snowboarding"],
         
                  }
+
+                 $("#activity-selected").html("<h3>" + "Winter Activities" + "<h3>")  
+
                  for(let i = 0; i < winter.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + winter.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + winter.picture[1] + " width='250px' height='250px'>")
@@ -123,8 +185,26 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + winter.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + winter.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === winter.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else if (dataIndex === 4) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var outdoor =
 
                 {
@@ -133,6 +213,9 @@ function displayImage() {
                     button: ["Beach", "Camping", "Hiking","Picnic"],
         
                  }
+
+                 $("#activity-selected").html("<h3>" + "Outdoor Activities" + "<h3>")  
+
                  for(let i = 0; i < outdoor.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + outdoor.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + outdoor.picture[1] + " width='250px' height='250px'>")
@@ -140,8 +223,26 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + outdoor.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + outdoor.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === outdoor.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else if (dataIndex === 5) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var indoor = 
 
                 {
@@ -150,6 +251,9 @@ function displayImage() {
                     button: ["Archery", "Bowling", "Indoor Rock Climbing"],
         
                  }
+
+                 $("#activity-selected").html("<h3>" + "Indoor Activities" + "<h3>")  
+
                  for(let i = 0; i < indoor.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + indoor.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + indoor.picture[1] + " width='250px' height='250px'>")
@@ -157,8 +261,26 @@ function displayImage() {
                 //    $("#activities-images-fourth-row").html("<img src=" + indoor.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + indoor.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === indoor.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else if (dataIndex === 6) {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var family = 
 
                 {
@@ -167,6 +289,9 @@ function displayImage() {
                     button: ["Apple Orchard", "Camping", "Hiking","Picnic"],
         
                  }
+
+                 $("#activity-selected").html("<h3>" + "Family Activities" + "<h3>")  
+
                  for(let i = 0; i < family.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + family.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + family.picture[1] + " width='250px' height='250px'>")
@@ -174,8 +299,26 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + family.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + family.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === family.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
         else {
+            clearInterval(imageInterval)
+            setInterval(nextImage,5000) 
             var adult =
 
                 {
@@ -184,6 +327,9 @@ function displayImage() {
                     button: ["Bars", "Breweries", "Clubs","Wineries"],
         
                  }
+
+                 $("#activity-selected").html("<h3>" + "Adult Activities" + "<h3>")  
+
                  for(let i = 0; i < adult.picture.length; i++){                  
                     $("#activities-images-first-row").html("<img src=" + adult.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img src=" + adult.picture[1] + " width='250px' height='250px'>")
@@ -191,6 +337,22 @@ function displayImage() {
                     $("#activities-images-fourth-row").html("<img src=" + adult.picture[3] + " width='250px' height='250px'>")
                     
                 }
+                function displayImage() {
+                    $("#slideshow").html("<img src=" + adult.picture[count] + " width='100%' height='100%'>");
+                  }
+
+                  function nextImage(){
+                      count++
+                    
+                      setTimeout(displayImage, 1000);
+                    
+                      if (count === adult.picture.length) {
+                    
+                        count = 0;
+                    
+                      }
+                  }
+                  displayImage()
         }  
       })
 
