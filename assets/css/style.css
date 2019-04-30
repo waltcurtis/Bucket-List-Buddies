@@ -1,0 +1,32 @@
+
+.landing__scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  .landing__scroll .row{
+    display:block;
+  }
+  .landing__scroll .landing__scroll-box {
+    display: inline-block;
+    float: none;
+    padding: 5px;
+  }
+  #main-container {
+    padding: 50px;
+    min-height: calc(100vh - 70px);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    clear: both;
+  }
+
+  #slideshow-background{
+      width: 100%;
+      padding: 35px;
+      background: lightgray;
+      border-radius: 25px 
+  }
