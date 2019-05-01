@@ -31,3 +31,16 @@ body{
     background-size: cover;
     background-position: center center;
 }
+
+
+
+.modalPicture{
+    width: 45%;
+    height: 30%;
+}
+
+span{
+    color: red;
+    padding: 5px;
+    margin: 10px;
+}

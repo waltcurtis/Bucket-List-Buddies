@@ -18,13 +18,15 @@
 
 
 <header>
+    <!--         <a href="landing.html"><img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2293&q=80" width="100%" height="35%" /></a>
+-->
 
-        <a href="#"><img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2293&q=80" width="100%" height="35%" /></a>
 </header>
+
 
 <body class="auth-false">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
                 <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0 userAuth unauthenticated pull-right">
                     <ul class="navbar-nav ml-auto text-center">
 
@@ -58,7 +60,8 @@
                             <a class="nav-link" href="#">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a href="" class="nav-link" data-toggle="modal" data-target="#aboutModal">About</a>
+
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
@@ -176,6 +179,60 @@
                         </div>
                       </div>
 
+                   <!-- About Modal -->
+
+                      <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="aboutModalLabel">About Us</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+
+                                <div>
+                                    <img style="float: left;"  src="assets/images/matthew-sleeper-124918-unsplash.jpg" class="modalPicture" alt="coffee">
+                                    <div><span>Dream Big</span></div>
+                                    <div> Be the architect of your adventure! What do you want to do? Where do you want to do it? Who do you want to do it with? Explore the possibilities, create an event and share it with the people you love!
+                                    </div>
+                                </div>
+                                <hr>
+                                <div>
+                                    <img style="float: right;" src="assets/images/photo-1535981767287-35259dbf7d0e.jpeg" class="modalPicture" alt="calendar"> 
+                                    <div><span>When Can You Go?</span></div>
+                                    
+
+                                    <div>   Set a date.</div>
+
+                                    <div>   Match it with your buddies. </div>
+
+                                    <div>   Get going!</div>
+                                </div>
+                                <hr>
+
+                                 <div>
+                                     <img style="float: left;"  src="assets/images/photo-1421789497144-f50500b5fcf0.jpeg" class="modalPicture" alt="Time">
+                                     <div><span> Timing is Everything</span></div>
+
+
+                                     <div> What are you waiting for? Go, go , go!</div>
+
+                                     <div> Don't leave your buddy waiting! </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                  <div class="pre-auth">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                    <span class="">
+                                    </span>
+                                  </div>
+                                  <div class="post-auth"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
     <div class="container">
             <div class="jumbotron">
         <div class="row border justify-content-between">
@@ -197,7 +254,12 @@
              
                 </div>
                 <div class="col-sm-8">
-                        Selected Dates<br>
+                        <label for="date-input">Start Date</label>
+                        <input class="form-control" id="date-input" type="date">
+                        <br>
+                        <label for="date-input">End Date</label>
+                        <input class="form-control" id="date-input" type="date">
+                        <br>
                         <button type="button" class="btn btn-secondary btn-sm">Modify</button>
                         <button type="button" class="btn btn-secondary btn-sm">Use Top Pick</button>
                 </div>
@@ -221,7 +283,13 @@
                             <button type="button" class="btn btn-secondary btn-sm">Invite Others</button>             
                     </div>
                     <div class="col-sm-8">
-                            Selected Dates<br>
+                             <br>
+                                    <label for="date-input">Start Date</label>
+                                    <input class="form-control" id="date-input" type="date">
+                                    <br>
+                                    <label for="date-input">End Date</label>
+                                    <input class="form-control" id="date-input" type="date">
+                                 
                     </div>
                     <div class="col-sm-4">
                             Group Notes/Comments <br>  
@@ -233,19 +301,6 @@
 
         </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
