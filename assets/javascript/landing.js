@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-var landingImages = ['assets/javascript/images/spring.jpg', 'assets/javascript/images/summer.jpg','assets/javascript/images/fall.jpg', 'assets/javascript/images/winter.png','assets/javascript/images/Outdoor.png','assets/javascript/images/indoor.png','assets/javascript/images/family.png','assets/javascript/images/adult.png']
-var landingButtons=['Spring Activities','Summer Activities','Fall Activities','Winter Activities','Outdoor Fun','Indoor Fun','Family Activities','Adult Activities']
+var landingImages = ['assets/javascript/images/spring.jpg', 'assets/javascript/images/summer.jpg','assets/javascript/images/fall.jpg', 'assets/javascript/images/winter.png','assets/javascript/images/sightseeing.png','assets/javascript/images/adult.png']
+var landingButtons=['Spring Activities','Summer Activities','Fall Activities','Winter Activities','Sightseeing Activities','Adult Activities']
 var count = 0;
 displayImage();
 for(let i = 0; i < landingImages.length ;i++){
@@ -53,9 +53,9 @@ function displayImage() {
             var spring =
 
                 {
-                    picture: ['assets/javascript/images/spring/cherry_blossom.png', 'assets/javascript/images/spring/hiking.png','assets/javascript/images/spring/horseback.png','assets/javascript/images/spring/picnic.png'], 
+                    picture: ['assets/javascript/images/spring/camping.png','assets/javascript/images/spring/cherry_blossom.png', 'assets/javascript/images/spring/hiking.png','assets/javascript/images/spring/picnic.png'], 
         
-                    button: ["Cherry Blossom", "Hiking","Horseback Riding", "Picnic"],
+                    button: ["Camping","Cherry Blossom", "Hiking","Picnic Festival"],
         
                  }
              $("#activity-selected").html("<h3>" + "Spring Activities" + "<h3>")   
@@ -95,9 +95,9 @@ function displayImage() {
             var summer =
              
                 {
-                    picture: ['assets/javascript/images/summer/beach.png', 'assets/javascript/images/summer/camping.png','assets/javascript/images/summer/fishing.png','assets/javascript/images/summer/hike.png'], 
+                    picture: ['assets/javascript/images/summer/beach.png', 'assets/javascript/images/summer/kayaking.png','assets/javascript/images/summer/natural_springs.png','assets/javascript/images/summer/paddleboard.png'], 
         
-                    button: ["Beach", "Camping", "Fishing","Hiking"],
+                    button: ["Beaches", "Kayaking", "Natural Springs","Paddleboarding"],
         
                  }
                 
@@ -132,9 +132,9 @@ function displayImage() {
             var fall =
 
                 {
-                    picture: ['assets/javascript/images/fall/apple_orchard.png', 'assets/javascript/images/fall/hayride.png','assets/javascript/images/fall/hiking.png','assets/javascript/images/fall/oktoberfest.png'], 
+                    picture: ['assets/javascript/images/fall/apple_orchard.png', 'assets/javascript/images/fall/fishing.png','assets/javascript/images/fall/horseback.png','assets/javascript/images/fall/oktoberfest.png'], 
         
-                    button: ["Apple Orchard", "Hayride", "Hiking","Oktoberfest"],
+                    button: ["Apple Orchard", "Fishing", "Horseback Riding","Oktoberfest"],
         
                  }
 
@@ -201,62 +201,26 @@ function displayImage() {
         }  
         else if (dataIndex === 4) {
             imageInterval = setInterval(nextImage,5000) 
-            var outdoor =
+            var sightseeing = 
 
                 {
-                    picture: ['assets/javascript/images/outdoor/beach.png', 'assets/javascript/images/outdoor/camping.png','assets/javascript/images/outdoor/hiking.png','assets/javascript/images/outdoor/picnic.png'], 
+                    picture: ['assets/javascript/images/sightseeing/monuments.png', 'assets/javascript/images/sightseeing/museums.png','assets/javascript/images/sightseeing/national_parks.png','assets/javascript/images/sightseeing/shopping.png'], 
         
-                    button: ["Beach", "Camping", "Hiking","Picnic"],
+                    button: ["Monuments", "Museums", "National Parks", "Shopping Centers"],
         
                  }
 
-                 $("#activity-selected").html("<h3>" + "Outdoor Activities" + "<h3>")  
+                 $("#activity-selected").html("<h3>" + "Sightseeing Activities" + "<h3>")  
 
-                 for(let i = 0; i < outdoor.picture.length; i++){                  
-                    $("#activities-images-first-row").html("<img src=" + outdoor.picture[0] + " width='250px' height='250px'>") 
-                    $("#activities-images-second-row").html("<img src=" + outdoor.picture[1] + " width='250px' height='250px'>")
-                    $("#activities-images-third-row").html("<img src=" + outdoor.picture[2] + " width='250px' height='250px'>")
-                    $("#activities-images-fourth-row").html("<img src=" + outdoor.picture[3] + " width='250px' height='250px'>")
-                    //displayImage()
-                }
-                function displayImage() {
-                    $("#slideshow").html("<img src=" + outdoor.picture[count] + " width='100%' height='100%'>");
-                  }
-
-                  function nextImage(){
-                      count++
-                    
-                      setTimeout(displayImage, 1000);
-                    
-                      if (count === outdoor.picture.length) {
-                    
-                        count = 0;
-                    
-                      }
-                  }
-        }  
-        else if (dataIndex === 5) {
-            imageInterval = setInterval(nextImage,5000) 
-            var indoor = 
-
-                {
-                    picture: ['assets/javascript/images/indoor/archery.png', 'assets/javascript/images/indoor/bowling.png','assets/javascript/images/indoor/indoor_rock_climbing.png','assets/javascript/images/indoor/museums.png'], 
-        
-                    button: ["Archery", "Bowling", "Indoor Rock Climbing", "Museums"],
-        
-                 }
-
-                 $("#activity-selected").html("<h3>" + "Indoor Activities" + "<h3>")  
-
-                 for(let i = 0; i < indoor.picture.length; i++){                  
-                    $("#activities-images-first-row").html("<img src=" + indoor.picture[0] + " width='250px' height='250px'>") 
-                    $("#activities-images-second-row").html("<img src=" + indoor.picture[1] + " width='250px' height='250px'>")
-                    $("#activities-images-third-row").html("<img src=" + indoor.picture[2] + " width='250px' height='250px'>")
-                    $("#activities-images-fourth-row").html("<img src=" + indoor.picture[3] + " width='250px' height='250px'>")
+                 for(let i = 0; i < sightseeing.picture.length; i++){                  
+                    $("#activities-images-first-row").html("<img src=" + sightseeing.picture[0] + " width='250px' height='250px'>") 
+                    $("#activities-images-second-row").html("<img src=" + sightseeing.picture[1] + " width='250px' height='250px'>")
+                    $("#activities-images-third-row").html("<img src=" + sightseeing.picture[2] + " width='250px' height='250px'>")
+                    $("#activities-images-fourth-row").html("<img src=" + sightseeing.picture[3] + " width='250px' height='250px'>")
                 //displayImage()
                 }
                 function displayImage() {
-                    $("#slideshow").html("<img src=" + indoor.picture[count] + " width='100%' height='100%'>");
+                    $("#slideshow").html("<img src=" + sightseeing.picture[count] + " width='100%' height='100%'>");
                   }
 
                   function nextImage(){
@@ -264,43 +228,7 @@ function displayImage() {
                     
                       setTimeout(displayImage, 1000);
                     
-                      if (count === indoor.picture.length) {
-                    
-                        count = 0;
-                    
-                      }
-                  }
-        }  
-        else if (dataIndex === 6) {
-            imageInterval = setInterval(nextImage,5000) 
-            var family = 
-
-                {
-                    picture: ['assets/javascript/images/family/apple_orchard.png', 'assets/javascript/images/family/camping.png','assets/javascript/images/family/hiking.png','assets/javascript/images/family/picnic.png'], 
-        
-                    button: ["Apple Orchard", "Camping", "Hiking","Picnic"],
-        
-                 }
-
-                 $("#activity-selected").html("<h3>" + "Family Activities" + "<h3>")  
-
-                 for(let i = 0; i < family.picture.length; i++){                  
-                    $("#activities-images-first-row").html("<img src=" + family.picture[0] + " width='250px' height='250px'>") 
-                    $("#activities-images-second-row").html("<img src=" + family.picture[1] + " width='250px' height='250px'>")
-                    $("#activities-images-third-row").html("<img src=" + family.picture[2] + " width='250px' height='250px'>")
-                    $("#activities-images-fourth-row").html("<img src=" + family.picture[3] + " width='250px' height='250px'>")
-                   // displayImage()
-                }
-                function displayImage() {
-                    $("#slideshow").html("<img src=" + family.picture[count] + " width='100%' height='100%'>");
-                  }
-
-                  function nextImage(){
-                      count++
-                    
-                      setTimeout(displayImage, 1000);
-                    
-                      if (count === family.picture.length) {
+                      if (count === sightseeing.picture.length) {
                     
                         count = 0;
                     
@@ -312,9 +240,9 @@ function displayImage() {
             var adult =
 
                 {
-                    picture: ['assets/javascript/images/adult/bars.png', 'assets/javascript/images/adult/breweries.png','assets/javascript/images/adult/clubs.png','assets/javascript/images/adult/winery.png'], 
+                    picture: ['assets/javascript/images/adult/breweries.png', 'assets/javascript/images/adult/distilleries.png','assets/javascript/images/adult/gambling.png','assets/javascript/images/adult/winery.png'], 
         
-                    button: ["Bars", "Breweries", "Clubs","Wineries"],
+                    button: ["Breweries", "Distilleries","Gambling","Wineries"],
         
                  }
 
