@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAplMbqcM4ZA9nF2C7ZqT-ntyTNzfPujAA",
@@ -12,11 +11,10 @@ $(document).ready(function() {
   };
   firebase.initializeApp(config);
 
-
-  var db = firebase.database();
-  var activityDB = db.ref("/activity");
-  var eventDB = db.ref("/event");
-  var buddyDB = db.ref("/buddy");
+  // var db = firebase.database();
+  // var activityDB = db.ref("/activity");
+  // var eventDB = db.ref("/event");
+  // var buddyDB = db.ref("/buddy");
 
 // ====================================
 
@@ -80,7 +78,7 @@ $(document).ready(function() {
 
   class NoteObj {
     constructor(buddyName, noteText) {
-      this.dateTime = new Date().toJSON();
+      this.dateTime = moment().format();
       this.buddyName = buddyName;
       this.noteText = noteText;
     }
@@ -116,7 +114,7 @@ $(document).ready(function() {
   // cat.addActivity("Fishing", "")
   // activityDB.push(cat)
 
-  // var buddy = new BuddyObj("SeanUgar", "sugar@hotmail.com")
+  // var buddy = new BuddyObj("FredHollywood", "fhollywood@gmail.com")
   // buddyDB.push(buddy)
 
   // var event1 = new EventObj("freds get-together")
@@ -126,15 +124,15 @@ $(document).ready(function() {
   // idx = event1.getEventBuddyIdx("FredHollywood")
   // event1.eventBuddies[idx].selections.activity  = "Gambling"
   // event1.eventBuddies[idx].selections.location  = "Reno, Nv"
-  // event1.eventBuddies[idx].selections.startDate = new Date("04-01-2020").toJSON()
-  // event1.eventBuddies[idx].selections.endDate   = new Date("04-08-2020").toJSON()
+  // event1.eventBuddies[idx].selections.startDate = "04/01/2020"
+  // event1.eventBuddies[idx].selections.endDate   = "04/08/2020"
 
   // event1.addEventBuddy("SeanUgar")
   // idx = event1.getEventBuddyIdx("SeanUgar")
   // event1.eventBuddies[idx].selections.activity  = "Gambling"
   // event1.eventBuddies[idx].selections.location  = "Las Vegas, Nv"
-  // event1.eventBuddies[idx].selections.startDate = new Date("04-01-2020").toJSON()
-  // event1.eventBuddies[idx].selections.endDate   = new Date("04-08-2020").toJSON()
+  // event1.eventBuddies[idx].selections.startDate = "04/01/2020"
+  // event1.eventBuddies[idx].selections.endDate   = "04/08/2020"
 
   // event1.sharedEmails.push("lane@hotmail.com")
   // event1.sharedEmails.push("sugar@hotmail.com")
@@ -145,36 +143,6 @@ $(document).ready(function() {
   // event1.notes.push(note);
 
   // eventDB.push(event1);
-
-  function loadEvent() {
-    eventDB.once("value", function(sn) {
-      if (sn) {
-        sn.forEach(function(child) {
-          var eventKey = child.key;
-          var eventData = child.val();
-
-          var ul = $("<ul>");
-          
-          var li = $("<li>").text(eventData.eventName);
-          ul.append(li);
-
-          eventData.eventBuddies.forEach(function (buddy) {
-            let li = $("<li>").text(buddy.buddyName);
-            ul.append(li);
-
-            let li2 = $("<li>").text(buddy.selections.activity + "|" 
-                                  + buddy.selections.location + "|"
-                                  + buddy.selections.startDate + "|"
-                                  + buddy.selections.endDate );
-            ul.append(li2);
-          })
-          $("#stuff").append(ul);
-        })
-      }
-    })
-  }
-
-  // loadEvent();
 
 
 })  
