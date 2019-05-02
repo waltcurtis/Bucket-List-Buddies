@@ -5,7 +5,7 @@ $(document).ready(function() {
     var eventDB = db.ref("/event");
     var buddyDB = db.ref("/buddy");
   
-  
+//    console.log("user: " + $user_id);
 // check for info in parameters - if so use them
     // var url_string = window.location.search.substring(1);
     // console.log(url_string);
@@ -43,28 +43,10 @@ $(document).ready(function() {
 
         // modify the event
 
+
         $("#noteText").val("");
 
     })
-
-    function extractChat(chat) {
-        var dts = new Date(chat.val().sentTime);
-                
-        dts = dts.toLocaleTimeString();
-
-        var time = $("<span>")
-                        .addClass("text-dark col-4")
-                        .text(dts + " ");
-        var sndr = $("<span>")
-                        .addClass("text-info col-2")
-                        .text(chat.val().screenName + " ");
-        var msg  = $("<span>")
-                        .addClass("text-primary col-6")
-                        .text(chat.val().chatMsg);
-
-        $("#chatFeed").append(time, sndr, msg);
-        $("#chatFeed").stop().animate({ scrollTop: $("#chatFeed")[0].scrollHeight}, 500);
-    }
 
     eventDB.on("child_added", function(sn) {
         if (sn) {
@@ -76,8 +58,8 @@ $(document).ready(function() {
             $("#selActivity").text(buddy.selections.activity);
             $("#selDestination").text(buddy.selections.location);
 
-            $("#start-date-input").val(buddy.selections.startDate);
-            $("#end-date-input").val(buddy.selections.endDate);
+            $("#start-date-input").val(moment(buddy.selections.startDate).format("YYYY-MM-DD"));
+            $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
 
             for (i=1; i < buddyEvent.eventBuddies.length; i++) {
                 var article = $("<article>")
@@ -87,7 +69,7 @@ $(document).ready(function() {
                                 .addClass("buddyName h2")
                                 .text(buddyEvent.eventBuddies[i].buddyName);
                 var rowdiv = $("<div>")
-                                .addClass("row");
+                                .addClass("row m-0");
                 var actdiv = $("<div>")
                                 .addClass("col-6 border border-solid border-dark")
                                 .text("Selected Activity:  " + buddyEvent.eventBuddies[i].selections.activity);
@@ -95,15 +77,15 @@ $(document).ready(function() {
                                 .addClass("col-6 border border-solid border-dark")
                                 .text("Selected Destination:  " + buddyEvent.eventBuddies[i].selections.location);
                 var rowdiv2 = $("<div>")
-                                .addClass("row");
+                                .addClass("row m-0");
                 var sdtdiv = $("<div>")
                                 .addClass("col-6 border border-solid border-dark")
                                 .text("Start Date:  " + buddyEvent.eventBuddies[i].selections.startDate);
                 var edtdiv = $("<div>")
                                 .addClass("col-6 border border-solid border-dark")
-                                .text("End Date:  " + buddyEvent.eventBuddies[i].selections.startDate);
+                                .text("End Date:  " + buddyEvent.eventBuddies[i].selections.endDate);
                 var btn = $("<button>")
-                                .addClass("btn btn-secondary btn-sm")
+                                .addClass("btn btn-secondary btn-block")
                                 .text("Copy As My Selection");
                 
                 rowdiv.append(actdiv, locdiv);
@@ -115,8 +97,8 @@ $(document).ready(function() {
 
             buddyEvent.sharedEmails.forEach(function (email, idx) {
                 $("#buddyList").append(
-                        $("<div>").addClass("row").append(
-                            $("<span>").addClass("col").text(email)
+                        $("<div>").addClass("row m-0").append(
+                            $("<span>").addClass("col m-0").text(email)
                         )
                 );
             })
@@ -129,7 +111,7 @@ $(document).ready(function() {
                     .append(
                         $("<span>")
                             .addClass("pl-2 m-0 text-dark col-3")
-                            .text(moment(note.dateTime).toJSON()),
+                            .text(moment(note.dateTime).format("MMM DD H:mm")),
                         $("<span>")
                             .addClass("pl-2 m-0 text-info col-3")
                             .text(note.buddyName),
@@ -141,4 +123,24 @@ $(document).ready(function() {
         }
     })
 
+    $("#invite").click(function(){
+        var inviteEmail = $("#noteText").val().trim();
+
+        var msg = new NoteObj(buddyName, noteMsg);
+        buddyEvent.notes.push(msg);
+
+        // modify the event
+
+
+        $("#noteText").val("");
+
+
+    })
+
+    $('#calendar').datepicker({
+        inline: true,
+        firstDay:0,
+        showOtherMonths: false,
+        dayNamesMin: ['S','M','T','W','Th','F','S']
+    })
 })
