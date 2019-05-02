@@ -31,9 +31,9 @@ $(document).ready(function() {
     }
     getActivityIdx(activityName) { 
       this.activities.forEach(function(activity, i) {
-        var idx = -1
+        var idx = -1;
         if (activity.activityName == activityName) idx = i; 
-      });
+      })
       return idx;
     }
   }
@@ -58,9 +58,9 @@ $(document).ready(function() {
       this.eventBuddies.push( new EventBuddyObj(buddyName) ); 
     }
     getEventBuddyIdx(buddyName) { 
-      var idx = -1
+      var idx = -1;
       this.eventBuddies.forEach(function(buddy, i) {
-        if (buddy.buddyName == buddyName) { idx = i; }
+        if (buddy.buddyName == buddyName) idx = i; 
       })
       return idx;
     }
@@ -120,7 +120,9 @@ $(document).ready(function() {
   // buddyDB.push(buddy)
 
   // var event1 = new EventObj("freds get-together")
+  
   // event1.addEventBuddy("FredHollywood")
+
   // idx = event1.getEventBuddyIdx("FredHollywood")
   // event1.eventBuddies[idx].selections.activity  = "Gambling"
   // event1.eventBuddies[idx].selections.location  = "Reno, Nv"
@@ -136,6 +138,7 @@ $(document).ready(function() {
 
   // event1.sharedEmails.push("lane@hotmail.com")
   // event1.sharedEmails.push("sugar@hotmail.com")
+
   // var note = new NoteObj("fred", "this is my latest event")
   // event1.notes.push(note);
   // note = new NoteObj("buddyName", "have invited all of my friends")
@@ -150,22 +153,22 @@ $(document).ready(function() {
           var eventKey = child.key;
           var eventData = child.val();
 
-          var ul = $("<ul>")
+          var ul = $("<ul>");
           
-          var li = $("<li>").text(eventData.eventName)
-          ul.append(li)
+          var li = $("<li>").text(eventData.eventName);
+          ul.append(li);
 
           eventData.eventBuddies.forEach(function (buddy) {
-            let li = $("<li>").text(buddy.buddyName)
-            ul.append(li)
+            let li = $("<li>").text(buddy.buddyName);
+            ul.append(li);
 
             let li2 = $("<li>").text(buddy.selections.activity + "|" 
                                   + buddy.selections.location + "|"
                                   + buddy.selections.startDate + "|"
-                                  + buddy.selections.endDate )
-            ul.append(li2)
+                                  + buddy.selections.endDate );
+            ul.append(li2);
           })
-          $("#stuff").append(ul)
+          $("#stuff").append(ul);
         })
       }
     })
