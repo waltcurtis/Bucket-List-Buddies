@@ -31,7 +31,7 @@ body{
 }
 
 section { width: 68%; float: left; }
-aside { width: 28%; float: left; }
+aside { width: 30%; float: right; }
 
 .modalPicture{
     width: 45%;
