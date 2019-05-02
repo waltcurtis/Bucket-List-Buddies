@@ -5,23 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Events</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/events.css">
 
     <!-- bootsrap cdn -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!---->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
-
-
-<header>
-    <!--         <a href="landing.html"><img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2293&q=80" width="100%" height="35%" /></a>
--->
-
-</header>
 
 
 <body class="auth-false">
@@ -234,9 +228,9 @@
 
 
       <section >
-        <div class="container">
-        <article id="currentBuddy" class="buddySelection bg-white m-2">
-          <h2 class="buddyName h2">&lt;current buddy name &gt;</h2>
+        <div id="buddyArea" class="container">
+        <article class="buddySelection bg-white m-2">
+          <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
           <div class="row">
             <div class="col-6 border border-solid border-dark">
               Selected Activity: <span id="selActivity"></span>
@@ -261,7 +255,7 @@
           <button type="button" class="btn btn-secondary btn-sm">Use Top Pick</button>
         </article>
 <!-- dynamically build/insert for each other 'buddy' on the event -->
-<!--  -->
+<!--  
         <article id="buddy#" class="buddySelection bg-white m-2">
           <h2 class="buddyName h2">&lt;other buddy name 1 &gt;</h2>
           <div class="row">
@@ -324,7 +318,7 @@
               <input type="button" id="noteSend" class="btn btn-secondary text-white col-3" value="Add"/>
           </div>
           <div id="noteFeed" class="row" >
-          <!--  --><span class="pl-2 m-0 text-dark col-3"> 01-01-2001 </span>
+          <!--  <span class="pl-2 m-0 text-dark col-3"> 01-01-2001 </span>
             <span class="pl-2 m-0 text-info col-3"> FredH </span>
             <span class="pl-2 m-0 text-info col-6"> test msg </span> -->
           </div>
@@ -332,16 +326,9 @@
         </div>
       </aside>
 
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
 <!-- JavaScript -->
-<script src="assets/javascript/login.js"></script>
+<!-- <script src="assets/javascript/login.js"></script> -->
+<script src="assets/javascript/main.js"></script>
 <script src="assets/javascript/events.js"></script>
 
 </body>
