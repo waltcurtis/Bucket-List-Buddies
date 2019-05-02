@@ -9,7 +9,7 @@ $(document).ready(function() {
         var imageTag = $("<div> <img src=" + landingImages[i] + " width='100%' height='200px' > </div>")
         imageTag.attr({
             data: i,
-            class: "col-sm-4 landing__scroll-box" 
+            class: "col-sm-3 landing__scroll-box" 
         })
       
     $("#landing_images").append(imageTag ) 
@@ -21,7 +21,7 @@ $(document).ready(function() {
         var buttonTag = $("<div> <button width='100%' class = 'btn btn-info'>" + landingButtons[i] + "</button> </div>")
         buttonTag.attr({
             data: i,
-            class: "col-sm-4 landing__scroll-box",
+            class: "col-sm-3 landing__scroll-box",
         })
     $("#landing_buttons").append(buttonTag ) 
     console.log(buttonTag  )
