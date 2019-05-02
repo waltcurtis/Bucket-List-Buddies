@@ -5,7 +5,39 @@
   <meta charset="UTF-8">
   <title>Landing Page</title>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+      table{
+        width:100%;
+        table-layout:fixed}
+      
+      .img-responsive{width:100%;}
+      .btn{width:100%;}
+      
+      @media screen and (max-width: 980px){ table{
+        width:100%;
+        table-layout:fixed;
+      }
+      
+      .img-responsive{width:100%;}
+      .btn{width:100%;}
+      }
+      @media screen and (max-width: 768px){ table{
+        width:100%;
+        table-layout:fixed}
+      
+      .img-responsive{width:100%;}
+      .btn{width:100%;}
+      }
+      @media screen and (max-width: 640px){ table{
+        width:100%;
+        table-layout:fixed}
+      
+      .img-responsive{width:100%;}
+      .btn{width:100%;}
+      }
+    </style>
 </head>
 
 <header>
@@ -169,47 +201,58 @@
 
 
 
-    <br>
-    <div class="landing__scroll">
-            <div class="row text-center">
-              <div id="landing_images" ></div>
-              <div id= "landing_buttons"></div>
-              </div>
-          </div>
-        <div id="main-container">
-          <div class ="row">
-                <div class = "col-sm-6" id="activities-images">
-                        <h3 id="activity-selected" style="padding-bottom: 15px"></h3>
-                    <div class ="row"> 
-                            <div id="activities-images-first-row" class = "col-xs-6" style ="padding-right:20px"></div>
-                            <br>
-                            <div id="activities-images-second-row" class = "col-xs-6"></div>
-                        </div>
-                    <!-- <div class ="row" style ="padding:20px"> 
-                                <div id="activities-button-first-row" class = "col-xs-6" style ="padding-right:20px"></div>
-                                <div id="activities-button-second-row" class = "col-xs-6"></div>
-                        </div> -->
-                        <br>
-                        <div class ="row" >
-                                <div id="activities-images-third-row" class = "col-xs-6" style ="padding-right:20px"></div>
-                                <div id="activities-images-fourth-row" class = "col-xs-6"></div>
+                  <br>
+                  <div class="landing__scroll">
+                          <div class="row text-center">
+                            <div id="landing_images" ></div>
+                            <div id= "landing_buttons"></div>
                             </div>
-                            <!-- <div class ="row">
-                                    <div id="activities-button-third-row" class = "col-sm-6" style ="padding-right:20px"></div>
-                                    <div id="activities-button-fourth-row" class = "col-sm-6"></div>
-                                </div> -->
-                    </div>
-                  
-               
-                <div class="col-sm-6" >
-                        <h3 style="padding-bottom: 15px">Activity Images:</h3>
-                            <div id="slideshow-background">
-                            <div id ="slideshow"></div>
-                            
-                             </div>
-                         </div>
-            </div>
-        </div>
+                        </div>
+                      <div  id="main-container">
+                          <div class ="row"> 
+                              <div class="col-sm-7" style="padding-left:3%">
+                                  <h3 id="activity-selected" style="padding-bottom: 15px"></h3>
+                        <table id="activities-table">
+                          <thead>
+                            <tr>              
+                                <th id="activities-images-first-row"></th>
+                                <th id="activities-images-second-row"></th>
+                            </tr>
+              
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td id="activities-button-first-row"></td>
+                              <td id="activities-button-second-row"></td>
+                            </tr>
+                          </tbody>
+                          <thead>
+                              <tr>              
+                                  <th id="activities-images-third-row"></th>
+                                  <th id="activities-images-fourth-row"></th>
+                              </tr>
+                
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td id="activities-button-third-row"></td>
+                                  <td id="activities-button-fourth-row"></td>
+                              </tr>
+                
+                            </tbody>
+                
+              
+                        </table>
+                      
+                          </div>
+                          <div class="col-sm-5" >
+                              <h3 style="padding-bottom: 15px">Activity Images:</h3>
+                                      <div id="slideshow-background">
+                                      <div id ="slideshow"></div>
+                          </div>  
+                      </div>
+                      </div>
+                    </div>              
         </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
