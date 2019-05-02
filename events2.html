@@ -1,0 +1,348 @@
+<!Doctype <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/events.css">
+
+    <!-- bootsrap cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!---->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+
+<header>
+    <!--         <a href="landing.html"><img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2293&q=80" width="100%" height="35%" /></a>
+-->
+
+</header>
+
+
+<body class="auth-false">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
+                <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0 userAuth unauthenticated pull-right">
+                    <ul class="navbar-nav ml-auto text-center">
+
+                    <li class="nav-item">
+                            <a href="" class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
+
+                    <li class="nav-item">
+                            <a href="" class="nav-link" data-toggle="modal" data-target="#registerModal">Register</a>
+                    </li>  
+
+                        <li class="nav-item"> 
+                            <a class="nav-link" href="#">Locations</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="mx-auto my-2 order-0 order-md-1 position-relative userAuth authenticated pull-right">
+                    <!--                     
+                        <a class="mx-auto" href="#">
+                         <img src="//placehold.it/120/ccff00" class="navBarPicture"> </a> 
+                    -->
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+                    <ul class="navbar-nav mr-auto text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link" data-toggle="modal" data-target="#aboutModal">About</a>
+
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                    <span class="user-info">           
+                                    </span>
+                                    <button type="button" class="btn btn-success" id="logout">Logout</button>
+                                </li>
+
+                        </ul>
+                </div>
+
+
+
+        </nav>
+
+
+            <!-- Register Modal -->
+            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <form id="registerForm" method="POST">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="registerModalLabel">Register</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label for="recipient-name" class="control-label">First Name:</label>
+                              <input type="text" class="form-control" id="registerFirstName">
+                            </div>
+                            <div class="form-group">
+                              <label for="recipient-name" class="control-label">Last Name:</label>
+                              <input type="text" class="form-control" id="registerLastName">
+                            </div>
+                            <div class="form-group">
+                              <label for="recipient-name" class="control-label">Email:</label>
+                              <input type="text" class="form-control" id="registerEmail">
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="control-label">Password:</label>
+                              <input type="password" class="form-control" id="registerPassword">
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="control-label">Confirm Password:</label>
+                              <input type="password" class="form-control" id="registerConfirmPassword">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="doRegister">Register</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+            </div>
+
+                   <!-- Login Modal -->
+
+                   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form id="loginForm" method="POST">
+                              <div class="modal-header">
+                                <h4 class="modal-title" id="loginModalLabel">Login</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label for="recipient-name" class="control-label">Email:</label>
+                                  <input type="text" class="form-control" id="loginEmail">
+                                </div>
+                                <div class="form-group">
+                                  <label for="message-text" class="control-label">Password:</label>
+                                  <input type="password" class="form-control" id="loginPassword">
+                                </div>
+                              </div>
+                            <!-- other logins - facebook, google, twitter, etc.
+
+                          <div class="container"> 
+                                <div class="row sign-in">
+                                    <h2 class="logInHeader">Or Sign In With</h2>
+                                    <div id="firebaseui-auth-container"></div>
+                                </div>
+                            </div>
+                                 -->
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" id="doLogin">Login</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                   </div>
+
+                <!-- Message modal after login/register-->
+                  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="messageModalLabel">Message</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-footer">
+                              <div class="pre-auth">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                <span class="">
+                                  <button type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
+                                  <button type="submit" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
+                                </span>
+                              </div>
+                              <div class="post-auth"></div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+
+                   <!-- About Modal -->
+
+                      <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="aboutModalLabel">About Us</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+
+                                <div>
+                                    <img style="float: left;"  src="assets/images/matthew-sleeper-124918-unsplash.jpg" class="modalPicture" alt="coffee">
+                                    <div><span>Dream Big</span></div>
+                                    <div> Be the architect of your adventure! What do you want to do? Where do you want to do it? Who do you want to do it with? Explore the possibilities, create an event and share it with the people you love!
+                                    </div>
+                                </div>
+                                <hr>
+                                <div>
+                                    <img style="float: right;" src="assets/images/photo-1535981767287-35259dbf7d0e.jpeg" class="modalPicture" alt="calendar"> 
+                                    <div><span>When Can You Go?</span></div>
+                                    
+
+                                    <div>   Set a date.</div>
+
+                                    <div>   Match it with your buddies. </div>
+
+                                    <div>   Get going!</div>
+                                </div>
+                                <hr>
+
+                                 <div>
+                                     <img style="float: left;"  src="assets/images/photo-1421789497144-f50500b5fcf0.jpeg" class="modalPicture" alt="Time">
+                                     <div><span> Timing is Everything</span></div>
+
+
+                                     <div> What are you waiting for? Go, go , go!</div>
+
+                                     <div> Don't leave your buddy waiting! </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                  <div class="pre-auth">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                    <span class="">
+                                    </span>
+                                  </div>
+                                  <div class="post-auth"></div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+
+
+
+      <section >
+        <div class="container">
+        <article id="currentBuddy" class="buddySelection bg-white m-2">
+          <h2 class="buddyName h2">&lt;current buddy name &gt;</h2>
+          <div class="row">
+            <div class="col-6 border border-solid border-dark">
+              Selected Activity: <span id="selActivity"></span>
+            </div>
+            <div class="col-6 border border-solid border-dark">
+              Selected Destination: <span id="selDestination"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 border border-solid border-dark">
+                <div class="row">
+                  <label for="start-date-input" class=" offset-2 col-4">Start Date</label>
+                  <label for="end-date-input" class="offset-1 col-4">End Date</label>
+                </div>
+                <div class="row">
+                  <button type="button" class=" col-1 btn btn-secondary btn-sm">Modify</button>
+                  <input class="form-control offset-1 col-5" id="start-date-input" type="date">
+                  <input class="form-control col-5" id="end-date-input" type="date">
+                </div>
+              </div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm">Use Top Pick</button>
+        </article>
+<!-- dynamically build/insert for each other 'buddy' on the event -->
+<!--  -->
+        <article id="buddy#" class="buddySelection bg-white m-2">
+          <h2 class="buddyName h2">&lt;other buddy name 1 &gt;</h2>
+          <div class="row">
+            <div class="col-6 border border-solid border-dark">
+              Selected Activity: <span id="selActivity"></span>
+            </div>
+            <div class="col-6 border border-solid border-dark">
+              Selected Destination: <span id="selDestination"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 border border-solid border-dark">
+                <div class="row">
+                  <label for="start-date-input" class="col-4">Start Date</label>
+                  <label for="end-date-input" class="offset-2 col-4">End Date</label>
+                </div>
+                <div class="row">
+                  <input class="form-control col-6" id="start-date-input" type="date">
+                  <input class="form-control col-6" id="end-date-input" type="date">
+                </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm">Copy As My Selection</button>
+        </div>
+        </article>
+-->
+      </section>
+
+      <aside  class=" bg-white m-2">
+        <div class="container">
+        <div id="grpTopPicks border border-solid border-dark">
+          <h2 class="h2"> Group Selections </h2>
+          <div class="row m-0 no-gutters">
+            <span id="grpTopAct" class="m-0 offset-1 col-7">Gambling</span>
+            <span id="grpActCnt" class="m-0 offset-3 col-1">2</span>
+          </div>
+          <div class="row m-0 no-gutters">
+            <span id="grpTopDest" class="m-0 p-0 offset-1 col-7">Las Vegas, NV</span>
+            <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1">1</span>
+          </div>
+          <div class="row no-gutters">
+            &lt; place calendar widget here &gt;
+          </div>
+        </div>
+
+        <div class=" border border-solid border-dark" >
+          <h2 class="h2"> Buddy List </h2>
+          <div id="buddyList">
+            &lt; generated list of emails &gt;
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary btn-sm">Invite Others</button>
+          </div>
+        </div>
+
+        <div id="notebox" class=" border border-solid border-dark" >
+          <h2 class="h2"> Group Notes </h2>
+          <div class="border border-solid m-0 row" >
+              <input type="text" id="noteText" class="col-9" />
+              <input type="button" id="noteSend" class="btn btn-secondary text-white col-3" value="Add"/>
+          </div>
+          <div id="noteFeed" class="row" >
+          <!--  --><span class="pl-2 m-0 text-dark col-3"> 01-01-2001 </span>
+            <span class="pl-2 m-0 text-info col-3"> FredH </span>
+            <span class="pl-2 m-0 text-info col-6"> test msg </span> -->
+          </div>
+        </div>
+        </div>
+      </aside>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+<!-- JavaScript -->
+<script src="assets/javascript/login.js"></script>
+<script src="assets/javascript/events.js"></script>
+
+</body>
+</html>
