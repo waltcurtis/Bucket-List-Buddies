@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>practice</title>
+    <title>draft</title>
     <!--jquery-->
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -368,108 +368,104 @@
                 </div>
     
              <!-- panel begins -->
-               <!-- first -->
-                    <article class="m-2">
-                            <article id="currentBuddy" class="buddySelection bg-white">
-                                    <h2 class="buddyName h2">&lt;current buddy name &gt;</h2>
-                                    <div class="row">
-                                      <div class="col-6 border border-solid border-dark">
-                                        Selected Activity: <span id="selActivity"></span>
+
+             <!-- current buddy  -->
+            <article class="m-2">
+              <span id="buddyArea">
+                <article class="buddySelection bg-white m-2">
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <div class="card">
+                            <div class="card-body">
+                                <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
+                                <div class="row">
+                                    <div class="col-6">
+                                      Selected Activity: <span id="selActivity"></span>
+                                    </div>
+                                    <div class="col-6">
+                                      Selected Destination: <span id="selDestination"></span>
+                                    </div>
+                                  </div>                              
+                                  <br>
+                                  <div class="col-12">
+                                      <div class="row">
                                       </div>
-                                      <div class="col-6 border border-solid border-dark">
-                                        Selected Destination: <span id="selDestination"></span>
+                                      <div class="row m-0">
+                                        <label for="start-date-input" class="align-center">Start Date</label>
+                                        <input class="form-control align-bottom" id="start-date-input" type="date">
+                                        <label for="end-date-input" class="align-center">End Date</label>
+                                        <input class="form-control" id="end-date-input" type="date">
                                       </div>
                                     </div>
-                                    <div class="row">
-                                      <div class="col-12 border border-solid border-dark">
-                                          <div class="row">
-                                            <label for="start-date-input" class="col-4">Start Date</label>
-                                            <label for="end-date-input" class="offset-2 col-4">End Date</label>
-                                          </div>
-                                          <div class="row">
-                                            <input class="form-control col-6" id="start-date-input" type="date">
-                                            <input class="form-control col-6" id="end-date-input" type="date">
-                                          </div>
-                                          <button type="button" class="btn btn-secondary btn-sm">Modify</button>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-secondary btn-sm">Use Top Pick</button>
-                                  </article>
-                    </article>
-    <!-- dynamically build/insert for each other 'buddy' on the event -->
-    <!--  -->
-               <article class="m-2">
-                    <article id="buddy#" class="buddySelection bg-white">
-                            <h2 class="buddyName h2">&lt;other buddy name 1 &gt;</h2>
-                            <div class="row">
-                              <div class="col-6 border border-solid border-dark">
-                                Selected Activity: <span id="selActivity"></span>
-                              </div>
-                              <div class="col-6 border border-solid border-dark">
-                                Selected Destination: <span id="selDestination"></span>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-12 border border-solid border-dark">
-                                  <div class="row">
-                                    <label for="start-date-input" class="col-4">Start Date</label>
-                                    <label for="end-date-input" class="offset-2 col-4">End Date</label>
                                   </div>
+
                                   <div class="row">
-                                    <input class="form-control col-6" id="start-date-input" type="date">
-                                    <input class="form-control col-6" id="end-date-input" type="date">
+                                      <span class="col-sm-2"></span>
+                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Modify</button></p>
+                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Use Top Pick</button></p>
                                   </div>
+                          </div>
+                        </div>
+                        
+                        <!-- Group Selection-->
+                        <div class="col-sm-6">
+                          <div class="card">
+                            <div id="grpTopPicks" class="card-body">
+                              <h2 class="h2 card-title"> Group Selections </h2>     
+
+                              <div class="row m-0 no-gutters">
+                                  <span id="grpTopAct" class="m-0 offset-1 col-7">Gambling</span>
+                                  <span id="grpActCnt" class="m-0 offset-3 col-1">2</span>
+                                </div>
+                                <div class="row m-0 no-gutters">
+                                  <span id="grpTopDest" class="m-0 p-0 offset-1 col-7">Las Vegas, NV</span>
+                                  <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1">1</span>
+                                </div>
+                                <div class="text-center" id="calendar"></div>
+                                
                               </div>
-                            </div>
-                            <button type="button" class="btn btn-secondary btn-sm">Copy As My Selection</button>
-                          </article>
-                </article>
-               <!-- third -->
-               
-               <article class="m-2">
-                    <div id="grpTopPicks border border-solid border-dark">
-                            <h2 class="h2"> Group Selections </h2>
-                            <div class="row m-0 no-gutters">
-                              <span id="grpTopAct" class="m-0 offset-1 col-7">Gambling</span>
-                              <span id="grpActCnt" class="m-0 offset-3 col-1">2</span>
-                            </div>
-                            <div class="row m-0 no-gutters">
-                              <span id="grpTopDest" class="m-0 offset-1 col-7">Las Vegas, NV</span>
-                              <span id="grpDestCnt" class="m-0 offset-3 col-1">1</span>
-                            </div>
-                            <div class="row no-gutters">
-                              place calendar widget here
+
                             </div>
                           </div>
-                </article>
-    
-                <article class="m-2">
-                        <div class=" border border-solid border-dark" >
-                                <h2 class="h2"> Buddy List </h2>
-                                <div id="buddyList">
-                                  &lt; generated list of emails &gt;
-                                </div>
-                                <div>
-                                  <button type="button" class="btn btn-secondary btn-sm">Invite Others</button>
+                        </div>
+
+               <!-- buddy list / notes-emails -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h2 class="h2 card-title">Buddy List</h2>
+                                  <div id="buddyList">
+                                    </div>
+                                    <div class="row m-0">
+                                        <input id="invAddr" type="text" class="col-9" />
+                                        <button id="invite" type="button" class="col-3 btn">Invite Others</button>
+                                      </div>
                                 </div>
                               </div>
-                    </article>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="card">
+                                <div class="card-body">
+                                    <h2 class="h2 card-title">Group Notes</h2>
+                                    <div class="border border-solid m-0 row" >
+                                        <input type="text" id="noteText" class="col-9" />
+                                        <input type="button" id="noteSend" class="btn col-3" value="Add"/>
+                                    </div>
+                                    <div id="noteFeed" class="row m-0" >
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </article>
+                      
+                    </span>    
+              </article>
 
-                    <article class="m-2">
-                            <div id="notebox" class=" border border-solid border-dark" >
-                                    <h2 class="h2"> Group Notes </h2>
-                                    <div class="border border-solid my-0 row" >
-                                        <input type="text" id="noteText" class="col-10" />
-                                        <input type="button" id="noteSend" class="btn btn-dark text-white col-2" value="Send"/>
-                                    </div>
-                                    <div id="noteFeed" class="border border-solid row " >
-                                    <!-- <span id = "chatLine" class="pl-1 col-12"> test </span>
-                                         <span id = "chatLine" class="pl-1 col-12"> test2 </span> -->
-                                    </div>
-                                  </div>
-                        </article>
-    
-            </div>
+
+
         </span>
         </section>
 
@@ -549,8 +545,11 @@
     <!-- landing js -->
     <script type="text/javascript" src="assets/javascript/landing.js"></script>
               <script src="java.js"></script>
-    <!-- evennts js -->
+    <!-- events js -->
      <script src="assets/javascript/events.js"></script>
+    <!-- main js -->
+     <script src="assets/javascript/main.js"></script>
+
 
 </body>
 </html>
