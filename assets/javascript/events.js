@@ -1,30 +1,120 @@
 $(document).ready(function() {
 
-    var db = firebase.database();
-    var activityDB = db.ref("/activity");
-    var eventDB = db.ref("/event");
-    var buddyDB = db.ref("/buddy");
-  
-//    console.log("user: " + $user_id);
-// check for info in parameters - if so use them
-    // var url_string = window.location.search.substring(1);
-    // console.log(url_string);
-    // var thisURL = new URL(url_string);
-    // var activity = url.searchParam.get("activity");
+  // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAplMbqcM4ZA9nF2C7ZqT-ntyTNzfPujAA",
+        authDomain: "bucket-list-buil-1556142938245.firebaseapp.com",
+        databaseURL: "https://bucket-list-buil-1556142938245.firebaseio.com",
+        projectId: "bucket-list-buil-1556142938245",
+        storageBucket: "bucket-list-buil-1556142938245.appspot.com",
+        messagingSenderId: "97852412014"
+    };
+    firebase.initializeApp(config);
 
-// 
-// on getting event name 
-//      look for signed in buddy
-//      display their choices
-//      for others,
-//          display their name 
-//          display their choices
-//      count selections to determine most used
-//      use these counts to fill groups favs
-//      use event names for this person to fill pull-down selection - pre-select 1st
-//      if shared list has elements, display them
-//      if notes, display them
-// 
+
+    var db = firebase.database();
+    var eventDB = db.ref("/event");
+
+    var currBuddy = null;
+    var currEvent = null;
+    var eventsArr = [];
+
+// ====================================
+
+class EventObj {
+    constructor(eventName) {
+      this.eventName        = eventName;
+      this.eventBuddies     = [],  // array of eventBuddy objects
+      this.sharedEmails     = [],  // array of email addresses
+      this.notes            = []   // array of note objects
+    }
+    addEventBuddy(buddyName) { 
+      this.eventBuddies.push( new EventBuddyObj(buddyName) ); 
+    }
+    getEventBuddyIdx(buddyName) { 
+      var idx = -1;
+      this.eventBuddies.forEach(function(buddy, i) {
+        if (buddy.buddyName == buddyName) idx = i; 
+      })
+      return idx;
+    }
+  }
+
+  class EventBuddyObj {
+    constructor(buddyName) {
+      this.buddyName = buddyName;
+      this.selections = {
+        activity : "",
+        location : "",
+        startDate: "",
+        endDate  : "" 
+      }
+    }
+  }
+
+  class NoteObj {
+    constructor(buddyName, noteText) {
+      this.dateTime = moment().format();
+      this.buddyName = buddyName;
+      this.noteText = noteText;
+    }
+  }
+
+// ====================================
+    
+
+
+    console.log("***** Events Page Load *****");
+
+    // if currActivities
+    console.log("currActivity: " + currActivity);
+    if (currActivities != null  &&  currActivities.trim().length != "")
+        //   set selActivity to currActivity
+        $("#selActivity").text(currActivity);
+
+    // if currLocation
+    console.log("currLocation: " + currLocation);
+    if (currLocation != null  &&  currLocation.trim().length != "")
+    //   set selDestination to currLocation
+        $("@selDestination").text(currLocation);
+
+    console.log("auth:");
+    console.log(auth);
+    if (auth != null) {
+        // set currBuddy to username
+        currBuddy = auth.displayName;
+        if (currBuddy.trim() != "")
+            $("#buddyName").text(currBuddy);
+    }
+
+    // get events for user
+    if (currBuddy != null  &&  currBuddy.trim() != "")
+        eventsArr = findEventsForBuddy(currBuddy);
+    // if any events, and curr selections are not made
+    //    load first event to screen
+    if (eventsArr.length > 0) {
+        loadEventToScreen(eventsArr[0]);
+    }
+    eventsArr.forEach(function(event){
+        $("#eventNameList").append($("<option>").attr("value", event.eventName))
+    })
+
+
+    //  load all events to group events drop-down   
+
+
+    function findEventsForBuddy(buddy) {
+        console.log("find events for " + buddy);
+        eventArr = eventDB
+                    .orderByChild(eventBuddies.buddyName)
+                    .equalTo(buddy)
+                    .once("value", function(snap){
+                        console.log(snap.val());
+                    })
+                    
+    }
+
+    // 
 // onclick for copy top button
 // onclick for copy from someone else button
 //
@@ -48,6 +138,7 @@ $(document).ready(function() {
 
     })
 
+    
     eventDB.on("child_added", function(sn) {
         if (sn) {
             var buddyEvent = sn.val();
@@ -143,4 +234,5 @@ $(document).ready(function() {
         showOtherMonths: false,
         dayNamesMin: ['S','M','T','W','Th','F','S']
     })
+
 })
