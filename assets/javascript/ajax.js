@@ -91,7 +91,7 @@ var activityArray = ["skating", "mountain climbing", "skiing", "snowboarding", "
   // var activity = $("#activity-name").val();
 
   // construct url to pass to the ajax call
-  var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=ice+skating+united+states&type=point_of_interest&key=" + placesAPI;
+  var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+ice+skating+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -101,68 +101,97 @@ $.ajax({
     .then(function(response) {
       // var resultsLength = response.results.length
       // have to manually limit results (can't do it in the url for google places api)
-      
+      console.log(response);
       for(var i in response.results.slice(0,5)){
         // Log the resulting object
         place = response.results[i]
         console.log("Place: " + place.name);
-        GetWikiInfo(place.name);
-        GetWeatherInfo(place.name);
+        getWikiInfo(place.name);
     };
      
 
   });
 // });
 
-function GetWikiInfo(name){ 
+function getWikiInfo(name){ 
 // Wiki call using location
 var queryWiki = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + name + "&utf8=&format=json"
+
 $.ajax({
   url: queryWiki,
-  method: "GET"
+  method: "GET",
 })
   // We store all of the retrieved data inside of an object called "response"
   .then(function(response) {
-      // Log the resulting object
+    // Log the resulting object
+      console.log(response);
       search_result = response.query.search[0]
       console.log("Place Title: " + search_result.title);
       console.log("Place Info: " + search_result.snippet);
+      moreWikiInfo(search_result.title)
       
-      $('<div class="wiki"></div>').append("<a href='https://en.wikipedia.org/wiki/" + search_result.title + "' target='_blank'><h1 class='title'>" + search_result.title + "</h1></a>")
-									.append("<h2 class='snippet'>" + search_result.snippet + "</h2>")
-									.prependTo('#wiki-snippet')
-      })
-};
+});
 
-function GetWeatherInfo(name){
-  var APIKey = "58cb1d5d87ed6009e202d9aa362e61f2";
-  // Here we are building the URL we need to query the database
-  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=portland,maineq=&units=imperial&appid=" + APIKey;
-
-  // Here we run our AJAX call to the OpenWeatherMap API
+function moreWikiInfo(extract){
+  var queryWikiAgain = "https://en.wikipedia.org/api/rest_v1/page/summary/" + extract;
   $.ajax({
-    url: queryURL,
-    method: "GET"
+    url: queryWikiAgain,
+    method: "GET",
   })
     // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
-
-      // Log the queryURL
-      console.log(queryURL);
-
       // Log the resulting object
-      console.log(response);
+        console.log(queryWikiAgain);
+        console.log(response);
+        var title = response.displaytitle;
+        var extract = response.extract;
+        var imgURL = response.originalimage.source;
+        console.log(imgURL);
+        console.log("Place Title: " + title);
+        console.log("Place Info: " + extract);
+        var wikiResult = $("<div class='wiki'>");
+        var image = $("<img>").attr("src", imgURL);
+        var location = $("<a href='https://en.wikipedia.org/api/rest_v1/page/summary/" + title + "' target='_blank'><h1 class='title'>" + title + "</h1></a>")
+        var description = $("<h2 class='extract'>" + extract + "</h2>")
+        
+        wikiResult.append(image)
+                  .append(location)
+                  .append(description)
+                  .prependTo('#wiki-snippet')
+        })
+  };
 
-      // Transfer content to HTML
-      $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-      $(".wind").text("Wind Speed: " + response.wind.speed);
-      $(".humidity").text("Humidity: " + response.main.humidity);
-      $(".temp").text("Temperature (F) " + response.main.temp);
+// function getWeather(name){
+//   var APIKey = "58cb1d5d87ed6009e202d9aa362e61f2";
+//   // Here we are building the URL we need to query the database
+//   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=portland,maineq=&units=imperial&appid=" + APIKey;
 
-      // Log the data in the console as well
-      console.log("Wind Speed: " + response.wind.speed);
-      console.log("Humidity: " + response.main.humidity);
-      console.log("Temperature (F): " + response.main.temp);
-    });
+//   // Here we run our AJAX call to the OpenWeatherMap API
+//   $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//   })
+//     // We store all of the retrieved data inside of an object called "response"
+//     .then(function(response) {
 
-};
+//       // Log the queryURL
+//       console.log(queryURL);
+
+//       // Log the resulting object
+//       console.log(response);
+
+//       // Transfer content to HTML
+//       $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+//       $(".wind").text("Wind Speed: " + response.wind.speed);
+//       $(".humidity").text("Humidity: " + response.main.humidity);
+//       $(".temp").text("Temperature (F) " + response.main.temp);
+
+//       // Log the data in the console as well
+//       console.log("Wind Speed: " + response.wind.speed);
+//       console.log("Humidity: " + response.main.humidity);
+//       console.log("Temperature (F): " + response.main.temp);
+//     });
+
+// };
+
+}
