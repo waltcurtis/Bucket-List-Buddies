@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>practice</title>
+    <title>Bucket List Buddies</title>
     <!--jquery-->
-
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">   
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
 </head>
 
 <body class="auth-false" id="myPage">
@@ -368,164 +367,237 @@
                 </div>
     
              <!-- panel begins -->
-               <!-- first -->
-                    <article class="m-2">
-                            <article id="currentBuddy" class="buddySelection bg-white">
-                                    <h2 class="buddyName h2">&lt;current buddy name &gt;</h2>
-                                    <div class="row">
-                                      <div class="col-6 border border-solid border-dark">
-                                        Selected Activity: <span id="selActivity"></span>
+
+             <!-- current buddy  -->
+            <article class="m-2">
+              <span id="buddyArea">
+                <article class="buddySelection bg-white m-2">
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <div class="card">
+                            <div class="card-body">
+                                <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
+                                <div class="row">
+                                    <div class="col-6">
+                                      Selected Activity: <span id="selActivity"></span>
+                                    </div>
+                                    <div class="col-6">
+                                      Selected Destination: <span id="selDestination"></span>
+                                    </div>
+                                  </div>                              
+                                  <br>
+                                  <div class="col-12">
+                                      <div class="row">
                                       </div>
-                                      <div class="col-6 border border-solid border-dark">
-                                        Selected Destination: <span id="selDestination"></span>
+                                      <div class="row m-0">
+                                        <label for="start-date-input" class="align-center">Start Date</label>
+                                        <input class="form-control align-bottom" id="start-date-input" type="date">
+                                        <label for="end-date-input" class="align-center">End Date</label>
+                                        <input class="form-control" id="end-date-input" type="date">
                                       </div>
                                     </div>
-                                    <div class="row">
-                                      <div class="col-12 border border-solid border-dark">
-                                          <div class="row">
-                                            <label for="start-date-input" class="col-4">Start Date</label>
-                                            <label for="end-date-input" class="offset-2 col-4">End Date</label>
-                                          </div>
-                                          <div class="row">
-                                            <input class="form-control col-6" id="start-date-input" type="date">
-                                            <input class="form-control col-6" id="end-date-input" type="date">
-                                          </div>
-                                          <button type="button" class="btn btn-secondary btn-sm">Modify</button>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-secondary btn-sm">Use Top Pick</button>
-                                  </article>
-                    </article>
-    <!-- dynamically build/insert for each other 'buddy' on the event -->
-    <!--  -->
-               <article class="m-2">
-                    <article id="buddy#" class="buddySelection bg-white">
-                            <h2 class="buddyName h2">&lt;other buddy name 1 &gt;</h2>
-                            <div class="row">
-                              <div class="col-6 border border-solid border-dark">
-                                Selected Activity: <span id="selActivity"></span>
-                              </div>
-                              <div class="col-6 border border-solid border-dark">
-                                Selected Destination: <span id="selDestination"></span>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-12 border border-solid border-dark">
-                                  <div class="row">
-                                    <label for="start-date-input" class="col-4">Start Date</label>
-                                    <label for="end-date-input" class="offset-2 col-4">End Date</label>
                                   </div>
+
                                   <div class="row">
-                                    <input class="form-control col-6" id="start-date-input" type="date">
-                                    <input class="form-control col-6" id="end-date-input" type="date">
+                                      <span class="col-sm-2"></span>
+                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Modify</button></p>
+                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Use Top Pick</button></p>
                                   </div>
+                          </div>
+                        </div>
+                        
+                        <!-- Group Selection-->
+                        <div class="col-sm-6">
+                          <div class="card">
+                            <div id="grpTopPicks" class="card-body">
+                              <h2 class="h2 card-title"> Group Selections </h2>     
+
+                              <div class="row m-0 no-gutters">
+                                  <span id="grpTopAct" class="m-0 offset-1 col-7">Gambling</span>
+                                  <span id="grpActCnt" class="m-0 offset-3 col-1">2</span>
+                                </div>
+                                <div class="row m-0 no-gutters">
+                                  <span id="grpTopDest" class="m-0 p-0 offset-1 col-7">Las Vegas, NV</span>
+                                  <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1">1</span>
+                                </div>
+                                <div class="text-center" id="calendar"></div>
+                                
                               </div>
-                            </div>
-                            <button type="button" class="btn btn-secondary btn-sm">Copy As My Selection</button>
-                          </article>
-                </article>
-               <!-- third -->
-               
-               <article class="m-2">
-                    <div id="grpTopPicks border border-solid border-dark">
-                            <h2 class="h2"> Group Selections </h2>
-                            <div class="row m-0 no-gutters">
-                              <span id="grpTopAct" class="m-0 offset-1 col-7">Gambling</span>
-                              <span id="grpActCnt" class="m-0 offset-3 col-1">2</span>
-                            </div>
-                            <div class="row m-0 no-gutters">
-                              <span id="grpTopDest" class="m-0 offset-1 col-7">Las Vegas, NV</span>
-                              <span id="grpDestCnt" class="m-0 offset-3 col-1">1</span>
-                            </div>
-                            <div class="row no-gutters">
-                              place calendar widget here
+
                             </div>
                           </div>
-                </article>
-    
-                <article class="m-2">
-                        <div class=" border border-solid border-dark" >
-                                <h2 class="h2"> Buddy List </h2>
-                                <div id="buddyList">
-                                  &lt; generated list of emails &gt;
-                                </div>
-                                <div>
-                                  <button type="button" class="btn btn-secondary btn-sm">Invite Others</button>
+                        </div>
+
+               <!-- buddy list / notes-emails -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h2 class="h2 card-title">Buddy List</h2>
+                                  <div id="buddyList">
+                                    </div>
+                                    <div class="row m-0">
+                                        <input id="invAddr" type="text" class="col-9" />
+                                        <button id="invite" type="button" class="col-3 btn">Invite Others</button>
+                                      </div>
                                 </div>
                               </div>
-                    </article>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="card">
+                                <div class="card-body">
+                                    <h2 class="h2 card-title">Group Notes</h2>
+                                    <div class="border border-solid m-0 row" >
+                                        <input type="text" id="noteText" class="col-9" />
+                                        <input type="button" id="noteSend" class="btn col-3" value="Add"/>
+                                    </div>
+                                    <div id="noteFeed" class="row m-0" >
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </article>
+                      
+                    </span>    
+              </article>
 
-                    <article class="m-2">
-                            <div id="notebox" class=" border border-solid border-dark" >
-                                    <h2 class="h2"> Group Notes </h2>
-                                    <div class="border border-solid my-0 row" >
-                                        <input type="text" id="noteText" class="col-10" />
-                                        <input type="button" id="noteSend" class="btn btn-dark text-white col-2" value="Send"/>
-                                    </div>
-                                    <div id="noteFeed" class="border border-solid row " >
-                                    <!-- <span id = "chatLine" class="pl-1 col-12"> test </span>
-                                         <span id = "chatLine" class="pl-1 col-12"> test2 </span> -->
-                                    </div>
-                                  </div>
-                        </article>
-    
-            </div>
+
+
         </span>
         </section>
 
     
 
     <!--ABOUT US section-->
-    <section class="wrapper text-dark" id="other-issues">
+    <section class="wrapper text-dark" id="aboutUsSection">
         <span id="aboutUs">
             <div class="d-flex-c container">
     
                 <!--TITLE-->
                 <div class="text-center my-2">
-                    <h6 class="heading font-x2">ABOUT US</h6>
+                    <h6 class="heading font-x2 aboutMetitle text-center">ABOUT US</h6>
                     <p></p>
                 </div>
     
-                <div class="d-flex-r">
-                    <article class="hover2 mx-2">
-                        <figure class="my-1"><img src="https://images.unsplash.com/11/dreamcatcher.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80"></figure>
-                        <h3 class="heading font-x1">Dream Big</h3>
-                        <p class="text-justify">Be the architect of your adventure! What do you want to do? <br> 
-                            Where do you want to do it? <br> 
-                            Who do you want to do it with? <br> 
-                            Explore the possibilities, create an event and share it with the people you love!
-                        </p>
-                    </article>
+             <!-- panel begins -->
+             <div class="d-flex-r">
     
-                    <article class="hover2 mx-2">
-                            <figure class="my-1"><img src="assets/images/photo-1535981767287-35259dbf7d0e.jpeg"></figure>
-                            <h3 class="heading font-x1">When Can You Go?</h3>
-                            <p class="text-justify">            
-                                <div>   Set a date.</div>
+              <!-- first -->
+                   <article class="hover2 m-2">
+                       <figure><img src="img/portfolio-2.jpg"></figure>
+                       <h3 class="m-2 text-center heading font-x1 text-uppercase">Dream Big</h3>
+                       <p class="m-2 text-justify"> 
+                         <div class="text-center">Be the architect of your adventure! </div>
+                         <div class="text-center">What do you want to do?</div>
+                         <div class="text-center">Where do you want to do it?</div>
+                        <div class="text-center">Who do you want to do it with?</div>
+                        <div class="text-center">Explore the possibilities, create an event</div>
+                        <div class="text-center">Share it with the people you love!</div>
+                      </p>
+                   </article>
+   
+              <!-- second -->
+                   <article class="hover2 m-2">
+                           <figure><img src="img/portfolio-4.jpg"></figure>
+                           <h3 class="m-2 text-center heading font-x1 text-uppercase">When Can You Go?</h3>
+                           <p class="m-2 text-justify">                             
+                             <div class="text-center">   Set a date.</div>
 
-                                <div>   Match it with your buddies. </div>
+                             <div class="text-center">   Match it with your buddies. </div>
 
-                                <div>   Get going!</div>
-                            </p>
-                    </article>
-    
-                    <article class="hover2 mx-2">
-                                <figure class="my-1"><img src="assets/images/photo-1421789497144-f50500b5fcf0.jpeg"></figure>
-                                <h3 class="heading font-x1">Timing is Everything</h3>
-                                <p class="text-justify">
-                                        <div> What are you waiting for? <br> 
-                                            Go, go , go!</div>
-                                             
-                                        <div> Don't leave your buddy waiting! </div>
-                                </p>
-                    </article>
-    
-
-                </div>
-    
+                             <div class="text-center">   Get going!</div>
+                           </p>
+                   </article>
+              <!-- third -->
+                       <article class="hover2 m-2">
+                               <figure><img src="img/portfolio-1.jpg"></figure>
+                               <h3 class="m-2 text-center heading font-x1 text-uppercase">
+                                 Timing is Everything</h3>
+                               <p class="m-2 text-justify">                                        
+                                 <div class="text-center" > What are you waiting for?</div> 
+                                
+                                <div class="text-center"> Go, go , go! </div>
+                                  
+                             <div class="text-center" > Don't leave your buddy waiting! </div>
+                           </p>
+                        </article>
+   
+   
+               </div>
             </div>
         </span>
         </section>
+
+
+
+                <!--footer-->
+                <div class="wrapper bg-grey">
+                  <footer class="d-flex-r clear container text-whhite" id="main-footer">
+                    
+                  <div class="mx-2">
+                    <h6 class="heading font-x1 my-1">Contact Us</h6>
+                    <ul class="nospace linkedlist contact">
+                      <li><i class="fa fa-map-marker"></i>
+                          <address>street name &amp; number, town, postcode/zip</address>
+                      </li>
+                      <li><i class="fa fa-phone"></i>407-555-1234</li>
+                      <li><a class="text-white" href="https://youtube.com" target="_blank" ><i class="fa fa-youtube text-dark"></i>YOUTUBE</a></li>
+                      <li><i class="fa fa-envelope-o"></i>Help@gmail.com</li>
+                    </ul>
+                  </div>
+        
+        
+                  <div class="mx-2">
+                      <h3 class="heading my-1 font-x1">Company</h3>
+                      <ul class="nospace linkedlist">
+                        <li><a href="#" class="text-dark">careers</a></li>
+                        <li><a href="#" class="text-dark">investors</a></li>
+                        <li><a href="#" class="text-dark">about company </a></li>
+                        <li><a href="#" class="text-dark">privacy</a></li>
+                      </ul>
+                    </div>
+        
+                    <div class="mx-2">
+                        <h6 class="heading my-1 font-x1">Subscribe</h6>
+                        <p class="my-1">Enter Info To be In Our Mailing List </p>
+                        <form method="post" action="#">
+                          <fieldset>
+                            <input type="text" class="my-1" placeholder="name">
+                            <input type="email" class="my-1" placeholder="email">
+                            <button class="btn">submit</button>
+                          </fieldset>
+                        </form>
+                      </div>
+        
+                      <div class="my-2" id="instafeed">
+                        <h6 class="heading my-1 font-x1">Instafeed</h6>
+                        <div class="d-flex-r my-1">
+                          <a href="#"><img src="img/germany.jpg" class="mx-1"></a>
+                          <a href="#"><img src="img/russia.jpg"></a>
+                        </div>
+                        <div class="d-flex-r my-1">
+                            <a href="#"><img src="img/india.jpg" class="mx-1"></a>
+                            <a href="#"><img src="img/usa.jpg"></a>
+                          </div>
+                          <div class="d-flex-r my-1">
+                              <a href="#"><img src="img/uk.jpg" class="mx-1"></a>
+                              <a href="#"><img src="img/china.jpg"></a>
+                            </div>
+                      </div>
+        
+        
+                  </footer>
+                  <div class="d-flex-r clear justify-content-space-between" id="copyright">
+                    <p class="d-flex-r">Copyright &copy; 2019 - All rights reserved - <a href="#" class="text-dark"> Bucket List Buddies</a></p>
+        
+                    <a href="#mypage" id="backtotop"><i class="fa fa-chevron-up"></i></a>
+        
+                    <p class="d-flex-r">Created by: Sharon, Jason, Walt, Shannon
+                    </p>
+                  </div>
+                </div>    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -541,8 +613,11 @@
     <!-- landing js -->
     <script type="text/javascript" src="assets/javascript/landing.js"></script>
               <script src="java.js"></script>
-    <!-- evennts js -->
+    <!-- events js -->
      <script src="assets/javascript/events.js"></script>
+    <!-- main js -->
+     <script src="assets/javascript/main.js"></script>
+
 
 </body>
 </html>
