@@ -68,20 +68,34 @@ function moreWikiInfo(extract){
         console.log(response);
         var title = response.displaytitle;
         var extract = response.extract;
-        var imgURL = response.originalimage.source;
-        console.log(imgURL);
+        var imgURL = response.thumbnail.source;
+        var contentURL = response.content_urls.mobile.page
+        console.log("ContentURL: " + contentURL);
+        console.log("ImgURL: " + imgURL);
         console.log("Place Title: " + title);
         console.log("Place Info: " + extract);
+
         var wikiResult = $("<div class='wiki'>");
         var image = $("<img>").attr("src", imgURL);
-        var location = $("<a href='https://en.wikipedia.org/api/rest_v1/page/summary/" + title + "' target='_blank'><h1 class='title'>" + title + "</h1></a>")
+        var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
         var description = $("<h2 class='extract'>" + extract + "</h2>")
         
         wikiResult.append(image)
                     .append(location)
                     .append(description)
                     .prependTo('#wiki-snippet')
-        })
-    };    
+                    
+// Tried to build it like JAson's but not working well :)
+        // var rowOne = $("<ul>");
+        // var hover = $("<li class='hover1'");
+        // var rowOneImg = $("<img>").attr("src", imgURL);
+        // var overlayDiv = $("<div class='overlay'>");
+        // var locationName = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>");
+
+        // rowOne.append(hover).append(rowOneImg).append(overlayDiv).append(locationName);
+        // $("#wiki-snippet").prepend(rowOne);
+        // })
+    });    
+};
 });
 
