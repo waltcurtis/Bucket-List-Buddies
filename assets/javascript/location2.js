@@ -50,7 +50,6 @@ function getWikiInfo(name){
             console.log(response);
             search_result = response.query.search[0]
             console.log("Place Title: " + search_result.title);
-            console.log("Place Info: " + search_result.snippet);
             moreWikiInfo(search_result.title)
             
     });
