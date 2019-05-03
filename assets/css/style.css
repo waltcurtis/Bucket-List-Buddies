@@ -118,7 +118,7 @@ a:hover{font-weight: bold;}
 
 .btn, .btn.inverse:hover{
     color: #FFF;
-    background-color: royalblue;
+    background-color: #2e8b57;
 }
 
 .btn:hover, .btn.inverse{
