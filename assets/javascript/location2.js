@@ -88,10 +88,10 @@ function moreWikiInfo(extract){
        $("#location-button").on("click",function(){
         var getToEventPage = $(this).attr("data-event")
         console.log($(this).attr("data-event"))
-      var url = "index.html?event="+getToEventPage+"";
+     // var url = "index.html?event="+getToEventPage+"";
       localStorage.setItem("storageEventName", getToEventPage);
-      console.log(url)
-     window.location.href = url
+   //   console.log(url)
+  //   window.location.href = url
        })
                  // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
