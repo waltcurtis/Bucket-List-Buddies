@@ -17,6 +17,7 @@ $(document).ready(function() {
 
 //    var currentBuddy = null;
     var currentEvent = null;
+    var currentKey = null;
 
     var buddysEventList = [];
     var activitiesArr = [];
@@ -80,7 +81,6 @@ class EventObj {
 // ====================================
     
 
-
     console.log("***** Events Page Load *****");
 
     if (typeof currentActivity === "undefined") {
@@ -117,67 +117,52 @@ class EventObj {
     }   
 
 
-    // // get events for user
-    // if (currBuddy != null  &&  currBuddy.trim() != "")
-    //     eventsArr = findEventsForBuddy(currBuddy);
-    // // if any events, and curr selections are not made
-    // //    load first event to screen
-    // if (eventsArr.length > 0) {
-    //     loadEventToScreen(eventsArr[0]);
-    // }
-    // eventsArr.forEach(function(event){
-    //     $("#eventNameList").append($("<option>").attr("value", event.eventName))
-    // })
-
-
-    //  load all events to group events drop-down   
-
 // =======================================
 
     function eventToScreen(event){
-        var buddy = event.eventBuddies[0];
 
-        $("#currentBuddy").text(buddy.buddyName);
-        $("#selActivity").text(buddy.selections.activity);
-        $("#selDestination").text(buddy.selections.location);
+        event.eventBuddies.forEach (function(buddy, idx) {
+            if (buddy.buddyName == currentBuddy) {
+                $("#currentBuddy").text(buddy.buddyName);
+                $("#selActivity").text(buddy.selections.activity);
+                $("#selDestination").text(buddy.selections.location);
+        
+                $("#start-date-input").val(moment(buddy.selections.startDate).format("YYYY-MM-DD"));
+                $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
 
-        $("#start-date-input").val(moment(buddy.selections.startDate).format("YYYY-MM-DD"));
-        $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
+            } else {
+                var article = $("<article>")
+                                .attr("id", "buddy" + idx)
+                                .addClass("buddySelection bg-white m-2");
+                var h2 = $("<h2>")
+                                .addClass("buddyName h2")
+                                .text(buddy.buddyName);
+                var rowdiv = $("<div>")
+                                .addClass("row m-0");
+                var actdiv = $("<div>")
+                                .addClass("col-6 border border-solid border-dark")
+                                .text("Selected Activity:  " + buddy.selections.activity);
+                var locdiv = $("<div>")
+                                .addClass("col-6 border border-solid border-dark")
+                                .text("Selected Destination:  " + buddy.selections.location);
+                var rowdiv2 = $("<div>")
+                                .addClass("row m-0");
+                var sdtdiv = $("<div>")
+                                .addClass("col-6 border border-solid border-dark")
+                                .text("Start Date:  " + buddy.selections.startDate);
+                var edtdiv = $("<div>")
+                                .addClass("col-6 border border-solid border-dark")
+                                .text("End Date:  " + buddy.selections.endDate);
+                var btn = $("<button>")
+                                .addClass("btn btn-secondary btn-block")
+                                .text("Copy As My Selection");
 
-        console.log("eventBuddies cnt: " + event.eventBuddies.length);
-        for (i=1; i < event.eventBuddies.length; i++) {
-            var article = $("<article>")
-                            .attr("id", "buddy" + i)
-                            .addClass("buddySelection bg-white m-2");
-            var h2 = $("<h2>")
-                            .addClass("buddyName h2")
-                            .text(event.eventBuddies[i].buddyName);
-            var rowdiv = $("<div>")
-                            .addClass("row m-0");
-            var actdiv = $("<div>")
-                            .addClass("col-6 border border-solid border-dark")
-                            .text("Selected Activity:  " + event.eventBuddies[i].selections.activity);
-            var locdiv = $("<div>")
-                            .addClass("col-6 border border-solid border-dark")
-                            .text("Selected Destination:  " + event.eventBuddies[i].selections.location);
-            var rowdiv2 = $("<div>")
-                            .addClass("row m-0");
-            var sdtdiv = $("<div>")
-                            .addClass("col-6 border border-solid border-dark")
-                            .text("Start Date:  " + event.eventBuddies[i].selections.startDate);
-            var edtdiv = $("<div>")
-                            .addClass("col-6 border border-solid border-dark")
-                            .text("End Date:  " + event.eventBuddies[i].selections.endDate);
-            var btn = $("<button>")
-                            .addClass("btn btn-secondary btn-block")
-                            .text("Copy As My Selection");
-            
-            rowdiv.append(actdiv, locdiv);
-            rowdiv2.append(sdtdiv, edtdiv);
-            article.append(h2, rowdiv, rowdiv2, btn);
-            $("#buddyArea").append(article);
-  
-        }
+                rowdiv.append(actdiv, locdiv);
+                rowdiv2.append(sdtdiv, edtdiv);
+                article.append(h2, rowdiv, rowdiv2, btn);
+                $("#buddyArea").append(article);
+            }
+        }) 
 
         event.sharedEmails.forEach(function (email, idx) {
             $("#buddyList").append(
@@ -210,7 +195,7 @@ class EventObj {
         $("#grpTopDest").text(favLocation);
         $("#grpDestCnt").text(favLocationCnt);
         $("#currEventName").text(currentEvent.eventName);
-        
+
         buddysEventList.forEach(function(eventName) {
             var opt = $("<option>").attr("value", eventName);
             if (eventName == currentEvent.eventName) {
@@ -218,7 +203,6 @@ class EventObj {
             }
             $("#eventNameList").append(opt);
         })
-        
     }
 
     function initCounts() {
@@ -233,16 +217,21 @@ class EventObj {
     }
 
     function updateCounts(act, loc) {
+        console.log(activitiesArr);
+        console.log(activitiesCntArr);
         var idx = activitiesArr.indexOf(act);
-        if (idx = -1) {
+        console.log("idx for " + act + ": " + idx);
+        if (idx == -1) {
             activitiesArr.push(act);
             activitiesCntArr.push(1);
         } else {
             activitiesCntArr[idx]++;
         }
 
+        console.log(locationsArr);
+        console.log(locationsCntArr);
         var idx = locationsArr.indexOf(loc);
-        if (idx = -1) {
+        if (idx == -1) {
             locationsArr.push(loc);
             locationsCntArr.push(1);
         } else {
@@ -274,6 +263,19 @@ class EventObj {
         favLocationCnt = locationsCntArr[hiIdx];
     }
 
+    function modEvent() {
+        if (currentKey != null) {
+            eventDB.child(currentKey).transaction(function(p) {
+                if (p) {
+                    p.eventName = currentEvent.eventName;
+                    p.eventBuddies = currentEvent.eventBuddies;
+                    p.notes = currentEvent.notes;
+                    p.sharedEmails = currentEvent.sharedEmails;
+                }
+                return p;
+            })
+        }
+    }
 // =====
 
     $("#noteSend").on("click", function() {
@@ -287,7 +289,7 @@ class EventObj {
                 currentEvent.notes.push(msg);
                 console.log(currentEvent);
 
-                // modify the event
+                modEvent();
             } else {
                 console.log ("empty note");
             }
@@ -311,7 +313,7 @@ class EventObj {
                     console.log ("validated email");
                     currentEvent.sharedEmails.push(inviteEmail);
 
-                    // modify the event
+                    modEvent();
                     // call to email api
                 } else {
                     console.log ("in-validated email");
@@ -327,8 +329,9 @@ class EventObj {
 
     $("#modDates").click(function() {
         if (currentEvent != null &&  currentBuddy != null) {
-            var stDate = $("#start-date-input");
-            var enDate = $("#end-date-input");
+            var stDate = moment($("#start-date-input").val()).format("MM/DD/YYYY");
+            var enDate = moment($("#end-date-input").val()).format("MM/DD/YYYY");
+            console.log("stDate: " + stDate + "   enDate: " + enDate );
 
             var evnt = new EventObj(currentEvent.eventName);
             evnt.eventBuddies = currentEvent.eventBuddies;
@@ -339,16 +342,62 @@ class EventObj {
             currentEvent.eventBuddies[idx].selections.endDate = enDate;
 
             console.log(currentEvent);
+            modEvent();
 
         } else {
             console.log ("missing current event or event buddy");
         }
     })
 
+    $("#newName").on("change", function(){
+        console.log("changed");
+        console.log($(this).val());
+
+        var eventName = $(this).val().trim();
+        if (eventName != "") {
+            $("#currEventName").text(eventName);
+            currentEvent.eventName = eventName;
+            console.log(currentEvent);
+            // modify the event
+        }
+    })
+
 // =====
+
+    eventDB.on("child_changed", function(sn) {
+        if (sn) {
+            if (sn.key == currentKey) {
+                currentEvent = sn.val();
+
+                screenFilled = false;
+
+                buddysEventList.length = 0;
+                buddysEventList = [];
+    
+                initCounts();
+    
+                currentEvent.eventBuddies.forEach(function(buddy, idx) {
+                    updateCounts(buddy.selections.activity, buddy.selections.location);
+    
+                    console.log("current Buddy: " + currentBuddy);
+                    console.log("buddy.buddyName: " + buddy.buddyName);
+                    if (buddy.buddyName == currentBuddy) {
+                        buddysEventList.push(currentEvent.eventName);
+                    }
+                })
+    
+                if (currentEvent != null  &&  !screenFilled) {
+                    getFavorites();
+                    eventToScreen(currentEvent);
+                    screenFilled = true;
+                }
+            }
+        }
+    })
 
     eventDB.on("child_added", function(sn) {
         if (sn) {
+            var key = sn.key;
             var event = sn.val();
             console.log(event);
             console.log("currentBuddy: " + currentBuddy);
@@ -363,9 +412,12 @@ class EventObj {
             event.eventBuddies.forEach(function(buddy, idx) {
                 updateCounts(buddy.selections.activity, buddy.selections.location);
 
-                if (buddy.buddyName == currentBuddy) {
+            console.log("current Buddy: " + currentBuddy);
+            console.log("buddy.buddyName: " + buddy.buddyName);
+            if (buddy.buddyName == currentBuddy) {
                     buddysEventList.push(event.eventName);
                     currentEvent = event;
+                    currentKey = key;
                 }
             })
 
@@ -377,6 +429,7 @@ class EventObj {
         }
     })
 
+    eventDB.child('')
 
     $('#calendar').datepicker({
         inline: true,
