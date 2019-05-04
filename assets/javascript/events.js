@@ -24,11 +24,19 @@ $(document).ready(function() {
     var activitiesCntArr = [];
     var locationsArr = [];
     var locationsCntArr = [];
+    var stDateArr = [];
+    var stDateCntArr = [];
+    var enDateArr = [];
+    var enDateCntArr = [];
 
     var favActivity = "";
     var favActivityCnt = 0;
     var favLocation = "";
     var favLocationCnt = 0;
+    var favStDate = "";
+    var favStDateCnt = 0;
+    var favEnDate = "";
+    var favEnDateCnt = 0;
     
     var screenFilled = false;
 
@@ -131,6 +139,8 @@ class EventObj {
                 $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
 
             } else {
+                $("#buddy" + idx).remove();
+                
                 var article = $("<article>")
                                 .attr("id", "buddy" + idx)
                                 .addClass("buddySelection bg-white m-2");
@@ -164,6 +174,7 @@ class EventObj {
             }
         }) 
 
+        $("#buddyList").empty();
         event.sharedEmails.forEach(function (email, idx) {
             $("#buddyList").append(
                     $("<div>").addClass("row m-0").append(
@@ -172,6 +183,7 @@ class EventObj {
             );
         })
 
+        $("#noteFeed").empty();
         event.notes.forEach(function(note, idx) {
             var dt = Date(note.dateTime);
             console.log(dt)
@@ -214,9 +226,18 @@ class EventObj {
         activitiesCntArr = [];
         locationsCntArr.length = 0;
         locationsCntArr = [];
+
+        stDateArr.length = 0;
+        stDateArr = [];
+        enDateArr.length = 0;
+        enDateArr = [];
+        stDateCntArr.length = 0;
+        stDateCntArr = [];
+        enDateCntArr.length = 0;
+        enDateCntArr = [];
     }
 
-    function updateCounts(act, loc) {
+    function updateCounts(act, loc, stDate, enDate) {
         console.log(activitiesArr);
         console.log(activitiesCntArr);
         var idx = activitiesArr.indexOf(act);
@@ -236,6 +257,28 @@ class EventObj {
             locationsCntArr.push(1);
         } else {
             locationsCntArr[idx]++;
+        }
+
+        console.log(stDateArr);
+        console.log(stDateCntArr);
+        var idx = stDateArr.indexOf(stDate);
+        console.log("idx for " + stDate + ": " + idx);
+        if (idx == -1) {
+            stDateArr.push(stDate);
+            stDateCntArr.push(1);
+        } else {
+            stDateCntArr[idx]++;
+        }
+
+        console.log("enDate: " + enDate);
+        console.log(enDateArr);
+        console.log(enDateCntArr);
+        var idx = enDateArr.indexOf(enDate);
+        if (idx == -1) {
+            enDateArr.push(enDate);
+            enDateCntArr.push(1);
+        } else {
+            enDateCntArr[idx]++;
         }
     }
 
@@ -261,6 +304,28 @@ class EventObj {
         })
         favLocation = locationsArr[hiIdx];
         favLocationCnt = locationsCntArr[hiIdx];
+
+        var hiCnt = 0;
+        var hiIdx = -1;
+        stDateCntArr.forEach(function(cnt, idx) {
+            if (cnt > hiCnt) {
+                hiCnt = cnt;
+                hiIdx = idx;
+            }
+        })
+        favStDate = stDateArr[hiIdx];
+        favStDateCnt = stDateCntArr[hiIdx];
+
+        hiCnt = 0;
+        hiIdx = -1;
+        enDateCntArr.forEach(function(cnt, idx) {
+            if (cnt > hiCnt) {
+                hiCnt = cnt;
+                hiIdx = idx;
+            }
+        })
+        favEnDate = enDateArr[hiIdx];
+        favEnDateCnt = enDateCntArr[hiIdx];
     }
 
     function modEvent() {
@@ -349,6 +414,27 @@ class EventObj {
         }
     })
 
+    $("#topPicks").click(function() {
+        if (currentEvent != null &&  currentBuddy != null) {
+
+            var evnt = new EventObj(currentEvent.eventName);
+            evnt.eventBuddies = currentEvent.eventBuddies;
+            console.log(evnt);
+
+            var idx = evnt.getEventBuddyIdx(currentBuddy);
+            currentEvent.eventBuddies[idx].selections.activity = favActivity;
+            currentEvent.eventBuddies[idx].selections.location = favLocation;
+            currentEvent.eventBuddies[idx].selections.startDate = favStDate;
+            currentEvent.eventBuddies[idx].selections.endDate = favEnDate;
+
+            console.log(currentEvent);
+            modEvent();
+
+        } else {
+            console.log ("missing current event or event buddy");
+        }
+    })
+
     $("#newName").on("change", function(){
         console.log("changed");
         console.log($(this).val());
@@ -410,11 +496,12 @@ class EventObj {
             initCounts();
 
             event.eventBuddies.forEach(function(buddy, idx) {
-                updateCounts(buddy.selections.activity, buddy.selections.location);
+                var sels = buddy.selections;
+                updateCounts(sels.activity, sels.location, sels.startDate, sels.endDate);
 
-            console.log("current Buddy: " + currentBuddy);
-            console.log("buddy.buddyName: " + buddy.buddyName);
-            if (buddy.buddyName == currentBuddy) {
+                console.log("current Buddy: " + currentBuddy);
+                console.log("buddy.buddyName: " + buddy.buddyName);
+                if (buddy.buddyName == currentBuddy) {
                     buddysEventList.push(event.eventName);
                     currentEvent = event;
                     currentKey = key;
