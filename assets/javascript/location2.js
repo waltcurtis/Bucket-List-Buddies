@@ -83,7 +83,7 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'><img src=" + imgURL + "</li></ul>")
+        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'><img src=" + imgURL + "></li></ul>")
                   .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
