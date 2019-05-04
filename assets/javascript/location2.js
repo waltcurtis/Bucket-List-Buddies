@@ -69,7 +69,7 @@ function moreWikiInfo(extract){
         console.log(response);
         var title = response.displaytitle;
         var extract = response.extract;
-        var imgURL = response.thumbnail.source.slice(0,3);
+        var imgURL = response.thumbnail.source;
         var contentURL = response.content_urls.mobile.page
         console.log("ContentURL: " + contentURL);
         console.log("ImgURL: " + imgURL);
