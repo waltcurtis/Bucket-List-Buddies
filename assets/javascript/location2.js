@@ -1,8 +1,10 @@
-// window.onload = console.log(localStorage.getItem("storageActivityName"));
-// window.onload = alert(localStorage.getItem("storageActivityName"));
-
+//window.onload = console.log(localStorage.getItem("storageActivityName"));
+ //window.onload = alert(localStorage.getItem("storageActivityName"));
+ window.onload = console.log(localStorage.getItem("storageActivityName"));
+ window.onload = alert(localStorage.getItem("storageActivityName"));
+ sharonTest = localStorage.getItem("storageActivityName")
 $(document).ready(function(){
-
+    
     // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAplMbqcM4ZA9nF2C7ZqT-ntyTNzfPujAA",
@@ -17,7 +19,7 @@ var config = {
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+ice+skating+united+states&key=" + placesAPI;
+var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best" + sharonTest + "united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -32,7 +34,8 @@ $.ajax({
         // Log the resulting object
         place = response.results[i]
         console.log("Place: " + place.name);
-        getWikiInfo(place.name);
+        getWikiInfo(place.name); 
+        
     };
 });
 
@@ -83,8 +86,8 @@ function moreWikiInfo(extract){
         wikiResult.append(image)
                     .append(location)
                     .append(description)
-                    .prependTo('#wiki-snippet')
-                    
+                    .prependTo('#wiki-snippet')         
+                    $("#sharonTests").html(location) 
 // Tried to build it like JAson's but not working well :)
         // var rowOne = $("<ul>");
         // var hover = $("<li class='hover1'");

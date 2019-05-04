@@ -47,7 +47,7 @@ $(document).ready(function() {
         $("#activities-button-first-row").on("click",function(){
             var getActivities = $(this).attr("data-entry")
             console.log($(this).attr("data-entry"))
-          var url = "location.html?location="+getActivities+"";
+          var url = "\assets/javascript/shannonTest.html?location="+getActivities+"";
           localStorage.setItem("storageActivityName", getActivities);
           console.log(url)
          window.location.href = url
@@ -55,7 +55,7 @@ $(document).ready(function() {
            $("#activities-button-second-row").on("click",function(){
             var getActivities = $(this).attr("data-entry")
             console.log($(this).attr("data-entry"))
-          var url = "location.html?location="+getActivities+"";
+          var url = "\assets/javascript/shannonTest.html?location="+getActivities+"";
           localStorage.setItem("storageActivityName", getActivities);
           console.log(url)
          window.location.href = url
@@ -63,7 +63,7 @@ $(document).ready(function() {
            $("#activities-button-third-row").on("click",function(){
             var getActivities = $(this).attr("data-entry")
             console.log($(this).attr("data-entry"))
-          var url = "location.html?location="+getActivities+"";
+          var url = "\assets/javascript/shannonTest.html?location="+getActivities+""
           localStorage.setItem("storageActivityName", getActivities);
           console.log(url)
          window.location.href = url
@@ -71,7 +71,7 @@ $(document).ready(function() {
            $("#activities-button-fourth-row").on("click",function(){
             var getActivities = $(this).attr("data-entry")
             console.log($(this).attr("data-entry"))
-          var url = "location.html?location="+getActivities+"";
+          var url = "\assets/javascript/shannonTest.html?location="+getActivities+""
           localStorage.setItem("storageActivityName", getActivities);
           console.log(url)
          window.location.href = url
