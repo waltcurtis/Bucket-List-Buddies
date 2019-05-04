@@ -1,7 +1,5 @@
 //window.onload = console.log(localStorage.getItem("storageActivityName"));
  //window.onload = alert(localStorage.getItem("storageActivityName"));
- window.onload = console.log(localStorage.getItem("storageActivityName"));
- window.onload = alert(localStorage.getItem("storageActivityName"));
  sharonTest = localStorage.getItem("storageActivityName")
 $(document).ready(function(){
     
@@ -19,7 +17,7 @@ var config = {
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best" + sharonTest + "united+states&key=" + placesAPI;
+var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + sharonTest + "+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -83,11 +81,16 @@ function moreWikiInfo(extract){
         var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
         var description = $("<h2 class='extract'>" + extract + "</h2>")
         
+       
         wikiResult.append(image)
                     .append(location)
                     .append(description)
                     .prependTo('#wiki-snippet')         
-                    $("#sharonTests").html(location) 
+                    $("#sharonTests1").html(location[0])
+                    $("#sharonTests2").html(location[1])
+                    $("#sharonTests3").html(location[2])
+                    $("#sharonTests4").html(location[3])
+                    $("#sharonTests5").html(location[4]) 
 // Tried to build it like JAson's but not working well :)
         // var rowOne = $("<ul>");
         // var hover = $("<li class='hover1'");
