@@ -1,6 +1,6 @@
 //window.onload = console.log(localStorage.getItem("storageActivityName"));
  //window.onload = alert(localStorage.getItem("storageActivityName"));
- sharonTest = localStorage.getItem("storageActivityName")
+ currentActivity = localStorage.getItem("storageActivityName")
 $(document).ready(function(){
     
     // Initialize Firebase
@@ -17,7 +17,7 @@ var config = {
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + sharonTest + "+united+states&key=" + placesAPI;
+var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -83,7 +83,16 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append("<li class='hover1'><img src=" + imgURL + "><div style='max-width:300px' class='overlay'><h2 style='max-width:300px'>" + title + "</h2></div><caption style='max-width:300px;'><h5 style='max-width:300px; padding: 20px;background-color:white'>" + extract + "<button  class='btn btn-success'>Select</button></h5></caption></li>")
+        wikiResult.append("<li class='hover1'><img src=" + imgURL + "><div style='max-width:300px' class='overlay'><h2 style='max-width:300px'>" + title + "</h2></div><caption style='max-width:300px;'><h5 style='max-width:300px; padding: 20px;background-color:white'>" + extract + "<button id='location-button' class='btn btn-success'>Select</button></h5></caption></li>")
+       $("#location-button").attr('data-event',title)
+       $("#location-button").on()("click",function(){
+        var getToEventPage = $(this).attr("data-event")
+        console.log($(this).attr("data-event"))
+      var url = "index.html?event="+getToEventPage+"";
+      localStorage.setItem("storageEventName", getToEventPage);
+      console.log(url)
+     window.location.href = url
+       })
                  // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
