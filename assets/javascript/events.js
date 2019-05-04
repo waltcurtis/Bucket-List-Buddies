@@ -429,8 +429,6 @@ class EventObj {
         }
     })
 
-    eventDB.child('')
-
     $('#calendar').datepicker({
         inline: true,
         firstDay:0,
