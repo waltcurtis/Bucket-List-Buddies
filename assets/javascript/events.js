@@ -140,7 +140,7 @@ class EventObj {
 
             } else {
                 $("#buddy" + idx).remove();
-                
+
                 var article = $("<article>")
                                 .attr("id", "buddy" + idx)
                                 .addClass("buddySelection bg-white m-2");
@@ -164,6 +164,8 @@ class EventObj {
                                 .addClass("col-6 border border-solid border-dark")
                                 .text("End Date:  " + buddy.selections.endDate);
                 var btn = $("<button>")
+                                .attr("id", "copySel")
+                                .attr("data-index", idx)
                                 .addClass("btn btn-secondary btn-block")
                                 .text("Copy As My Selection");
 
@@ -426,6 +428,31 @@ class EventObj {
             currentEvent.eventBuddies[idx].selections.location = favLocation;
             currentEvent.eventBuddies[idx].selections.startDate = favStDate;
             currentEvent.eventBuddies[idx].selections.endDate = favEnDate;
+
+            console.log(currentEvent);
+            modEvent();
+
+        } else {
+            console.log ("missing current event or event buddy");
+        }
+    })
+
+    $(document).on("click", "#copySel", function() {
+        console.log("copySel click");
+        if (currentEvent != null  &&  currentBuddy != null) {
+
+            var index = $(this).data("index");
+            console.log("index: " + index);
+
+            var evnt = new EventObj(currentEvent.eventName);
+            evnt.eventBuddies = currentEvent.eventBuddies;
+            console.log(evnt);
+
+            var idx = evnt.getEventBuddyIdx(currentBuddy);
+            currentEvent.eventBuddies[idx].selections.activity = currentEvent.eventBuddies[index].selections.activity;
+            currentEvent.eventBuddies[idx].selections.location = currentEvent.eventBuddies[index].selections.location;
+            currentEvent.eventBuddies[idx].selections.startDate = currentEvent.eventBuddies[index].selections.startDate;
+            currentEvent.eventBuddies[idx].selections.endDate = currentEvent.eventBuddies[index].selections.endDate;
 
             console.log(currentEvent);
             modEvent();
