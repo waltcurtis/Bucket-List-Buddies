@@ -84,7 +84,7 @@ function moreWikiInfo(extract){
         
        
         wikiResult.append(imagee)
-                  .prependTo('#wiki-snippet')         
+                 // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
                     //$("#sharonTests3").html(location[2])
