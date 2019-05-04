@@ -83,9 +83,9 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append("<li ><img src=" + imgURL + "><div style='max-width:300px' class='overlay'><h2 style='max-width:300px'>" + title + "</h2></div><caption style='max-width:300px;'><h5 style='max-width:300px; padding: 20px;background-color:white'>" + extract + "<button id='location-button' class='btn btn-success'>Select</button></h5></caption></li>")
+        wikiResult.append("<li class='hover1'><img src=" + imgURL + "><div style='max-width:300px' class='overlay'><h2 style='max-width:300px'>" + title + "</h2></div><caption style='max-width:300px;'><h5 style='max-width:300px; padding: 20px;background-color:white'>" + extract + "<button id='location-button' class='btn btn-success'>Select</button></h5></caption></li>")
        $("#location-button").attr('data-event',title)
-       $("#location-button").on()("click",function(){
+       $("#location-button").on("click",function(){
         var getToEventPage = $(this).attr("data-event")
         console.log($(this).attr("data-event"))
       var url = "index.html?event="+getToEventPage+"";
