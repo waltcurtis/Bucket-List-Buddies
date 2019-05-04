@@ -1,8 +1,8 @@
-// window.onload = console.log(localStorage.getItem("storageActivityName"));
-// window.onload = alert(localStorage.getItem("storageActivityName"));
-
+//window.onload = console.log(localStorage.getItem("storageActivityName"));
+ //window.onload = alert(localStorage.getItem("storageActivityName"));
+ sharonTest = localStorage.getItem("storageActivityName")
 $(document).ready(function(){
-
+    
     // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAplMbqcM4ZA9nF2C7ZqT-ntyTNzfPujAA",
@@ -17,7 +17,7 @@ var config = {
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+ice+skating+united+states&key=" + placesAPI;
+var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + sharonTest + "+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -32,7 +32,8 @@ $.ajax({
         // Log the resulting object
         place = response.results[i]
         console.log("Place: " + place.name);
-        getWikiInfo(place.name);
+        getWikiInfo(place.name); 
+        
     };
 });
 
@@ -68,20 +69,38 @@ function moreWikiInfo(extract){
         console.log(response);
         var title = response.displaytitle;
         var extract = response.extract;
-        var imgURL = response.originalimage.source;
-        console.log(imgURL);
+        var imgURL = response.thumbnail.source;
+        var contentURL = response.content_urls.mobile.page
+        console.log("ContentURL: " + contentURL);
+        console.log("ImgURL: " + imgURL);
         console.log("Place Title: " + title);
         console.log("Place Info: " + extract);
+
         var wikiResult = $("<div class='wiki'>");
         var image = $("<img>").attr("src", imgURL);
-        var location = $("<a href='https://en.wikipedia.org/api/rest_v1/page/summary/" + title + "' target='_blank'><h1 class='title'>" + title + "</h1></a>")
-        var description = $("<h2 class='extract'>" + extract + "</h2>")
+      //  var imagee = $("<ul class='d-flex-r nospace'><li class='hover1'>"  + image + "</li></ul>")
+      //  var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
+       // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
-        wikiResult.append(image)
-                    .append(location)
-                    .append(description)
-                    .prependTo('#wiki-snippet')
-        })
-    };    
+       
+        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'><img src=" + imgURL + "></li></ul>")
+                  .prependTo('#wiki-snippet')         
+                    //$("#sharonTests1").html(location[0])
+                    //$("#sharonTests2").html(location[1])
+                    //$("#sharonTests3").html(location[2])
+                    //$("#sharonTests4").html(location[3])
+                    //$("#sharonTests5").html(location[4]) 
+// Tried to build it like JAson's but not working well :)
+        // var rowOne = $("<ul>");
+        // var hover = $("<li class='hover1'");
+        // var rowOneImg = $("<img>").attr("src", imgURL);
+        // var overlayDiv = $("<div class='overlay'>");
+        // var locationName = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>");
+
+        // rowOne.append(hover).append(rowOneImg).append(overlayDiv).append(locationName);
+        // $("#wiki-snippet").prepend(rowOne);
+        // })
+    });    
+};
 });
 
