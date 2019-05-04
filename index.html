@@ -400,7 +400,7 @@
 
                                   <div class="row">
                                       <span class="col-sm-2"></span>
-                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Modify</button></p>
+                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="modDates">Modify</button></p>
                                       <p class="m-2 text-center col-sm-4"><button type="button" class="btn">Use Top Pick</button></p>
                                   </div>
                           </div>
@@ -410,6 +410,7 @@
                         <div class="col-sm-6">
                           <div class="card">
 							<div class="eventNameSelector border border-solid border-dark">
+                <h2 id="currEventName"></h2>
 							  <label>Select or Enter an Event Name to save:
 							  <input list="eventNameList" name="grpEvents" /></label>
 							  <datalist id="eventNameList">
@@ -607,6 +608,7 @@
                 </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
@@ -619,7 +621,7 @@
               <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- landing js -->
     <script type="text/javascript" src="assets/javascript/landing.js"></script>
-              <script src="java.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- events js -->
      <script src="assets/javascript/events.js"></script>
     <!-- main js -->
