@@ -209,9 +209,14 @@ class EventObj {
         $("#grpActCnt").text(favActivityCnt);
         $("#grpTopDest").text(favLocation);
         $("#grpDestCnt").text(favLocationCnt);
-
+        $("#currEventName").text(currentEvent.eventName);
+        
         buddysEventList.forEach(function(eventName) {
-            $("#eventNameList").append($("<option>").attr("value", eventName));
+            var opt = $("<option>").attr("value", eventName);
+            if (eventName == currentEvent.eventName) {
+                opt.attr("selected", "selected");
+            }
+            $("#eventNameList").append(opt);
         })
         
     }
@@ -271,34 +276,76 @@ class EventObj {
 
 // =====
 
-    $("#noteAdd").on("click", function() {
-        event.preventDefault();
+    $("#noteSend").on("click", function() {
+        if (currentEvent != null &&  currentBuddy != null) {
+            event.preventDefault();
 
-        var noteMsg = $("#noteText").val().trim();
+            var noteMsg = $("#noteText").val().trim();
 
-        var msg = new NoteObj(buddyName, noteMsg);
-        buddyEvent.notes.push(msg);
+            if (noteMsg != "") {
+                var msg = new NoteObj(currentBuddy, noteMsg);
+                currentEvent.notes.push(msg);
+                console.log(currentEvent);
 
-        // modify the event
-
-
+                // modify the event
+            } else {
+                console.log ("empty note");
+            }
+        } else {
+            console.log ("missing current event or buddy");
+        }
         $("#noteText").val("");
 
     })
 
     
     $("#invite").click(function(){
-        var inviteEmail = $("#noteText").val().trim();
+        console.log("currentEvent:");
+        console.log(currentEvent);
 
-        var msg = new NoteObj(buddyName, noteMsg);
-        buddyEvent.notes.push(msg);
+        if (currentEvent != null ) {
+            var inviteEmail = $("#invAddr").val().trim();
+            if (inviteEmail != "") {
+                var reg = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+                if (reg.test(inviteEmail)) {
+                    console.log ("validated email");
+                    currentEvent.sharedEmails.push(inviteEmail);
 
-        // modify the event
-
-
-        $("#noteText").val("");
-
+                    // modify the event
+                    // call to email api
+                } else {
+                    console.log ("in-validated email");
+                }
+            } else {
+                console.log ("empty email");
+            }
+        } else {
+            console.log ("missing current event");
+        }
+        $("#invAddr").val("");
     })
+
+    $("#modDates").click(function() {
+        if (currentEvent != null &&  currentBuddy != null) {
+            var stDate = $("#start-date-input");
+            var enDate = $("#end-date-input");
+
+            var evnt = new EventObj(currentEvent.eventName);
+            evnt.eventBuddies = currentEvent.eventBuddies;
+            console.log(evnt);
+
+            var idx = evnt.getEventBuddyIdx(currentBuddy);
+            currentEvent.eventBuddies[idx].selections.startDate = stDate;
+            currentEvent.eventBuddies[idx].selections.endDate = enDate;
+
+            console.log(currentEvent);
+
+        } else {
+            console.log ("missing current event or event buddy");
+        }
+    })
+
+// =====
 
     eventDB.on("child_added", function(sn) {
         if (sn) {
