@@ -214,6 +214,7 @@ body {
     position: relative;
     text-align: center;
     cursor: default;
+    padding-right: 20px
 }
 
 .hover1 .overlay{
