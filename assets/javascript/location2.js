@@ -78,12 +78,12 @@ function moreWikiInfo(extract){
 
         var wikiResult = $("<div class='wiki'>");
         var image = $("<img>").attr("src", imgURL);
-        var imagee = $("<ul ><li >"  + image + "</li></ul>")
+      //  var imagee = $("<ul class='d-flex-r nospace'><li class='hover1'>"  + image + "</li></ul>")
       //  var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append(imagee)
+        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'>" + response.thumbnail.source + "</li></ul>")
                   .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
