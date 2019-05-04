@@ -1,3 +1,4 @@
+currentLocation = localStorage.getItem("storageEventName")
 $(document).ready(function() {
 
   // Initialize Firebase
