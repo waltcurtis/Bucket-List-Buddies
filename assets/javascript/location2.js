@@ -69,22 +69,22 @@ function moreWikiInfo(extract){
         console.log(response);
         var title = response.displaytitle;
         var extract = response.extract;
-        var imgURL = response.thumbnail.source;
+        var imgURL = response.thumbnail.source.slice(0,3);
         var contentURL = response.content_urls.mobile.page
         console.log("ContentURL: " + contentURL);
         console.log("ImgURL: " + imgURL);
         console.log("Place Title: " + title);
         console.log("Place Info: " + extract);
 
-        var wikiResult = $("<div class='wiki'>");
-        var image = $("<img>").attr("src", imgURL);
+        var wikiResult = $("#wiki-snippet");
+        //var image = $("<img>").attr("src", imgURL);
       //  var imagee = $("<ul class='d-flex-r nospace'><li class='hover1'>"  + image + "</li></ul>")
       //  var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'><img src=" + imgURL + "></li></ul>")
-                  .prependTo('#wiki-snippet')         
+        wikiResult.append("<li class='hover1'><img src=" + imgURL + "></li>")
+                 // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
                     //$("#sharonTests3").html(location[2])
