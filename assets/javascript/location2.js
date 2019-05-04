@@ -78,13 +78,11 @@ function moreWikiInfo(extract){
 
         var wikiResult = $("<div class='wiki'>");
         var image = $("<img>").attr("src", imgURL);
-        var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
-        var description = $("<h2 class='extract'>" + extract + "</h2>")
+      //  var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
+       // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
         wikiResult.append(image)
-                    .append(location)
-                    .append(description)
                     .prependTo('#wiki-snippet')         
                     $("#sharonTests1").html(location[0])
                     $("#sharonTests2").html(location[1])
