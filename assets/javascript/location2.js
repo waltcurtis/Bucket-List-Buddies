@@ -82,13 +82,13 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
        
-        wikiResult.append(image)
-                    .prependTo('#wiki-snippet')         
-                    $("#sharonTests1").html(location[0])
-                    $("#sharonTests2").html(location[1])
-                    $("#sharonTests3").html(location[2])
-                    $("#sharonTests4").html(location[3])
-                    $("#sharonTests5").html(location[4]) 
+        wikiResult.append("<ul class='d-flex-r nospace'><li class='hover1'>" + image + "</li></ul>")
+                  .prependTo('#wiki-snippet')         
+                    //$("#sharonTests1").html(location[0])
+                    //$("#sharonTests2").html(location[1])
+                    //$("#sharonTests3").html(location[2])
+                    //$("#sharonTests4").html(location[3])
+                    //$("#sharonTests5").html(location[4]) 
 // Tried to build it like JAson's but not working well :)
         // var rowOne = $("<ul>");
         // var hover = $("<li class='hover1'");
