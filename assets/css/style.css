@@ -200,7 +200,7 @@ body {
 
 
 /* destinations*/
-#destinations ul li img div h2 caption h5 button{
+#destinations ul li{
     max-width: 300px;
 }
 #destinations{background: url(https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80) fixed no-repeat;}
@@ -214,7 +214,6 @@ body {
     position: relative;
     text-align: center;
     cursor: default;
-    padding-right: 20px
 }
 
 .hover1 .overlay{
