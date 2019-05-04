@@ -1,6 +1,5 @@
 
-window.onload = console.log(localStorage.getItem("storageActivityName"));
-window.onload = alert(localStorage.getItem("storageActivityName"));
+
 
 //var location = $("#test")
 //var divClone
