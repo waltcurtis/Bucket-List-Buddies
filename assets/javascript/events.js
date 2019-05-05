@@ -25,6 +25,8 @@ $(document).ready(function() {
     var currentKey = null;
 
     var buddysEventList = [];
+    var buddysKeyList = [];
+
     var activitiesArr = [];
     var activitiesCntArr = [];
     var locationsArr = [];
@@ -193,7 +195,6 @@ class EventObj {
         $("#noteFeed").empty();
         event.notes.forEach(function(note, idx) {
             var dt = Date(note.dateTime);
-            console.log(dt)
 
             $("#noteFeed")
                 .append(
@@ -245,10 +246,7 @@ class EventObj {
     }
 
     function updateCounts(act, loc, stDate, enDate) {
-        console.log(activitiesArr);
-        console.log(activitiesCntArr);
         var idx = activitiesArr.indexOf(act);
-        console.log("idx for " + act + ": " + idx);
         if (idx == -1) {
             activitiesArr.push(act);
             activitiesCntArr.push(1);
@@ -256,8 +254,6 @@ class EventObj {
             activitiesCntArr[idx]++;
         }
 
-        console.log(locationsArr);
-        console.log(locationsCntArr);
         var idx = locationsArr.indexOf(loc);
         if (idx == -1) {
             locationsArr.push(loc);
@@ -266,10 +262,7 @@ class EventObj {
             locationsCntArr[idx]++;
         }
 
-        console.log(stDateArr);
-        console.log(stDateCntArr);
         var idx = stDateArr.indexOf(stDate);
-        console.log("idx for " + stDate + ": " + idx);
         if (idx == -1) {
             stDateArr.push(stDate);
             stDateCntArr.push(1);
@@ -277,9 +270,6 @@ class EventObj {
             stDateCntArr[idx]++;
         }
 
-        console.log("enDate: " + enDate);
-        console.log(enDateArr);
-        console.log(enDateCntArr);
         var idx = enDateArr.indexOf(enDate);
         if (idx == -1) {
             enDateArr.push(enDate);
@@ -359,7 +349,6 @@ class EventObj {
             if (noteMsg != "") {
                 var msg = new NoteObj(currentBuddy, noteMsg);
                 currentEvent.notes.push(msg);
-                console.log(currentEvent);
 
                 modEvent();
             } else {
@@ -374,8 +363,6 @@ class EventObj {
 
     
     $("#invite").click(function(){
-        console.log("currentEvent:");
-        console.log(currentEvent);
 
         if (currentEvent != null ) {
             var inviteEmail = $("#invAddr").val().trim();
@@ -403,17 +390,14 @@ class EventObj {
         if (currentEvent != null &&  currentBuddy != null) {
             var stDate = moment($("#start-date-input").val()).format("MM/DD/YYYY");
             var enDate = moment($("#end-date-input").val()).format("MM/DD/YYYY");
-            console.log("stDate: " + stDate + "   enDate: " + enDate );
 
             var evnt = new EventObj(currentEvent.eventName);
             evnt.eventBuddies = currentEvent.eventBuddies;
-            console.log(evnt);
 
             var idx = evnt.getEventBuddyIdx(currentBuddy);
             currentEvent.eventBuddies[idx].selections.startDate = stDate;
             currentEvent.eventBuddies[idx].selections.endDate = enDate;
 
-            console.log(currentEvent);
             modEvent();
 
         } else {
@@ -426,7 +410,6 @@ class EventObj {
 
             var evnt = new EventObj(currentEvent.eventName);
             evnt.eventBuddies = currentEvent.eventBuddies;
-            console.log(evnt);
 
             var idx = evnt.getEventBuddyIdx(currentBuddy);
             currentEvent.eventBuddies[idx].selections.activity = favActivity;
@@ -434,7 +417,6 @@ class EventObj {
             currentEvent.eventBuddies[idx].selections.startDate = favStDate;
             currentEvent.eventBuddies[idx].selections.endDate = favEnDate;
 
-            console.log(currentEvent);
             modEvent();
 
         } else {
@@ -443,15 +425,12 @@ class EventObj {
     })
 
     $(document).on("click", "#copySel", function() {
-        console.log("copySel click");
         if (currentEvent != null  &&  currentBuddy != null) {
 
             var index = $(this).data("index");
-            console.log("index: " + index);
 
             var evnt = new EventObj(currentEvent.eventName);
             evnt.eventBuddies = currentEvent.eventBuddies;
-            console.log(evnt);
 
             var idx = evnt.getEventBuddyIdx(currentBuddy);
             currentEvent.eventBuddies[idx].selections.activity = currentEvent.eventBuddies[index].selections.activity;
@@ -459,7 +438,6 @@ class EventObj {
             currentEvent.eventBuddies[idx].selections.startDate = currentEvent.eventBuddies[index].selections.startDate;
             currentEvent.eventBuddies[idx].selections.endDate = currentEvent.eventBuddies[index].selections.endDate;
 
-            console.log(currentEvent);
             modEvent();
 
         } else {
@@ -473,10 +451,32 @@ class EventObj {
 
         var eventName = $(this).val().trim();
         if (eventName != "") {
-            $("#currEventName").text(eventName);
-            currentEvent.eventName = eventName;
+            // if its a new event name, save to that name
+            // else if existing event grab other event and display
+
+            var pos = buddysEventList.indexOf(eventName);
+            if (pos == -1) {
+                var newEvent = new EventObj(eventName);
+                newEvent.addEventBuddy(currentBuddy);
+                var idx = newEvent.getEventBuddyIdx(currentBuddy);
+                newEvent.eventBuddies[idx].selections.activity = currentActivity;
+                newEvent.eventBuddies[idx].selections.location = currentLocation;
+                currentEvent.eventBuddies[idx].selections.startDate = favStDate;
+                currentEvent.eventBuddies[idx].selections.endDate = favEnDate;
+                eventDB.push(newEvent);
+
+            } else {
+                eventDB
+                    .orderByKey(buddysKeyList[pos])
+                    .equalTo(buddysKeyList[pos])
+                    .once("value", function(sn){
+                        currentEvent = sn.val();
+                        eventToScreen(currentEvent);
+                    })
+            }
+
+            $("#currEventName").text(currentEvent.eventName);
             console.log(currentEvent);
-            // modify the event
         }
     })
 
@@ -495,10 +495,9 @@ class EventObj {
                 initCounts();
     
                 currentEvent.eventBuddies.forEach(function(buddy, idx) {
-                    updateCounts(buddy.selections.activity, buddy.selections.location);
-    
-                    console.log("current Buddy: " + currentBuddy);
-                    console.log("buddy.buddyName: " + buddy.buddyName);
+                    var sels = buddy.selections;
+                    updateCounts(sels.activity, sels.location, sels.startDate, sels.endDate);
+        
                     if (buddy.buddyName == currentBuddy) {
                         buddysEventList.push(currentEvent.eventName);
                     }
@@ -517,13 +516,13 @@ class EventObj {
         if (sn) {
             var key = sn.key;
             var event = sn.val();
-            console.log(event);
-            console.log("currentBuddy: " + currentBuddy);
 
             if (currentBuddy == null  ||  currentBuddy.trim() == "") return;
 
             buddysEventList.length = 0;
             buddysEventList = [];
+            buddysKeyList.length = 0;
+            buddysKeyList = [];
 
             initCounts();
 
@@ -531,10 +530,10 @@ class EventObj {
                 var sels = buddy.selections;
                 updateCounts(sels.activity, sels.location, sels.startDate, sels.endDate);
 
-                console.log("current Buddy: " + currentBuddy);
-                console.log("buddy.buddyName: " + buddy.buddyName);
                 if (buddy.buddyName == currentBuddy) {
                     buddysEventList.push(event.eventName);
+                    buddysKeyList.push(key);
+
                     currentEvent = event;
                     currentKey = key;
                 }
