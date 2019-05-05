@@ -169,7 +169,7 @@ $(document).ready(function(){
 
 // ----------------Landing js---------------------------//
 
-var landingImages = ['assets/javascript/images/spring.jpg', 'assets/javascript/images/summer.jpg','assets/javascript/images/fall.jpg', 'assets/javascript/images/winter.png','assets/javascript/images/sightseeing.PNG','assets/javascript/images/adult.PNG']
+var landingImages = ['assets/images/spring.jpg', 'assets/images/summer.jpg','assets/images/fall.jpg', 'assets/images/winter.png','assets/images/sightseeing.PNG','assets/images/adult.PNG']
 var landingButtons=['Spring Activities','Summer Activities','Fall Activities','Winter Activities','Sightseeing Activities','Adult Activities']
 var count = 0;
 
@@ -256,7 +256,7 @@ function displayImage() {
             var spring =
 
                 {
-                    picture: ['assets/javascript/images/spring/camping.PNG','assets/javascript/images/spring/cherry_blossom.PNG', 'assets/javascript/images/spring/hiking.PNG','assets/javascript/images/spring/picnic.PNG'], 
+                    picture: ['assets/images/spring/camping.PNG','assets/images/spring/cherry_blossom.PNG', 'assets/images/spring/hiking.PNG','assets/images/spring/picnic.PNG'], 
         
                     button: ["Camping","Cherry Blossom", "Hiking","Picnic Festival"],
         
@@ -304,7 +304,7 @@ function displayImage() {
             var summer =
                 
                 {
-                    picture: ['assets/javascript/images/summer/beach.PNG', 'assets/javascript/images/summer/kayaking.PNG','assets/javascript/images/summer/natural_springs.PNG','assets/javascript/images/summer/paddleboard.PNG'], 
+                    picture: ['assets/images/summer/beach.PNG', 'assets/images/summer/kayaking.PNG','assets/images/summer/natural_springs.PNG','assets/images/summer/paddleboard.PNG'], 
         
                     button: ["Beaches", "Kayaking", "Natural Springs","Paddleboarding"],
         
@@ -351,7 +351,7 @@ function displayImage() {
             var fall =
 
                 {
-                    picture: ['assets/javascript/images/fall/apple_orchard.PNG', 'assets/javascript/images/fall/fishing.PNG','assets/javascript/images/fall/horseback.PNG','assets/javascript/images/fall/oktoberfest.PNG'], 
+                    picture: ['assets/images/fall/apple_orchard.PNG', 'assets/images/fall/fishing.PNG','assets/images/fall/horseback.PNG','assets/images/fall/Oktoberfest.PNG'], 
         
                     button: ["Apple Orchard", "Fishing", "Horseback Riding","Oktoberfest"],
         
@@ -397,7 +397,7 @@ function displayImage() {
             var winter =
 
                 {
-                    picture: ['assets/javascript/images/winter/ice_skating.PNG', 'assets/javascript/images/winter/mountain_climbing.PNG','assets/javascript/images/winter/skiing.PNG','assets/javascript/images/winter/snowboarding.PNG'], 
+                    picture: ['assets/images/winter/ice_skating.PNG', 'assets/images/winter/mountain_climbing.PNG','assets/images/winter/skiing.PNG','assets/images/winter/snowboarding.PNG'], 
         
                     button: ["Ice Skating", "Mnt Climbing", "Skiing","Snowboarding"],
         
@@ -535,56 +535,56 @@ function displayImage() {
 
 // ----------------Activity js--------------------------//  
 
-  activityDB.on("child_added", function(sn) {
-    if (sn) {
-        sn.forEach(function(child) {
-            var categoryKey = child.key;
-            var categoryData = child.val();
+//   activityDB.on("child_added", function(sn) {
+//     if (sn) {
+//         sn.forEach(function(child) {
+//             var categoryKey = child.key;
+//             var categoryData = child.val();
         
-            let catImg = $("<img>")
-                            .addClass("catImg")
-                            .attr("data-value", categoryData.categoryName)
-                            .attr("src", category.categoryImageURL);
-            let catTag = $("<span>")
-                            .text(categoryData.categoryName);
-            $("#...").append(catImg);
-            $("#...").append(catTag);
+//             let catImg = $("<img>")
+//                             .addClass("catImg")
+//                             .attr("data-value", categoryData.categoryName)
+//                             .attr("src", category.categoryImageURL);
+//             let catTag = $("<span>")
+//                             .text(categoryData.categoryName);
+//             $("#...").append(catImg);
+//             $("#...").append(catTag);
 
-            let actImg = $("<img>")
-                            .addClass("actImg")
-                            .attr("data-cat", categoryData.categoryName)
-                            .attr("data-act", categoryData.activities[0].activityName)
-                            .attr("src", categoryData.activities[0].activityImageURL);
-            let actTag = $("<span>")
-                            .text(categoryData.activities[0].activityName);
-            $("#...").append(actImg);
-            $("#...").append(actTag);
+//             let actImg = $("<img>")
+//                             .addClass("actImg")
+//                             .attr("data-cat", categoryData.categoryName)
+//                             .attr("data-act", categoryData.activities[0].activityName)
+//                             .attr("src", categoryData.activities[0].activityImageURL);
+//             let actTag = $("<span>")
+//                             .text(categoryData.activities[0].activityName);
+//             $("#...").append(actImg);
+//             $("#...").append(actTag);
             
-        })
-    }
-})
+//         })
+//     }
+// })
 
-$(document).on("click", ".catImg", chgActivities)
+// $(document).on("click", ".catImg", chgActivities)
 
-function chgActivities() {
-    var category = $(this).data("value");
-    activityDB.orderByChild("categoryName").equalTo(category).once("value", function(sn) {
-        if (sn) {
-            $("#...").empty();
-            sn.activities.forEach(function(activity) {
-                let actImg = $("<img>")
-                                .addClass("actImg")
-                                .attr("data-cat", category)
-                                .attr("data-act", activity.activityName)
-                                .attr("src", activity.activityImageURL);
-                let actTag = $("<span>")
-                                .text(activity.activityName);
-                $("#...").append(actImg);
-                $("#...").append(actTag);
-            })
-        }
-    })
-}
+// function chgActivities() {
+//     var category = $(this).data("value");
+//     activityDB.orderByChild("categoryName").equalTo(category).once("value", function(sn) {
+//         if (sn) {
+//             $("#...").empty();
+//             sn.activities.forEach(function(activity) {
+//                 let actImg = $("<img>")
+//                                 .addClass("actImg")
+//                                 .attr("data-cat", category)
+//                                 .attr("data-act", activity.activityName)
+//                                 .attr("src", activity.activityImageURL);
+//                 let actTag = $("<span>")
+//                                 .text(activity.activityName);
+//                 $("#...").append(actImg);
+//                 $("#...").append(actTag);
+//             })
+//         }
+//     })
+// }
 
 $(document).on("click", ".actImg", selectActivity)
 
@@ -646,33 +646,53 @@ function getWikiInfo(name){
 };  
 
 function moreWikiInfo(extract){
-    var queryWikiAgain = "https://en.wikipedia.org/api/rest_v1/page/summary/" + extract;
-    $.ajax({
-    url: queryWikiAgain,
-    method: "GET",
-    })
-    // We store all of the retrieved data inside of an object called "response"
-    .then(function(response) {
-        // Log the resulting object
-        console.log(queryWikiAgain);
-        console.log(response);
-        var title = response.displaytitle;
-        var extract = response.extract;
-        var imgURL = response.originalimage.source;
-        console.log(imgURL);
-        console.log("Place Title: " + title);
-        console.log("Place Info: " + extract);
-        var wikiResult = $("<div class='wiki'>");
-        var image = $("<img>").attr("src", imgURL);
-        var location = $("<a href='https://en.wikipedia.org/api/rest_v1/page/summary/" + title + "' target='_blank'><h1 class='title'>" + title + "</h1></a>")
-        var description = $("<h2 class='extract'>" + extract + "</h2>")
-        
-        wikiResult.append(image)
-                    .append(location)
-                    .append(description)
-                    .prependTo('#wiki-snippet')
-        })
-    };    
+  var queryWikiAgain = "https://en.wikipedia.org/api/rest_v1/page/summary/" + extract;
+  $.ajax({
+  url: queryWikiAgain,
+  method: "GET",
+  })
+  // We store all of the retrieved data inside of an object called "response"
+  .then(function(response) {
+      // Log the resulting object
+      var title = response.displaytitle;
+      var extract = response.extract;
+      var imgURL = response.thumbnail.source;
+      var contentURL = response.content_urls.mobile.page
+      console.log("ContentURL: " + contentURL);
+      console.log("ImgURL: " + imgURL);
+      console.log("Place Title: " + title);
+      console.log("Place Info: " + extract);
+      
+      var wikiResult = $("<div class='wiki card m-2' style='width: 20rem;'>");
+
+      var image = $("<img class='card-img-top'>").attr("src", imgURL);
+
+      var location = $("<a target='_blank'><h5 class='wiki-title card-title text-center'>" + title + "</h5></a>").attr('href', contentURL);
+
+      var description = $("<p class='card-text wiki-extract'>" + extract + "</p>");
+
+      var locationButton = $('<button>').addClass('test-button btn btn-success text center').attr('data-name', title).text('Select');
+
+      wikiResult.append(image)
+
+                  .append(location)
+
+                  .append(description)
+
+                  .append(locationButton)
+
+                  .prependTo('#wiki-results')
+                      
+                      
+      $('.test-button').on("click", function(){
+          var currentLocation = $(this).attr("data-name")
+          console.log(currentLocation);     
+          localStorage.setItem("storeLocation", currentLocation);     
+          })
+          
+      });
+
+  }; 
 
 
 // --------------------Events js--------------------------//
