@@ -124,27 +124,27 @@ function moreWikiInfo(extract){
                       .append(locationButton)
     
                       .prependTo('.wiki-results')
-                      $(document).on("click",".test-button",function(){
-                        var getToEventPage2 = $(this).attr("data-events")
-                        console.log($(this).attr("data-events"))
-                      // var url = "index.html?event="+getToEventPage;
-                      localStorage.setItem("storageEventName2", getToEventPage2);
-                      //  console.log(url)
-                      //window.location.href = url
-                       })
-                      
-                      $(document).on("click",".btn-success",function(){
-                      var getToEventPage = $(this).attr("data-event")
-                      console.log($(this).attr("data-event"))
-                      // var url = "index.html?event="+getToEventPage;
-                      localStorage.setItem("storageEventName", getToEventPage);
-                      // console.log(url)
-                      //window.location.href = url
-                      })
+                     
                       
     
             }
-    
+            $(document).on("click",".test-button",function(){
+              var getToEventPage2 = $(this).attr("data-events")
+              console.log($(this).attr("data-events"))
+            // var url = "index.html?event="+getToEventPage;
+            localStorage.setItem("storageEventName2", getToEventPage2);
+            //  console.log(url)
+            //window.location.href = url
+             })
+            
+            $(document).on("click",".btn-success",function(){
+            var getToEventPage = $(this).attr("data-event")
+            console.log($(this).attr("data-event"))
+            // var url = "index.html?event="+getToEventPage;
+            localStorage.setItem("storageEventName", getToEventPage);
+            // console.log(url)
+            //window.location.href = url
+            })
             });
     
         };  
