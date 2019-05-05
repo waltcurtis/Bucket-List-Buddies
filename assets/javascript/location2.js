@@ -1,8 +1,6 @@
 //window.onload = console.log(localStorage.getItem("storageActivityName"));
  //window.onload = alert(localStorage.getItem("storageActivityName"));
- window.onload = console.log(localStorage.getItem("storageActivityName"));
- window.onload = alert(localStorage.getItem("storageActivityName"));
- sharonTest = localStorage.getItem("storageActivityName")
+ currentActivity = localStorage.getItem("storageActivityName")
 $(document).ready(function(){
     
     // Initialize Firebase
@@ -19,7 +17,7 @@ var config = {
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best" + sharonTest + "united+states&key=" + placesAPI;
+var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -67,8 +65,6 @@ function moreWikiInfo(extract){
     // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
         // Log the resulting object
-        console.log(queryWikiAgain);
-        console.log(response);
         var title = response.displaytitle;
         var extract = response.extract;
         var imgURL = response.thumbnail.source;
@@ -77,28 +73,37 @@ function moreWikiInfo(extract){
         console.log("ImgURL: " + imgURL);
         console.log("Place Title: " + title);
         console.log("Place Info: " + extract);
-
-        var wikiResult = $("<div class='wiki'>");
-        var image = $("<img>").attr("src", imgURL);
-        var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
-        var description = $("<h2 class='extract'>" + extract + "</h2>")
         
+        var wikiResult = $("<div class='wiki card m-2' style='width: 20rem;'>");
+
+        var image = $("<img class='card-img-top'>").attr("src", imgURL);
+
+        var location = $("<a target='_blank'><h5 class='wiki-title card-title text-center'>" + title + "</h5></a>").attr('href', contentURL);
+
+        var description = $("<p class='card-text wiki-extract'>" + extract + "</p>");
+
+        var locationButton = $('<button>').addClass('test-button btn btn-success text center').attr('data-name', title).text('Select');
+
         wikiResult.append(image)
+
                     .append(location)
+
                     .append(description)
-                    .prependTo('#wiki-snippet')         
-                    $("#sharonTests").html(location) 
-// Tried to build it like JAson's but not working well :)
-        // var rowOne = $("<ul>");
-        // var hover = $("<li class='hover1'");
-        // var rowOneImg = $("<img>").attr("src", imgURL);
-        // var overlayDiv = $("<div class='overlay'>");
-        // var locationName = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>");
 
-        // rowOne.append(hover).append(rowOneImg).append(overlayDiv).append(locationName);
-        // $("#wiki-snippet").prepend(rowOne);
-        // })
-    });    
-};
+                    .append(locationButton)
+
+                    .prependTo('#wiki-results')
+                        
+                        
+        $('.test-button').on("click", function(){
+            var currentLocation = $(this).attr("data-name")
+            console.log(currentLocation);     
+            localStorage.setItem("storeLocation", currentLocation);     
+            })
+            
+        });
+
+    };  
+
+
 });
-
