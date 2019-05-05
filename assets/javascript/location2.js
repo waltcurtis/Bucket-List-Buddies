@@ -83,8 +83,8 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
       // wikiResult.html("<button>hello</button>")
-       wikiResult2.append("<li ><img src=" + imgURL + "><div class='overlay'><h2 >" + title + "</h2></div><caption><h5 style='padding: 20px;background-color:white'>" + extract + "<button class='btn btn-success'>Select</button></h5></caption></li>")
-       $("#location-button").attr('data-event',title)
+       wikiResult2.append("<li ><img src=" + imgURL + "><div class='overlay'><h2 >" + title + "</h2></div><caption><h5 style='padding: 20px;background-color:white'>" + extract + "<button id='location-button' class='btn btn-warning'>Select</button></h5></caption></li>")
+       $("#location-button").attr("data-event", title)
        
                  // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
@@ -113,7 +113,7 @@ function moreWikiInfo(extract){
     
             var description = $("<p class='card-text wiki-extract'>" + extract + "</p>");
     
-            var locationButton = $("<button class='test-button'><a href='contentURL' class='btn btn-success btn-lg text center'>" + title + "</a></button>").attr('data-events',title);
+            var locationButton = $("<button class='test-button'><a href='contentURL' class='btn btn-success btn-lg text center'>" + title + "</a></button>").attr("data-events", title);
     
             wikiResult.append(image)
     
@@ -128,27 +128,27 @@ function moreWikiInfo(extract){
                       
     
             }
-            $(document).on("click",".test-button",function(){
-              var getToEventPage2 = $(this).attr("data-events")
-              console.log($(this).attr("data-events"))
-            // var url = "index.html?event="+getToEventPage;
-            localStorage.setItem("storageEventName2", getToEventPage2);
-            //  console.log(url)
-            //window.location.href = url
-             })
-            
-            $(document).on("click",".btn-success",function(){
-            var getToEventPage = $(this).attr("data-event")
-            console.log($(this).attr("data-event"))
-            // var url = "index.html?event="+getToEventPage;
-            localStorage.setItem("storageEventName", getToEventPage);
-            // console.log(url)
-            //window.location.href = url
-            })
+          
             });
     
         };  
     
-
+        $(document).on("click",".test-button",function(){
+          var getToEventPage2 = $(this).attr("data-events")
+          console.log($(this).attr("data-events"))
+        // var url = "index.html?event="+getToEventPage;
+        localStorage.setItem("storageEventName2", getToEventPage2);
+        //  console.log(url)
+        //window.location.href = url
+         })
+        
+        $(document).on("click",".btn-warning",function(){
+        var getToEventPage = $(this).attr("data-event")
+        console.log($(this).attr("data-event"))
+        // var url = "index.html?event="+getToEventPage;
+        localStorage.setItem("storageEventName", getToEventPage);
+        // console.log(url)
+        //window.location.href = url
+        })
 });
 
