@@ -75,24 +75,17 @@ function moreWikiInfo(extract){
         console.log("ImgURL: " + imgURL);
         console.log("Place Title: " + title);
         console.log("Place Info: " + extract);
-
-        var wikiResult = $("#wiki-snippet");
+       // var wikiResult = $("#wiki-snippet");
+        var wikiResult2 = $("#wiki-snippet2");
         //var image = $("<img>").attr("src", imgURL);
       //  var imagee = $("<ul class='d-flex-r nospace'><li class='hover1'>"  + image + "</li></ul>")
       //  var location = $("<a href="+contentURL+" target='_blank'><h1 class='title'>" + title + "</h1></a>")
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
-       
-       wikiResult.html("<li ><img src=" + imgURL + "><div style='max-width:300px' class='overlay'><h2 style='max-width:300px'>" + title + "</h2></div><caption style='max-width:300px;'><h5 style='max-width:300px; padding: 20px;background-color:white'>" + extract + "<button id='location-button' class='btn btn-success'>Select</button></h5></caption></li>")
+      // wikiResult.html("<button>hello</button>")
+       wikiResult2.append("<li class='hover1'><img src=" + imgURL + "><div class='overlay'><h2 >" + title + "</h2></div><caption><h5 style='padding: 20px;background-color:white'>" + extract + "<button class='btn btn-success'>Select</button></h5></caption></li>")
        $("#location-button").attr('data-event',title)
-       $("#location-button").on("click",function(){
-        var getToEventPage = $(this).attr("data-event")
-        console.log($(this).attr("data-event"))
-      var url = "index.html?event="+getToEventPage+"";
-      localStorage.setItem("storageEventName", getToEventPage);
-      console.log(url)
-     window.location.href = url
-       })
+       
                  // .prependTo('#wiki-snippet')         
                     //$("#sharonTests1").html(location[0])
                     //$("#sharonTests2").html(location[1])
@@ -109,7 +102,52 @@ function moreWikiInfo(extract){
         // rowOne.append(hover).append(rowOneImg).append(overlayDiv).append(locationName);
         // $("#wiki-snippet").prepend(rowOne);
         // })
-    });    
-};
+    
+        for (var i = 0; i < response.length; i++){
+
+            var wikiResult = $("<div class='wiki card m-2' style='width: 20rem;'>");
+    
+            var image = $("<img class='card-img-top'>").attr("src", imgURL);
+    
+            var location = $("<a href='contentURL' target='_blank'><h5 class='wiki-title card-title text-center'>" + title + "</h5></a>");
+    
+            var description = $("<p class='card-text wiki-extract'>" + extract + "</p>");
+    
+            var locationButton = $("<button class='test-button'><a href='contentURL' class='btn btn-success btn-lg text center'>" + title + "</a></button>").attr('data-events',title);
+    
+            wikiResult.append(image)
+    
+                      .append(location)
+    
+                      .append(description)
+    
+                      .append(locationButton)
+    
+                      .prependTo('.wiki-results')
+    
+            }
+    
+            });
+    
+        };  
+    
+
+$(document).on("click",".test-button",function(){
+            var getToEventPage2 = $(this).attr("data-events")
+            console.log($(this).attr("data-events"))
+         // var url = "index.html?event="+getToEventPage;
+          localStorage.setItem("storageEventName2", getToEventPage2);
+        //  console.log(url)
+         //window.location.href = url
+           })
+
+$(document).on("click",".btn-success",function(){
+    var getToEventPage = $(this).attr("data-event")
+    console.log($(this).attr("data-event"))
+ // var url = "index.html?event="+getToEventPage;
+  localStorage.setItem("storageEventName", getToEventPage);
+ // console.log(url)
+ //window.location.href = url
+   })
 });
 
