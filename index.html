@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>Bucket List Buddies</title>
-    <!--jquery-->
+    
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -15,191 +16,178 @@
 <body class="auth-false" id="myPage">
     <header class="d-flex-r clear justify-content-space-between">
 
-                <!-- navigation bar-->
+        <!-- navigation bar-->
 
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
-                        <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0 userAuth unauthenticated pull-right">
-                            <ul class="navbar-nav ml-auto text-center">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navigation">
+            <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0 userAuth unauthenticated pull-right">
+                <ul class="navbar-nav ml-auto text-center">
 
-                            <li class="nav-item">
-                                    <a href="#home" class="nav-link">Home</a>
-                            </li>
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
 
-                            <li class="nav-item">
-                                    <a href="" class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
-                            </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+                    </li>
 
-                            <li class="nav-item">
-                                    <a href="" class="nav-link" data-toggle="modal" data-target="#registerModal">Register</a>
-                            </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-toggle="modal" data-target="#registerModal">Register</a>
+                    </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#destinations">Locations</a>
-                                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Locations</a>
+                    </li>
+                </ul>
+            </div>
 
-                            </ul>
+            <div class="mx-auto my-2 order-0 order-md-1 position-relative userAuth authenticated pull-right">
+                <!--
+                    <a class="mx-auto" href="#">
+                    <img src="img/bucket.png" class="navBarPicture"> </a>
+                -->
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            
+            <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+                <ul class="navbar-nav mr-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#aboutUs" class="nav-link">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <span class="user-info"></span>
+                        <button type="button" class="btn btn-success" id="logout">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Register Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content mt-5">
+                    <form id="registerForm" method="POST">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="registerModalLabel">Register</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-                        <div class="mx-auto my-2 order-0 order-md-1 position-relative userAuth authenticated pull-right">
-                            <!--
-                                <a class="mx-auto" href="#">
-                                 <img src="img/bucket.png" class="navBarPicture"> </a>
-                            -->
-
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
-                            <ul class="navbar-nav mr-auto text-center">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#events">Events</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#aboutUs" class="nav-link">About</a>
-
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                            <span class="user-info">
-                                            </span>
-                                            <button type="button" class="btn btn-success" id="logout">Logout</button>
-                                        </li>
-
-                                </ul>
-                        </div>
-
-
-
-                    </nav>
-
-
-                    <!-- Register Modal -->
-                    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content mt-5">
-                                <form id="registerForm" method="POST">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title" id="registerModalLabel">Register</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div class="form-group">
-                                      <label for="recipient-name" class="control-label">First Name:</label>
-                                      <input type="text" class="form-control" id="registerFirstName">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="recipient-name" class="control-label">Last Name:</label>
-                                      <input type="text" class="form-control" id="registerLastName">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="recipient-name" class="control-label">Email:</label>
-                                      <input type="text" class="form-control" id="registerEmail">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="message-text" class="control-label">Password:</label>
-                                      <input type="password" class="form-control" id="registerPassword">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="message-text" class="control-label">Confirm Password:</label>
-                                      <input type="password" class="form-control" id="registerConfirmPassword">
-                                    </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" id="doRegister">Register</button>
-                                  </div>
-                                </form>
-                              </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">First Name:</label>
+                                <input type="text" class="form-control" id="registerFirstName">
                             </div>
-                          </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Last Name:</label>
+                                <input type="text" class="form-control" id="registerLastName">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="text" class="form-control" id="registerEmail">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Password:</label>
+                                <input type="password" class="form-control" id="registerPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Confirm Password:</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="doRegister">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-                           <!-- Login Modal -->
-
-                           <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content mt-5">
-                                    <form id="loginForm" method="POST">
-                                      <div class="modal-header">
-                                        <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="form-group">
-                                          <label for="recipient-name" class="control-label">Email:</label>
-                                          <input type="text" class="form-control" id="loginEmail">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="message-text" class="control-label">Password:</label>
-                                          <input type="password" class="form-control" id="loginPassword">
-                                        </div>
-                                      </div>
-                                    <!-- other logins - facebook, google, twitter, etc.
-
-                                  <div class="container">
-                                        <div class="row sign-in">
-                                            <h2 class="logInHeader">Or Sign In With</h2>
-                                            <div id="firebaseui-auth-container"></div>
-                                        </div>
-                                    </div>
-                                         -->
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" id="doLogin">Login</button>
-                                      </div>
-                                    </form>
-                                  </div>
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content mt-5">
+                    <form id="loginForm" method="POST">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="loginModalLabel">Login</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="text" class="form-control" id="loginEmail">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Password:</label>
+                                <input type="password" class="form-control" id="loginPassword">
+                            </div>
+                        </div>
+                        <!-- other logins - facebook, google, twitter, etc.
+                            <div class="container">
+                                <div class="row sign-in">
+                                    <h2 class="logInHeader">Or Sign In With</h2>
+                                    <div id="firebaseui-auth-container"></div>
                                 </div>
-                              </div>
+                            </div>
+                        -->
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="doLogin">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-                        <!-- Message modal after login/register-->
-                          <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title" id="messageModalLabel">Message</h4>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <div class="pre-auth">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                        <span class="">
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
-                                          <button type="submit" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
-                                        </span>
-                                      </div>
-                                      <div class="post-auth"></div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+        <!-- Message modal after login/register-->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="messageModalLabel">Message</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pre-auth">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <span class="">
+                                <button type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
+                                <button type="submit" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
+                            </span>
+                        </div>
+                        <div class="post-auth"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
 
-        <!-- landing page-->
+    <!-- landing page-->
     <section class="wrapper" id="parallax-1">
         <span id="home">
-        <div class="overlay">
-
+            <div class="overlay">
 
                 <!--banner text on landing page-->
-            <div id="banner-text" class="d-flex-c text-left">
-                <article>
-                    <p class="my-1 text-uppercase font-xs"></p>
-                    <h1 class="heading text-left text-uppercase text-bold font-x2 my-1">
-                        BUCKET LIST BUDDIES
-                    </h1>
-                    <p class="my-1 text-uppercase font-x1">TRAVEL NOW</p>
-
-
-                </article>
+                <div id="banner-text" class="d-flex-c text-left">
+                    <article>
+                        <p class="my-1 text-uppercase font-xs"></p>
+                        <h1 class="heading text-left text-uppercase text-bold font-x2 my-1">
+                            BUCKET LIST BUDDIES
+                        </h1>
+                        <p class="my-1 text-uppercase font-x1">TRAVEL NOW</p>
+                    </article>
+                </div>
             </div>
-
-
-        </div>
-    </span>
+        </span>
     </section>
-
 
     <section class="wrapper text-dark bg-grey" id="secondP">
         <div class="d flex-c container">
@@ -208,104 +196,93 @@
             <div class="text-center">
                 <h6 class="heading text-uppercase my-1 font-x2">Popular Activites</h6>
                 <div class="landing__scroll">
-                        <div class="row text-center">
-                            <div id="landing_images" ></div>
-                            <div id= "landing_buttons"></div>
-                        </div>
+                    <div class="row text-center">
+                        <div id="landing_images" ></div>
+                        <div id= "landing_buttons"></div>
+                    </div>
                 </div>
             </div>
 
             <div  id="main-container">
-                    <div class ="row">
-                        <div class="col-sm-7" style="padding-left:3%">
-                            <h3 id="activity-selected" style="padding-bottom: 15px"></h3>
-                  <table id="activities-table">
-                    <thead>
-                      <tr>
-                          <th id="activities-images-first-row"></th>
-                          <th id="activities-images-second-row"></th>
-                      </tr>
-
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td id="activities-button-first-row"></td>
-                        <td id="activities-button-second-row"></td>
-                      </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <th id="activities-images-third-row"></th>
-                            <th id="activities-images-fourth-row"></th>
-                        </tr>
-
-                      </thead>
-                      <tbody>
-                        <tr>
-                            <td id="activities-button-third-row"></td>
-                            <td id="activities-button-fourth-row"></td>
-                        </tr>
-
-                      </tbody>
-
-
-                  </table>
-
+                <div class ="row">
+                    <div class="col-sm-7" style="padding-left:3%">
+                        <h3 id="activity-selected" style="padding-bottom: 15px"></h3>
+                        <table id="activities-table">
+                            <thead>
+                                <tr>
+                                    <th id="activities-images-first-row"></th>
+                                    <th id="activities-images-second-row"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="activities-button-first-row"></td>
+                                    <td id="activities-button-second-row"></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th id="activities-images-third-row"></th>
+                                    <th id="activities-images-fourth-row"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="activities-button-third-row"></td>
+                                    <td id="activities-button-fourth-row"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    
                     <div class="col-sm-5" >
                         <h3 style="padding-bottom: 15px">Activity Images:</h3>
-                                <div id="slideshow-background">
-                                <div id ="slideshow"></div>
+                        <div id="slideshow-background">
+                            <div id ="slideshow"></div>
+                        </div>
                     </div>
                 </div>
-                </div>
-              </div>
-
             </div>
         </div>
     </section>
 
-
-
-    <!-- destinations imgae grid -->
+    <!-- destinations image grid -->
     <section class="wrapper text-dark bg-grey" id="destinations">
         <span id="destinations">
-        <div class="container d-flex-c">
+            <div class="container d-flex-c">
 
-             <!-- title -->
-             <div class="text-center">
-                 <h6 class="heading my-1 font-x2">POPULAR DESTINATIONS</h6>
-                 <p class="my-3">we all live in an age that belongs to the young at heart. life that is becoming extremly fast, day</p>
-             </div>
+                <!-- title -->
+                <div class="text-center">
+                    <h6 class="heading my-1 font-x2">POPULAR DESTINATIONS</h6>
+                    <p class="my-3">we all live in an age that belongs to the young at heart. life that is becoming extremly fast, day</p>
+                </div>
 
+                <!-- first row -->
+                <ul class="d-flex-r nospace">
+                    <li class="hover1">
+                        <img src="img/usa.jpg">
+                        <div class="overlay">
+                            <h2>Statue of Liberty</h2>
+                        </div>
+                    </li>
 
-             <!-- first row -->
-            <ul class="d-flex-r nospace">
+                    <li class="hover1">
+                        <img src="img/india.jpg">
+                        <div class="overlay">
+                            <h2>INDIA</h2>
+                        </div>
+                    </li>
 
-                <li class="hover1">
-                    <img src="img/usa.jpg">
-                    <div class="overlay">
-                        <h2>Statue of Liberty</h2>
-                    </div>
-                </li>
-
-                <li class="hover1">
-                    <img src="img/india.jpg">
-                    <div class="overlay">
-                        <h2>INDIA</h2>
-                    </div>
-                </li>
-
-                <li class="hover1">
+                    <li class="hover1">
                         <img src="img/uk.jpg">
                         <div class="overlay">
                             <h2>UK</h2>
                         </div>
                     </li>
-             </ul>
-             <!-- second row -->
-             <ul class="d-flex-r nospace">
-
+                </ul>
+             
+                <!-- second row -->
+                <ul class="d-flex-r nospace">
                     <li class="hover1">
                         <img src="img/france.jpg">
                         <div class="overlay">
@@ -321,162 +298,157 @@
                     </li>
 
                     <li class="hover1">
-                            <img src="img/russia.jpg">
-                            <div class="overlay">
-                                <h2>RUSSIA</h2>
-                            </div>
-                        </li>
-                 </ul>
+                        <img src="img/russia.jpg">
+                        <div class="overlay">
+                            <h2>RUSSIA</h2>
+                        </div>
+                    </li>
+                </ul>
 
-                     <!-- third row -->
-                     <ul class="d-flex-r nospace">
+                <!-- third row -->
+                <ul class="d-flex-r nospace">
+                    <li class="hover1">
+                        <img src="img/turkey.jpg">
+                        <div class="overlay">
+                            <h2>TUKKEY</h2>
+                        </div>
+                    </li>
 
-                            <li class="hover1">
-                                <img src="img/turkey.jpg">
-                                <div class="overlay">
-                                    <h2>TUKKEY</h2>
-                                </div>
-                            </li>
+                    <li class="hover1">
+                        <img src="img/china.jpg">
+                        <div class="overlay">
+                            <h2>CHINA</h2>
+                        </div>
+                    </li>
 
-                            <li class="hover1">
-                                <img src="img/china.jpg">
-                                <div class="overlay">
-                                    <h2>CHINA</h2>
-                                </div>
-                            </li>
-
-                            <li class="hover1">
-                                    <img src="img/himalayas.jpg">
-                                    <div class="overlay">
-                                        <h2>HIMALAYAS</h2>
-                                    </div>
-                                </li>
-                         </ul>
-        </div>
-    </span>
+                    <li class="hover1">
+                        <img src="img/himalayas.jpg">
+                        <div class="overlay">
+                            <h2>HIMALAYAS</h2>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </span>
     </section>
 
-       <!--EVENTS section-->
-       <section class="wrapper text-dark" id="our-blog">
-           <span id="events">
+    <!--EVENTS section-->
+    <section class="wrapper text-dark" id="our-blog">
+        <span id="events">
             <div class="d-flex-c container">
 
-                 <!-- title -->
+                <!-- title -->
                 <div class="text-center my-2">
                     <h6 class="heading font-x2 text-uppercase">EVENTS</h6>
                 </div>
 
-             <!-- panel begins -->
+                <!-- panel begins -->
 
-             <!-- current buddy  -->
-            <article class="m-2">
-              <span id="buddyArea">
-                <article class="buddySelection bg-white m-2">
-                    <div class="row">
-                        <div class="col-sm-6">
-                          <div class="card">
-                            <div class="card-body">
-                                <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
-                                <div class="row">
-                                    <div class="col-6">
-                                      Selected Activity: <span id="selActivity"></span>
+                <!-- current buddy  -->
+                <article class="m-2">
+                    <span id="buddyArea">
+                        <article class="buddySelection bg-white m-2">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    Selected Activity: <span id="selActivity"></span>
+                                                </div>
+                                                <div class="col-6">
+                                                    Selected Destination: <span id="selDestination"></span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            
+                                            <div class="col-12">
+                                                <div class="row"></div>
+                                            
+                                                <div class="row m-0">
+                                                <label for="start-date-input" class="align-center">Start Date</label>
+                                                <input class="form-control align-bottom" id="start-date-input" type="date">
+                                                <label for="end-date-input" class="align-center">End Date</label>
+                                                <input class="form-control" id="end-date-input" type="date">
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                        <span class="col-sm-2"></span>
+                                        <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="modDates">Modify</button></p>
+                                        <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="topPicks">Use Top Pick</button></p>
                                     </div>
-                                    <div class="col-6">
-                                      Selected Destination: <span id="selDestination"></span>
                                     </div>
-                                  </div>
-                                  <br>
-                                  <div class="col-12">
-                                      <div class="row">
-                                      </div>
-                                      <div class="row m-0">
-                                        <label for="start-date-input" class="align-center">Start Date</label>
-                                        <input class="form-control align-bottom" id="start-date-input" type="date">
-                                        <label for="end-date-input" class="align-center">End Date</label>
-                                        <input class="form-control" id="end-date-input" type="date">
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="row">
-                                      <span class="col-sm-2"></span>
-                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="modDates">Modify</button></p>
-                                      <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="topPicks">Use Top Pick</button></p>
-                                  </div>
-                          </div>
-                        </div>
-
-                        <!-- Group Selection-->
-                        <div class="col-sm-6">
-                          <div class="card">
-							<div class="eventNameSelector border border-solid border-dark">
-                <h2 id="currEventName"></h2>
-							  <label>Select or Enter an Event Name to save:
-							  <input id="newName" type="text" list="eventNameList" name="grpEvents" /></label>
-							  <datalist id="eventNameList">
-							  </datalist>
-							</div>
-
-                            <div id="grpTopPicks" class="card-body">
-                              <h2 class="h2 card-title"> Group Selections </h2>
-
-                              <div class="row m-0 no-gutters">
-                                  <span id="grpTopAct" class="m-0 offset-1 col-7"></span>
-                                  <span id="grpActCnt" class="m-0 offset-3 col-1"></span>
                                 </div>
-                                <div class="row m-0 no-gutters">
-                                  <span id="grpTopDest" class="m-0 p-0 offset-1 col-7"></span>
-                                  <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1"></span>
+
+                                <!-- Group Selection-->
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="eventNameSelector border border-solid border-dark">
+                                            <h2 id="currEventName"></h2>
+                                            <label>Select or Enter an Event Name to save:
+                                                <input id="newName" type="text" list="eventNameList" name="grpEvents" />
+                                            </label>
+                                            <datalist id="eventNameList"> </datalist>
+                                        </div>
+    
+                                        <div id="grpTopPicks" class="card-body">
+                                            <h2 class="h2 card-title"> Group Selections </h2>
+    
+                                            <div class="row m-0 no-gutters">
+                                                <span id="grpTopAct" class="m-0 offset-1 col-7"></span>
+                                                <span id="grpActCnt" class="m-0 offset-3 col-1"></span>
+                                            </div>
+                                            
+                                            <div class="row m-0 no-gutters">
+                                                <span id="grpTopDest" class="m-0 p-0 offset-1 col-7"></span>
+                                                <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1"></span>
+                                            </div>
+                                            
+                                            <div class="text-center" id="calendar"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-center" id="calendar"></div>
-
-                              </div>
-
                             </div>
-                          </div>
-                        </div>
 
-               <!-- buddy list / notes-emails -->
-                        <div class="row">
+                            <!-- buddy list / notes-emails -->
+                            <div class="row">
                             <div class="col-sm-6">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h2 class="h2 card-title">Buddy List</h2>
-                                  <div id="buddyList">
-                                    </div>
-                                    <div class="row m-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="h2 card-title">Buddy List</h2>
+                                        <div id="buddyList"></div>
+                                        
+                                        <div class="row m-0">
                                         <input id="invAddr" type="text" class="col-9" />
                                         <button id="invite" type="button" class="col-3 btn">Invite Others</button>
-                                      </div>
+                                    </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
+                        
                             <div class="col-sm-6">
-                              <div class="card">
-                                <div class="card-body">
-                                    <h2 class="h2 card-title">Group Notes</h2>
-                                    <div class="border border-solid m-0 row" >
-                                        <input type="text" id="noteText" class="col-9" />
-                                        <input type="button" id="noteSend" class="btn col-3" value="Add"/>
-                                    </div>
-                                    <div id="noteFeed" class="row m-0" >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="h2 card-title">Group Notes</h2>
+                                        <div class="border border-solid m-0 row" >
+                                            <input type="text" id="noteText" class="col-9" />
+                                            <input type="button" id="noteSend" class="btn col-3" value="Add"/>
+                                        </div>
+                                        
+                                        <div id="noteFeed" class="row m-0" > </div>
                                     </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
-                      </div>
-                      </article>
-
+                        </div>
+                        </article>
                     </span>
-              </article>
-
-
-
+                </article>
+            </div>
         </span>
-        </section>
-
-
+    </section>
 
     <!--ABOUT US section-->
     <section class="wrapper text-dark" id="aboutUsSection">
@@ -489,146 +461,140 @@
                     <p></p>
                 </div>
 
-             <!-- panel begins -->
-             <div class="d-flex-r">
-          <!--Container to throw resulting locations in-->    
-              <div class="container">
-                <div class="row wiki-results"></div>
-              <!-- first -->
-                   <article class="hover2 m-2">
-                       <figure><img src="img/portfolio-2.jpg"></figure>
-                       <h3 class="m-2 text-center heading font-x1 text-uppercase">Dream Big</h3>
-                       <p class="m-2 text-justify">
-                         <div class="text-center">Be the architect of your adventure! </div>
-                         <div class="text-center">What do you want to do?</div>
-                         <div class="text-center">Where do you want to do it?</div>
-                        <div class="text-center">Who do you want to do it with?</div>
-                        <div class="text-center">Explore the possibilities, create an event</div>
-                        <div class="text-center">Share it with the people you love!</div>
-                      </p>
-                   </article>
+                <!-- panel begins -->
+                <div class="d-flex-r">
 
-              <!-- second -->
-                   <article class="hover2 m-2">
-                           <figure><img src="img/portfolio-4.jpg"></figure>
-                           <h3 class="m-2 text-center heading font-x1 text-uppercase">When Can You Go?</h3>
-                           <p class="m-2 text-justify">
-                             <div class="text-center">   Set a date.</div>
+                    <!-- first -->
+                    <article class="hover2 m-2">
+                        <figure><img src="img/portfolio-2.jpg"></figure>
+                        <h3 class="m-2 text-center heading font-x1 text-uppercase">Dream Big</h3>
+                        <p class="m-2 text-justify">
+                            <div class="text-center">Be the architect of your adventure! </div>
+                            <div class="text-center">What do you want to do?</div>
+                            <div class="text-center">Where do you want to do it?</div>
+                            <div class="text-center">Who do you want to do it with?</div>
+                            <div class="text-center">Explore the possibilities, create an event</div>
+                            <div class="text-center">Share it with the people you love!</div>
+                        </p>
+                    </article>
 
-                             <div class="text-center">   Match it with your buddies. </div>
-
-                             <div class="text-center">   Get going!</div>
-                           </p>
-                   </article>
-              <!-- third -->
-                       <article class="hover2 m-2">
-                               <figure><img src="img/portfolio-1.jpg"></figure>
-                               <h3 class="m-2 text-center heading font-x1 text-uppercase">
-                                 Timing is Everything</h3>
-                               <p class="m-2 text-justify">
-                                 <div class="text-center" > What are you waiting for?</div>
-
-                                <div class="text-center"> Go, go , go! </div>
-
-                             <div class="text-center" > Don't leave your buddy waiting! </div>
-                           </p>
-                        </article>
-
-
+                    <!-- second -->
+                    <article class="hover2 m-2">
+                        <figure><img src="img/portfolio-4.jpg"></figure>
+                        <h3 class="m-2 text-center heading font-x1 text-uppercase">When Can You Go?</h3>
+                        <p class="m-2 text-justify">
+                            <div class="text-center">   Set a date.</div>
+                            <div class="text-center">   Match it with your buddies. </div>
+                            <div class="text-center">   Get going!</div>
+                        </p>
+                    </article>
+                    
+                    <!-- third -->
+                    <article class="hover2 m-2">
+                        <figure><img src="img/portfolio-1.jpg"></figure>
+                        <h3 class="m-2 text-center heading font-x1 text-uppercase">
+                            Timing is Everything
+                        </h3>
+                        <p class="m-2 text-justify">
+                            <div class="text-center" > What are you waiting for?</div>
+                            <div class="text-center"> Go, go , go! </div>
+                            <div class="text-center" > Don't leave your buddy waiting! </div>
+                        </p>
+                    </article>
                </div>
             </div>
         </span>
-        </section>
+    </section>
 
+    <!--footer-->
+    <div class="wrapper bg-grey">
+        <footer class="d-flex-r clear container text-whhite" id="main-footer">
+            <div class="mx-2">
+                <h6 class="heading font-x1 my-1">Contact Us</h6>
+                <ul class="nospace linkedlist contact">
+                    <li><i class="fa fa-map-marker"></i><address>street name &amp; number, town, postcode/zip</address></li>
+                    <li><i class="fa fa-phone"></i>407-555-1234</li>
+                    <li><a class="text-white" href="https://youtube.com" target="_blank" ><i class="fa fa-youtube text-dark"></i>YOUTUBE</a></li>
+                    <li><i class="fa fa-envelope-o"></i>Help@gmail.com</li>
+                </ul>
+            </div>
 
+            <div class="mx-2">
+                <h3 class="heading my-1 font-x1">Company</h3>
+                <ul class="nospace linkedlist">
+                    <li><a href="#" class="text-dark">careers</a></li>
+                    <li><a href="#" class="text-dark">investors</a></li>
+                    <li><a href="#" class="text-dark">about company </a></li>
+                    <li><a href="#" class="text-dark">privacy</a></li>
+                </ul>
+            </div>
 
-                <!--footer-->
-                <div class="wrapper bg-grey">
-                  <footer class="d-flex-r clear container text-whhite" id="main-footer">
+            <div class="mx-2">
+                <h6 class="heading my-1 font-x1">Subscribe</h6>
+                <p class="my-1">Enter Info To be In Our Mailing List </p>
+                <form method="post" action="#">
+                    <fieldset>
+                        <input type="text" class="my-1" placeholder="name">
+                        <input type="email" class="my-1" placeholder="email">
+                        <button class="btn">submit</button>
+                    </fieldset>
+                </form>
+            </div>
 
-                  <div class="mx-2">
-                    <h6 class="heading font-x1 my-1">Contact Us</h6>
-                    <ul class="nospace linkedlist contact">
-                      <li><i class="fa fa-map-marker"></i>
-                          <address>street name &amp; number, town, postcode/zip</address>
-                      </li>
-                      <li><i class="fa fa-phone"></i>407-555-1234</li>
-                      <li><a class="text-white" href="https://youtube.com" target="_blank" ><i class="fa fa-youtube text-dark"></i>YOUTUBE</a></li>
-                      <li><i class="fa fa-envelope-o"></i>Help@gmail.com</li>
-                    </ul>
-                  </div>
-
-
-                  <div class="mx-2">
-                      <h3 class="heading my-1 font-x1">Company</h3>
-                      <ul class="nospace linkedlist">
-                        <li><a href="#" class="text-dark">careers</a></li>
-                        <li><a href="#" class="text-dark">investors</a></li>
-                        <li><a href="#" class="text-dark">about company </a></li>
-                        <li><a href="#" class="text-dark">privacy</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="mx-2">
-                        <h6 class="heading my-1 font-x1">Subscribe</h6>
-                        <p class="my-1">Enter Info To be In Our Mailing List </p>
-                        <form method="post" action="#">
-                          <fieldset>
-                            <input type="text" class="my-1" placeholder="name">
-                            <input type="email" class="my-1" placeholder="email">
-                            <button class="btn">submit</button>
-                          </fieldset>
-                        </form>
-                      </div>
-
-                      <div class="my-2" id="instafeed">
-                        <h6 class="heading my-1 font-x1">Instafeed</h6>
-                        <div class="d-flex-r my-1">
-                          <a href="#"><img src="img/germany.jpg" class="mx-1"></a>
-                          <a href="#"><img src="img/russia.jpg"></a>
-                        </div>
-                        <div class="d-flex-r my-1">
-                            <a href="#"><img src="img/india.jpg" class="mx-1"></a>
-                            <a href="#"><img src="img/usa.jpg"></a>
-                          </div>
-                          <div class="d-flex-r my-1">
-                              <a href="#"><img src="img/uk.jpg" class="mx-1"></a>
-                              <a href="#"><img src="img/china.jpg"></a>
-                            </div>
-                      </div>
-
-
-                  </footer>
-                  <div class="d-flex-r clear justify-content-space-between" id="copyright">
-                    <p class="d-flex-r">Copyright &copy; 2019 - All rights reserved - <a href="#" class="text-dark"> Bucket List Buddies</a></p>
-
-                    <a href="#mypage" id="backtotop"><i class="fa fa-chevron-up"></i></a>
-
-                    <p class="d-flex-r">Created by: Sharon, Jason, Walt, Shannon
-                    </p>
-                  </div>
+            <div class="my-2" id="instafeed">
+                <h6 class="heading my-1 font-x1">Instafeed</h6>
+                <div class="d-flex-r my-1">
+                    <a href="#"><img src="img/germany.jpg" class="mx-1"></a>
+                    <a href="#"><img src="img/russia.jpg"></a>
                 </div>
+                
+                <div class="d-flex-r my-1">
+                    <a href="#"><img src="img/india.jpg" class="mx-1"></a>
+                    <a href="#"><img src="img/usa.jpg"></a>
+                </div>
+                          
+                <div class="d-flex-r my-1">
+                    <a href="#"><img src="img/uk.jpg" class="mx-1"></a>
+                    <a href="#"><img src="img/china.jpg"></a>
+                </div>
+            </div>
 
+        </footer>
+
+        <div class="d-flex-r clear justify-content-space-between" id="copyright">
+            <p class="d-flex-r">Copyright &copy; 2019 - All rights reserved - <a href="#" class="text-dark"> Bucket List Buddies</a></p>
+
+            <a href="#mypage" id="backtotop"><i class="fa fa-chevron-up"></i></a>
+
+            <p class="d-flex-r">Created by: Sharon, Jason, Walt, Shannon </p>
+        </div>
+    </div>
+
+    <!-- jquery / jqueryui -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"> </script>
+
+    <!-- popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
-    <!-- location js
-        <script type="text/javascript" src="assets/javascript/location.js"></script>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
 
-    -->
+    <!-- moment -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-              <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- landing js -->
     <script type="text/javascript" src="assets/javascript/landing.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
     <!-- events js -->
      <script src="assets/javascript/events.js"></script>
+
     <!-- main js -->
      <script src="assets/javascript/main.js"></script>
-
 
 </body>
 </html>
