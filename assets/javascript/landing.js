@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    var landingImages = ['assets/javascript/images/spring.jpg', 'assets/javascript/images/summer.jpg','assets/javascript/images/fall.jpg', 'assets/javascript/images/winter.png','assets/javascript/images/sightseeing.PNG','assets/javascript/images/adult.PNG']
+    var landingImages = ['assets/images/spring.jpg', 'assets/images/summer.jpg','assets/images/fall.jpg', 'assets/images/winter.png','assets/images/sightseeing.PNG','assets/images/adult.PNG']
     var landingButtons=['Spring Activities','Summer Activities','Fall Activities','Winter Activities','Sightseeing Activities','Adult Activities']
     var count = 0;
     displayImage();
@@ -85,7 +85,7 @@ $(document).ready(function() {
                 var spring =
     
                     {
-                        picture: ['assets/javascript/images/spring/camping.PNG','assets/javascript/images/spring/cherry_blossom.PNG', 'assets/javascript/images/spring/hiking.PNG','assets/javascript/images/spring/picnic.PNG'], 
+                        picture: ['assets/images/spring/camping.PNG','assets/images/spring/cherry_blossom.PNG', 'assets/images/spring/hiking.PNG','assets/images/spring/picnic.PNG'], 
             
                         button: ["Camping","Cherry Blossom", "Hiking","Picnic Festival"],
             
@@ -133,7 +133,7 @@ $(document).ready(function() {
                 var summer =
                  
                     {
-                        picture: ['assets/javascript/images/summer/beach.PNG', 'assets/javascript/images/summer/kayaking.PNG','assets/javascript/images/summer/natural_springs.PNG','assets/javascript/images/summer/paddleboard.PNG'], 
+                        picture: ['assets/images/summer/beach.PNG', 'assets/images/summer/kayaking.PNG','assets/images/summer/natural_springs.PNG','assets/images/summer/paddleboard.PNG'], 
             
                         button: ["Beaches", "Kayaking", "Natural Springs","Paddleboarding"],
             
@@ -180,7 +180,7 @@ $(document).ready(function() {
                 var fall =
     
                     {
-                        picture: ['assets/javascript/images/fall/apple_orchard.PNG', 'assets/javascript/images/fall/fishing.PNG','assets/javascript/images/fall/horseback.PNG','assets/javascript/images/fall/Oktoberfest.PNG'], 
+                        picture: ['assets/images/fall/apple_orchard.PNG', 'assets/images/fall/fishing.PNG','assets/images/fall/horseback.PNG','assets/images/fall/Oktoberfest.PNG'], 
             
                         button: ["Apple Orchard", "Fishing", "Horseback Riding","Oktoberfest"],
             
@@ -226,7 +226,7 @@ $(document).ready(function() {
                 var winter =
     
                     {
-                        picture: ['assets/javascript/images/winter/ice_skating.PNG', 'assets/javascript/images/winter/mountain_climbing.PNG','assets/javascript/images/winter/skiing.PNG','assets/javascript/images/winter/snowboarding.PNG'], 
+                        picture: ['assets/images/winter/ice_skating.PNG', 'assets/images/winter/mountain_climbing.PNG','assets/images/winter/skiing.PNG','assets/images/winter/snowboarding.PNG'], 
             
                         button: ["Ice Skating", "Mnt Climbing", "Skiing","Snowboarding"],
             
@@ -272,7 +272,7 @@ $(document).ready(function() {
                 var sightseeing = 
     
                     {
-                        picture: ['assets/javascript/images/sightseeing/monuments.PNG', 'assets/javascript/images/sightseeing/museums.PNG','assets/javascript/images/sightseeing/national_parks.PNG','assets/javascript/images/sightseeing/shopping.PNG'], 
+                        picture: ['assets/images/sightseeing/monuments.PNG', 'assets/images/sightseeing/museums.PNG','assets/images/sightseeing/national_parks.PNG','assets/images/sightseeing/shopping.PNG'], 
             
                         button: ["Monuments", "Museums", "National Parks", "Shopping Centers"],
             
@@ -317,7 +317,7 @@ $(document).ready(function() {
                 var adult =
     
                     {
-                        picture: ['assets/javascript/images/adult/breweries.PNG', 'assets/javascript/images/adult/distilleries.PNG','assets/javascript/images/adult/gambling.PNG','assets/javascript/images/adult/winery.PNG'], 
+                        picture: ['assets/images/adult/breweries.PNG', 'assets/images/adult/distilleries.PNG','assets/images/adult/gambling.PNG','assets/images/adult/winery.PNG'], 
             
                         button: ["Breweries", "Distilleries","Gambling","Wineries"],
             
