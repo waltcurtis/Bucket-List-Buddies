@@ -83,7 +83,7 @@ function moreWikiInfo(extract){
        // var description = $("<h2 class='extract'>" + extract + "</h2>")
         
       // wikiResult.html("<button>hello</button>")
-       wikiResult2.append("<li class='hover1'><img src=" + imgURL + "><div class='overlay'><h2 >" + title + "</h2></div><caption><h5 style='padding: 20px;background-color:white'>" + extract + "<button class='btn btn-success'>Select</button></h5></caption></li>")
+       wikiResult2.append("<li ><img src=" + imgURL + "><div class='overlay'><h2 >" + title + "</h2></div><caption><h5 style='padding: 20px;background-color:white'>" + extract + "<button class='btn btn-success'>Select</button></h5></caption></li>")
        $("#location-button").attr('data-event',title)
        
                  // .prependTo('#wiki-snippet')         
