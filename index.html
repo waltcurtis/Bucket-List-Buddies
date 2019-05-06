@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <title>Bucket List Buddies</title>
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     
 </head>
 
 <body class="auth-false" id="myPage">
@@ -149,7 +148,7 @@
         <!-- Message modal after login/register-->
         <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content mt-5">
                     <div class="modal-header">
                         <h4 class="modal-title" id="messageModalLabel">Message</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -259,25 +258,25 @@
                 <div id="wiki">
                   <ul id="wiki-results" class="d-flex-r nospace"></ul>
                 </div>
-                <div id="placeholder">
+                <div id="placeholder" class="d-flex-c">
                 <!-- first row -->
                 <ul class="d-flex-r nospace">
                     <li class="hover1">
-                        <img src="assets/images/usa.jpg">
+                        <img src="assets/images/popular/usa.jpg">
                         <div class="overlay">
-                            <h2>Statue of Liberty</h2>
+                            <h2>USA</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/india.jpg">
+                        <img src="assets/images/popular/india.jpg">
                         <div class="overlay">
                             <h2>INDIA</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/uk.jpg">
+                        <img src="assets/images/popular/uk.jpg">
                         <div class="overlay">
                             <h2>UK</h2>
                         </div>
@@ -287,21 +286,21 @@
                 <!-- second row -->
                 <ul class="d-flex-r nospace">
                     <li class="hover1">
-                        <img src="assets/images/france.jpg">
+                        <img src="assets/images/popular/france.jpg">
                         <div class="overlay">
                             <h2>FRANCE</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/germany2.jpg">
+                        <img src="assets/images/popular/germany2.jpg">
                         <div class="overlay">
                             <h2>GERMANY</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/russia.jpg">
+                        <img src="assets/images/popular/russia.jpg">
                         <div class="overlay">
                             <h2>RUSSIA</h2>
                         </div>
@@ -311,21 +310,21 @@
                 <!-- third row -->
                 <ul class="d-flex-r nospace">
                     <li class="hover1">
-                        <img src="assets/images/turkey.jpg">
+                        <img src="assets/images/popular/turkey.jpg">
                         <div class="overlay">
-                            <h2>TUKKEY</h2>
+                            <h2>TURKEY</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/china.jpg">
+                        <img src="assets/images/popular/china.jpg">
                         <div class="overlay">
                             <h2>CHINA</h2>
                         </div>
                     </li>
 
                     <li class="hover1">
-                        <img src="assets/images/himalayas.jpg">
+                        <img src="assets/images/popular/himalayas.jpg">
                         <div class="overlay">
                             <h2>HIMALAYAS</h2>
                         </div>
@@ -339,7 +338,7 @@
     <!--EVENTS section-->
     <section class="wrapper text-dark" id="our-blog">
         <span id="events">
-            <div class="d-flex-c container">
+            <div class="d-flex-c container transparent">
 
                 <!-- title -->
                 <div class="text-center my-2">
@@ -349,28 +348,28 @@
                 <!-- panel begins -->
 
                 <!-- current buddy  -->
-                <article class="m-2">
-                    <span id="buddyArea">
-                        <article class="buddySelection bg-white m-2">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body">
+                <article class="m-2 transparent">
+                    <span id="buddyArea" class="transparent">
+                        <article class="buddySelection bg-white m-2 transparent">
+                            <div class="row transparent">
+                                <div class="col-sm-6 transparent">
+                                    <div class="card transparent">
+                                        <div class="card-body transparent">
                                             <h2 id="currentBuddy" class="buddyName h2">&lt;current buddy name &gt;</h2>
-                                            <div class="row">
-                                                <div class="col-6">
+                                            <div class="row transparent">
+                                                <div class="col-6 transparent">
                                                     Selected Activity: <span id="selActivity"></span>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-6 transparent">
                                                     Selected Destination: <span id="selDestination"></span>
                                                 </div>
                                             </div>
                                             <br>
                                             
-                                            <div class="col-12">
-                                                <div class="row"></div>
+                                            <div class="col-12 transparent">
+                                                <div class="row transparent"></div>
                                             
-                                                <div class="row m-0">
+                                                <div class="row m-0 transparent">
                                                 <label for="start-date-input" class="align-center">Start Date</label>
                                                 <input class="form-control align-bottom" id="start-date-input" type="date">
                                                 <label for="end-date-input" class="align-center">End Date</label>
@@ -379,8 +378,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                        <span class="col-sm-2"></span>
+                                        <div class="row transparent">
+                                        <span class="col-sm-2 transparent"></span>
                                         <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="modDates">Modify</button></p>
                                         <p class="m-2 text-center col-sm-4"><button type="button" class="btn" id="topPicks">Use Top Pick</button></p>
                                     </div>
@@ -388,9 +387,9 @@
                                 </div>
 
                                 <!-- Group Selection-->
-                                <div class="col-sm-6">
-                                    <div class="card">
-                                        <div class="eventNameSelector border border-solid border-dark">
+                                <div class="col-sm-6 transparent">
+                                    <div class="card transparent">
+                                        <div class="eventNameSelector  p-3 transparent">
                                             <h2 id="currEventName"></h2>
                                             <label>Select or Enter an Event Name to save:
                                                 <input id="newName" type="text" list="eventNameList" name="grpEvents" />
@@ -398,51 +397,50 @@
                                             <datalist id="eventNameList"> </datalist>
                                         </div>
     
-                                        <div id="grpTopPicks" class="card-body">
-                                            <h2 class="h2 card-title"> Group Selections </h2>
-    
-                                            <div class="row m-0 no-gutters">
-                                                <span id="grpTopAct" class="m-0 offset-1 col-7"></span>
-                                                <span id="grpActCnt" class="m-0 offset-3 col-1"></span>
+                                        <div class="card transparent">
+                                            <div class="card-body transparent">
+                                                <h2 class="h2 card-title transparent">Buddy List</h2>
+                                                <div id="buddyList" class="transparent"></div>
+                                                
+                                                <div class="row m-0 transparent">
+                                                <input id="invAddr" type="text" class="col-9" />
+                                                <button id="invite" type="button" class="col-3 btn btn-warning text-wrap">Invite</button>
                                             </div>
-                                            
-                                            <div class="row m-0 no-gutters">
-                                                <span id="grpTopDest" class="m-0 p-0 offset-1 col-7"></span>
-                                                <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1"></span>
                                             </div>
-                                            
-                                            <div class="text-center" id="calendar"></div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- buddy list / notes-emails -->
-                            <div class="row">
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="h2 card-title">Buddy List</h2>
-                                        <div id="buddyList"></div>
-                                        
-                                        <div class="row m-0">
-                                        <input id="invAddr" type="text" class="col-9" />
-                                        <button id="invite" type="button" class="col-3 btn">Invite Others</button>
+                            <div class="row transparent">
+                            <div class="col-sm-6 transparent">
+                                <div id="grpTopPicks" class="card-body transparent">
+                                    <h2 class="h2 card-title transparent"> Group Selections </h2>
+
+                                    <div class="row m-0 no-gutters transparent">
+                                        <span id="grpTopAct" class="m-0 offset-1 col-7 transparent"></span>
+                                        <span id="grpActCnt" class="m-0 offset-3 col-1 transparent"></span>
                                     </div>
+                                    
+                                    <div class="row m-0 no-gutters transparent">
+                                        <span id="grpTopDest" class="m-0 p-0 offset-1 col-7 transparent"></span>
+                                        <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1 transparent"></span>
                                     </div>
+                                    
+                                    <div class="text-center mt-2 pt-2 border transparent" id="calendar"></div>                                                       
                                 </div>
                             </div>
                         
-                            <div class="col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h2 class="h2 card-title">Group Notes</h2>
-                                        <div class="border border-solid m-0 row" >
+                            <div class="col-sm-6 transparent">
+                                <div class="card transparent">
+                                    <div class="card-body transparent">
+                                        <h2 class="h2 card-title transparent">Group Notes</h2>
+                                        <div class="m-0 row transparent" >
                                             <input type="text" id="noteText" class="col-9" />
                                             <input type="button" id="noteSend" class="btn col-3" value="Add"/>
                                         </div>
                                         
-                                        <div id="noteFeed" class="row m-0" > </div>
+                                        <div id="noteFeed" class="row m-0 transparent"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -470,7 +468,7 @@
 
                     <!-- first -->
                     <article class="hover2 m-2">
-                        <figure><img src="assets/images/portfolio-2.jpg"></figure>
+                        <figure><img src="assets/images/about/portfolio-2.jpg"></figure>
                         <h3 class="m-2 text-center heading font-x1 text-uppercase">Dream Big</h3>
                         <p class="m-2 text-justify">
                             <div class="text-center">Be the architect of your adventure! </div>
@@ -484,7 +482,7 @@
 
                     <!-- second -->
                     <article class="hover2 m-2">
-                        <figure><img src="assets/images/portfolio-4.jpg"></figure>
+                        <figure><img src="assets/images/about/portfolio-4.jpg"></figure>
                         <h3 class="m-2 text-center heading font-x1 text-uppercase">When Can You Go?</h3>
                         <p class="m-2 text-justify">
                             <div class="text-center">   Set a date.</div>
@@ -495,7 +493,7 @@
                     
                     <!-- third -->
                     <article class="hover2 m-2">
-                        <figure><img src="assets/images/portfolio-1.jpg"></figure>
+                        <figure><img src="assets/images/about/portfolio-1.jpg"></figure>
                         <h3 class="m-2 text-center heading font-x1 text-uppercase">
                             Timing is Everything
                         </h3>
@@ -512,18 +510,18 @@
 
     <!--footer-->
     <div class="wrapper bg-grey">
-        <footer class="d-flex-r clear container text-whhite" id="main-footer">
-            <div class="mx-2">
+        <footer class="d-flex-r clear container text-black" id="main-footer">
+            <div class="mr-5 ml-3 justify-content-left">
                 <h6 class="heading font-x1 my-1">Contact Us</h6>
                 <ul class="nospace linkedlist contact">
                     <li><i class="fa fa-map-marker"></i><address>street name &amp; number, town, postcode/zip</address></li>
                     <li><i class="fa fa-phone"></i>407-555-1234</li>
-                    <li><a class="text-white" href="https://youtube.com" target="_blank" ><i class="fa fa-youtube text-dark"></i>YOUTUBE</a></li>
+                    <li><a class="text-dark" href="https://youtube.com" target="_blank" ><i class="fa fa-youtube text-dark"></i>YOUTUBE</a></li>
                     <li><i class="fa fa-envelope-o"></i>Help@gmail.com</li>
                 </ul>
             </div>
 
-            <div class="mx-2">
+            <div class="mx-5 px-5 justify-content-center">
                 <h3 class="heading my-1 font-x1">Company</h3>
                 <ul class="nospace linkedlist">
                     <li><a href="#" class="text-dark">careers</a></li>
@@ -533,7 +531,7 @@
                 </ul>
             </div>
 
-            <div class="mx-2">
+            <div class="mx-5 px-5 justify-content-center">
                 <h6 class="heading my-1 font-x1">Subscribe</h6>
                 <p class="my-1">Enter Info To be In Our Mailing List </p>
                 <form method="post" action="#">
@@ -545,21 +543,21 @@
                 </form>
             </div>
 
-            <div class="my-2" id="instafeed">
+            <div class="ml-4 pl-3 justify-content-right" id="instafeed">
                 <h6 class="heading my-1 font-x1">Instafeed</h6>
                 <div class="d-flex-r my-1">
-                    <a href="#"><img src="assets/images/germany.jpg" class="mx-1"></a>
-                    <a href="#"><img src="assets/images/russia.jpg"></a>
+                    <a href="#"><img src="assets/images/popular/germany2.jpg" class="mx-1"></a>
+                    <a href="#"><img src="assets/images/popular/russia.jpg"></a>
                 </div>
                 
                 <div class="d-flex-r my-1">
-                    <a href="#"><img src="assets/images/india.jpg" class="mx-1"></a>
-                    <a href="#"><img src="assets/images/usa.jpg"></a>
+                    <a href="#"><img src="assets/images/popular/india.jpg" class="mx-1"></a>
+                    <a href="#"><img src="assets/images/popular/usa.jpg"></a>
                 </div>
                           
                 <div class="d-flex-r my-1">
-                    <a href="#"><img src="assets/images/uk.jpg" class="mx-1"></a>
-                    <a href="#"><img src="assets/images/china.jpg"></a>
+                    <a href="#"><img src="assets/images/popular/uk.jpg" class="mx-1"></a>
+                    <a href="#"><img src="assets/images/popular/china.jpg"></a>
                 </div>
             </div>
 
