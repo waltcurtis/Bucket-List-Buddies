@@ -2,6 +2,7 @@
 
 // file: script.js
 $(document).ready(function(){
+    $('#wiki').hide();
     //initialize the firebase app
     var config = {
         apiKey: "AIzaSyAplMbqcM4ZA9nF2C7ZqT-ntyTNzfPujAA",
@@ -217,34 +218,34 @@ function displayImage() {
     $(".landing__scroll-box").on("click", function () {
     $("#activities-button-first-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
-        console.log($(this).attr("data-entry"))
         var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
-        console.log(url)
+        $('#placeholder').hide();
+        $('#wiki').show();
         window.location.href = url
         })
         $("#activities-button-second-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
-        console.log($(this).attr("data-entry"))
         var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
-        console.log(url)
+        $('#placeholder').hide();
+        $('#wiki').show();
         window.location.href = url
         })
         $("#activities-button-third-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
-        console.log($(this).attr("data-entry"))
         var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
-        console.log(url)
+        $('#placeholder').hide();
+        $('#wiki').show();
         window.location.href = url
         })
         $("#activities-button-fourth-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
-        console.log($(this).attr("data-entry"))
         var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
-        console.log(url)
+        $('#placeholder').hide();
+        $('#wiki').show();
         window.location.href = url
         })
     console.log(parseInt($(this).attr("data")))
