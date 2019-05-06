@@ -170,7 +170,7 @@ $(document).ready(function(){
 
 // ----------------Landing js---------------------------//
 
-var landingImages = ['assets/images/spring.jpg', 'assets/images/summer.jpg','assets/images/fall.jpg', 'assets/images/winter.png','assets/images/sightseeing.PNG','assets/images/adult.PNG']
+var landingImages = ['assets/images/spring/spring.jpg', 'assets/images/summer/summer.jpg','assets/images/fall/fall.jpg', 'assets/images/winter/winter.png','assets/images/sightseeing/sightseeing.PNG','assets/images/adult/adult.PNG']
 var landingButtons=['Spring Activities','Summer Activities','Fall Activities','Winter Activities','Sightseeing Activities','Adult Activities']
 var count = 0;
 
