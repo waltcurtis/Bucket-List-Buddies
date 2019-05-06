@@ -218,7 +218,7 @@ function displayImage() {
     $("#activities-button-first-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
         console.log($(this).attr("data-entry"))
-        var url = "location.html?location="+getActivities+"";
+        var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
         console.log(url)
         window.location.href = url
@@ -226,7 +226,7 @@ function displayImage() {
         $("#activities-button-second-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
         console.log($(this).attr("data-entry"))
-        var url = "location.html?location="+getActivities+"";
+        var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
         console.log(url)
         window.location.href = url
@@ -234,7 +234,7 @@ function displayImage() {
         $("#activities-button-third-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
         console.log($(this).attr("data-entry"))
-        var url = "location.html?location="+getActivities+"";
+        var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
         console.log(url)
         window.location.href = url
@@ -242,7 +242,7 @@ function displayImage() {
         $("#activities-button-fourth-row").on("click",function(){
         var getActivities = $(this).attr("data-entry")
         console.log($(this).attr("data-entry"))
-        var url = "location.html?location="+getActivities+"";
+        var url = "index.html#destinations";
         localStorage.setItem("storageActivityName", getActivities);
         console.log(url)
         window.location.href = url
@@ -399,7 +399,7 @@ function displayImage() {
                 {
                     picture: ['assets/images/winter/ice_skating.PNG', 'assets/images/winter/mountain_climbing.PNG','assets/images/winter/skiing.PNG','assets/images/winter/snowboarding.PNG'], 
         
-                    button: ["Ice Skating", "Mnt Climbing", "Skiing","Snowboarding"],
+                    button: ["Ice Skating", "Mt Climbing", "Skiing","Snowboarding"],
         
                     }
 
@@ -443,7 +443,7 @@ function displayImage() {
             var sightseeing = 
 
                 {
-                    picture: ['assets/javascript/images/sightseeing/monuments.PNG', 'assets/javascript/images/sightseeing/museums.PNG','assets/javascript/images/sightseeing/national_parks.PNG','assets/javascript/images/sightseeing/shopping.PNG'], 
+                    picture: ['assets/images/sightseeing/monuments.PNG', 'assets/images/sightseeing/museums.PNG','assets/images/sightseeing/national_parks.PNG','assets/images/sightseeing/shopping.PNG'], 
         
                     button: ["Monuments", "Museums", "National Parks", "Shopping Centers"],
         
@@ -488,7 +488,7 @@ function displayImage() {
             var adult =
 
                 {
-                    picture: ['assets/javascript/images/adult/breweries.PNG', 'assets/javascript/images/adult/distilleries.PNG','assets/javascript/images/adult/gambling.PNG','assets/javascript/images/adult/winery.PNG'], 
+                    picture: ['assets/images/adult/breweries.PNG', 'assets/images/adult/distilleries.PNG','assets/images/adult/gambling.PNG','assets/images/adult/winery.PNG'], 
         
                     button: ["Breweries", "Distilleries","Gambling","Wineries"],
         
@@ -586,28 +586,28 @@ function displayImage() {
 //     })
 // }
 
-$(document).on("click", ".actImg", selectActivity)
+// $(document).on("click", ".actImg", selectActivity)
 
-function selectActivity() {
-    var uriString = "/location.html?category="
-                    + $(this).data("cat") 
-                    + "&activity="
-                    + $(this).data("act");
+// function selectActivity() {
+//     var uriString = "/location.html?category="
+//                     + $(this).data("cat") 
+//                     + "&activity="
+//                     + $(this).data("act");
 
-    window.location.replace(uriString);
-}
+//     window.location.replace(uriString);
+// }
 
 
 // ----------------------Locations js------------------------//
 
-// var currentActivity = $(on click capture)
+ var currentActivity = localStorage.getItem("storageActivityName")
 // var currentLocation = $(on click capture)
 
 
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
 // construct url to pass to the ajax call
-var queryPlaces = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
+var queryPlaces = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
 
 $.ajax({
     url: queryPlaces,
@@ -628,7 +628,7 @@ $.ajax({
 
 function getWikiInfo(name){ 
     // Wiki call using location
-    var queryWiki = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + name + "&utf8=&format=json"
+    var queryWiki = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + name + "&utf8=&format=json"
     
     $.ajax({
         url: queryWiki,
@@ -646,7 +646,7 @@ function getWikiInfo(name){
 };  
 
 function moreWikiInfo(extract){
-  var queryWikiAgain = "https://en.wikipedia.org/api/rest_v1/page/summary/" + extract;
+  var queryWikiAgain = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/api/rest_v1/page/summary/" + extract;
   $.ajax({
   url: queryWikiAgain,
   method: "GET",
