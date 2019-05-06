@@ -263,20 +263,16 @@ function displayImage() {
                     }
                     
                 $("#activity-selected").html("<h3>" + "Spring Activities" + "<h3>")   
-                            
+                //   displayImage            
                 $("#activities-images-first-row").html("<img class= 'img-responsive'src=" + spring.picture[0] + " width='250px' height='250px'>") 
                 $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + spring.picture[1] + " width='250px' height='250px'>")
                 $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + spring.picture[2] + " width='250px' height='250px'>")
                 $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + spring.picture[3] + " width='250px' height='250px'>")
-                                      
-                $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[0] + "</button>").attr(
-                    'data-entry', 'camping') 
-                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[1] + "</button>").attr(
-                    'data-entry', 'cherry-blossom') 
-                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[2] + "</button>").attr(
-                        'data-entry', 'hiking') 
-                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[3] + "</button>").attr(
-                            'data-entry', 'picnic') 
+                  //  Dynamically created buttons                     
+                $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[0] + "</button>").attr('data-entry', 'camping') 
+                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[1] + "</button>").attr('data-entry', 'cherry-blossom') 
+                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[2] + "</button>").attr('data-entry', 'hiking') 
+                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[3] + "</button>").attr('data-entry', 'picnic') 
                             
                 function displayImage() {
                         $("#slideshow").html("<img class= 'img-responsive' src=" + spring.picture[count] + " width='100%' height='100%'>");
@@ -307,24 +303,16 @@ function displayImage() {
                     }
                 
                 $("#activity-selected").html("<h3>" + "Summer Activities" + "<h3>")  
-
+                //displayImage
                 $("#activities-images-first-row").html("<img class= 'img-responsive'src=" + summer.picture[0] + " width='250px' height='250px'>") 
                 $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + summer.picture[1] + " width='250px' height='250px'>")
                 $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + summer.picture[2] + " width='250px' height='250px'>")
                 $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + summer.picture[3] + " width='250px' height='250px'>")
-            
-                    //displayImage()
-                $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[0] + "</button>").attr(
-                    'data-entry', 'beaches') 
-                $("#activities-button-first-row").on("click",function(){
-                    console.log($(this).attr("data-entry"))
-                    })
-                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[1] + "</button>").attr(
-                    'data-entry', 'kayaking') 
-                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[2] + "</button>").attr(
-                        'data-entry', 'natural-springs') 
-                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[3] + "</button>").attr(
-                            'data-entry', 'paddleboarding') 
+                //  Dynamically created buttons
+                $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[0] + "</button>").attr('data-entry', 'beaches') 
+                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[1] + "</button>").attr('data-entry', 'kayaking') 
+                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[2] + "</button>").attr('data-entry', 'natural-springs') 
+                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + summer.button[3] + "</button>").attr('data-entry', 'paddleboarding') 
                 function displayImage() {
                     $("#slideshow").html("<img class='img-responsive' src=" + summer.picture[count] + " width='100%' height='100%'>");
                     }
@@ -354,17 +342,14 @@ function displayImage() {
                     }
 
             $("#activity-selected").html("<h3>" + "Fall Activities" + "<h3>")     
-                
+                    //   displayImage
                     $("#activities-images-first-row").html("<img class= 'img-responsive' src=" + fall.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + fall.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + fall.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + fall.picture[3] + " width='250px' height='250px'>")
-                    //   displayImage()
+                     //  Dynamically created buttons
                     $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + fall.button[0] + "</button>").attr(
                     'data-entry', 'apple-orchard') 
-                    $("#activities-button-second-row").on("click",function(){
-                    console.log($(this).attr("data-entry"))
-                    })
                     $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + fall.button[1] + "</button>").attr(
                     'data-entry', 'fishing') 
                     $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + fall.button[2] + "</button>").attr(
@@ -400,23 +385,16 @@ function displayImage() {
                     }
 
                     $("#activity-selected").html("<h3>" + "Winter Activities" + "<h3>")  
-
+                    //   displayImage
                     $("#activities-images-first-row").html("<img class= 'img-responsive' src=" + winter.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + winter.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + winter.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + winter.picture[3] + " width='250px' height='250px'>")
-                //   displayImage()
-                    $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[0] + "</button>").attr(
-                    'data-entry', 'ice-skating') 
-                    $("#activities-button-third-row").on("click",function(){
-                    console.log($(this).attr("data-entry"))
-                })
-                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[1] + "</button>").attr(
-                    'data-entry', 'mountain-climbing') 
-                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[2] + "</button>").attr(
-                        'data-entry', 'skiing') 
-                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[3] + "</button>").attr(
-                            'data-entry', 'snowboarding') 
+                    //  Dynamically created buttons
+                    $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[0] + "</button>").attr('data-entry', 'ice-skating') 
+                    $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[1] + "</button>").attr('data-entry', 'mountain-climbing') 
+                    $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[2] + "</button>").attr('data-entry', 'skiing') 
+                    $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + winter.button[3] + "</button>").attr('data-entry', 'snowboarding') 
 
                 function displayImage() {
                     $("#slideshow").html("<img class= 'img-responsive' src=" + winter.picture[count] + " width='100%' height='100%'>");
@@ -446,23 +424,16 @@ function displayImage() {
                     }
 
                     $("#activity-selected").html("<h3>" + "Sightseeing Activities" + "<h3>")  
-
+                    //   displayImage
                     $("#activities-images-first-row").html("<img class= 'img-responsive' src=" + sightseeing.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + sightseeing.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + sightseeing.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + sightseeing.picture[3] + " width='250px' height='250px'>")
-                //   displayImage()
-                    $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[0] + "</button>").attr(
-                    'data-entry', 'monuments') 
-                    $("#activities-button-fourth-row").on("click",function(){
-                    console.log($(this).attr("data-entry"))
-                })
-                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[1] + "</button>").attr(
-                    'data-entry', 'museums') 
-                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[2] + "</button>").attr(
-                        'data-entry', 'national-parks') 
-                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[3] + "</button>").attr(
-                            'data-entry', 'shopping-centers') 
+                    //  Dynamically created buttons
+                    $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[0] + "</button>").attr('data-entry', 'monuments') 
+                    $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[1] + "</button>").attr('data-entry', 'museums') 
+                    $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[2] + "</button>").attr('data-entry', 'national-parks') 
+                    $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + sightseeing.button[3] + "</button>").attr('data-entry', 'shopping-centers') 
                 function displayImage() {
                     $("#slideshow").html("<img class= 'img-responsive' src=" + sightseeing.picture[count] + " width='100%' height='100%'>");
                     }
@@ -491,23 +462,17 @@ function displayImage() {
                     }
 
                     $("#activity-selected").html("<h3>" + "Adult Activities" + "<h3>")  
-
+                    //   displayImage
                     $("#activities-images-first-row").html("<img class= 'img-responsive' src=" + adult.picture[0] + " width='250px' height='250px'>") 
                     $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + adult.picture[1] + " width='250px' height='250px'>")
                     $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + adult.picture[2] + " width='250px' height='250px'>")
                     $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + adult.picture[3] + " width='250px' height='250px'>")
-                //   displayImage()
+                    //  Dynamically created buttons
                     $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[0] + "</button>").attr(
                     'data-entry', 'breweries') 
-                    $("#activities-button-third-row").on("click",function(){
-                    console.log($(this).attr("data-entry"))
-                })
-                $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[1] + "</button>").attr(
-                    'data-entry', 'distilleries') 
-                $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[2] + "</button>").attr(
-                        'data-entry', 'gambling') 
-                $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[3] + "</button>").attr(
-                            'data-entry', 'wineries') 
+                    $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[1] + "</button>").attr('data-entry', 'distilleries') 
+                    $("#activities-button-third-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[2] + "</button>").attr('data-entry', 'gambling') 
+                    $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + adult.button[3] + "</button>").attr('data-entry', 'wineries') 
                 function displayImage() {
                     $("#slideshow").html("<img class= 'img-responsive' src=" + adult.picture[count] + " width='100%' height='100%'>");
                     }
@@ -601,17 +566,20 @@ function moreWikiInfo(extract){
                   .prependTo('#wiki-results')
                                          
       $('.location-button').on("click", function(){
-          var currentLocation = $(this).attr("data-name")    
-          localStorage.setItem("storeLocation", currentLocation);     
+          var currentLocation = $(this).attr("data-name")   
+          console.log(currentLocation); 
+          var url = "index.html#events";
+          localStorage.setItem("storeLocation", currentLocation);
+          window.location.href = url
+              
           })
           
       });
 
   }; 
-
-
+  
 // --------------------Events js--------------------------//
-
+var currentLocation = localStorage.getItem("storeLocation")
 // currentLocation = localStorage.getItem("storageEventName")
 // console.log(currentLocation)
 
@@ -649,8 +617,8 @@ var favEnDateCnt = 0;
 var screenFilled = false;
 
 // remember to comment these out once the real ones are available
-var currentActivity = "Ballet";
-var currentLocation = "NYC, NY";
+// var currentActivity = "Ballet";
+// var currentLocation = "NYC, NY";
 var currentBuddy = "SeanUgar";
 
 // ====================================
