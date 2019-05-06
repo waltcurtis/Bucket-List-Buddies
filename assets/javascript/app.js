@@ -248,7 +248,6 @@ function displayImage() {
         $('#wiki').show();
         window.location.href = url
         })
-    console.log(parseInt($(this).attr("data")))
     $("#activities-table").addClass("table table-striped table-condensed")
     dataIndex = parseInt($(this).attr("data"));
     clearInterval(imageInterval)
@@ -269,9 +268,7 @@ function displayImage() {
                 $("#activities-images-second-row").html("<img class= 'img-responsive' src=" + spring.picture[1] + " width='250px' height='250px'>")
                 $("#activities-images-third-row").html("<img class= 'img-responsive' src=" + spring.picture[2] + " width='250px' height='250px'>")
                 $("#activities-images-fourth-row").html("<img class= 'img-responsive' src=" + spring.picture[3] + " width='250px' height='250px'>")
-            
-                
-                            
+                                      
                 $("#activities-button-first-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[0] + "</button>").attr(
                     'data-entry', 'camping') 
                 $("#activities-button-second-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[1] + "</button>").attr(
@@ -280,8 +277,6 @@ function displayImage() {
                         'data-entry', 'hiking') 
                 $("#activities-button-fourth-row").html("<button width='100%' class = 'btn btn-info'  value=''>" + spring.button[3] + "</button>").attr(
                             'data-entry', 'picnic') 
-                
-                //var activities = $(this).attr("data-entry")
                             
                 function displayImage() {
                         $("#slideshow").html("<img class= 'img-responsive' src=" + spring.picture[count] + " width='100%' height='100%'>");
@@ -532,78 +527,9 @@ function displayImage() {
         displayImage()   
     })
 
-
-
-// ----------------Activity js--------------------------//  
-
-//   activityDB.on("child_added", function(sn) {
-//     if (sn) {
-//         sn.forEach(function(child) {
-//             var categoryKey = child.key;
-//             var categoryData = child.val();
-        
-//             let catImg = $("<img>")
-//                             .addClass("catImg")
-//                             .attr("data-value", categoryData.categoryName)
-//                             .attr("src", category.categoryImageURL);
-//             let catTag = $("<span>")
-//                             .text(categoryData.categoryName);
-//             $("#...").append(catImg);
-//             $("#...").append(catTag);
-
-//             let actImg = $("<img>")
-//                             .addClass("actImg")
-//                             .attr("data-cat", categoryData.categoryName)
-//                             .attr("data-act", categoryData.activities[0].activityName)
-//                             .attr("src", categoryData.activities[0].activityImageURL);
-//             let actTag = $("<span>")
-//                             .text(categoryData.activities[0].activityName);
-//             $("#...").append(actImg);
-//             $("#...").append(actTag);
-            
-//         })
-//     }
-// })
-
-// $(document).on("click", ".catImg", chgActivities)
-
-// function chgActivities() {
-//     var category = $(this).data("value");
-//     activityDB.orderByChild("categoryName").equalTo(category).once("value", function(sn) {
-//         if (sn) {
-//             $("#...").empty();
-//             sn.activities.forEach(function(activity) {
-//                 let actImg = $("<img>")
-//                                 .addClass("actImg")
-//                                 .attr("data-cat", category)
-//                                 .attr("data-act", activity.activityName)
-//                                 .attr("src", activity.activityImageURL);
-//                 let actTag = $("<span>")
-//                                 .text(activity.activityName);
-//                 $("#...").append(actImg);
-//                 $("#...").append(actTag);
-//             })
-//         }
-//     })
-// }
-
-// $(document).on("click", ".actImg", selectActivity)
-
-// function selectActivity() {
-//     var uriString = "/location.html?category="
-//                     + $(this).data("cat") 
-//                     + "&activity="
-//                     + $(this).data("act");
-
-//     window.location.replace(uriString);
-// }
-
-
 // ----------------------Locations js------------------------//
 
  var currentActivity = localStorage.getItem("storageActivityName")
-// var currentLocation = $(on click capture)
-
 
 // Location call
 var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
@@ -672,22 +598,16 @@ function moreWikiInfo(extract){
 
       var description = $("<p class='card-text wiki-extract'>" + extract + "</p>");
 
-      var locationButton = $('<button>').addClass('test-button btn btn-success text center').attr('data-name', title).text('Select');
+      var locationButton = $('<button>').addClass('location-button btn btn-success text center').attr('data-name', title).text('Select');
 
       wikiResult.append(image)
-
                   .append(location)
-
                   .append(description)
-
                   .append(locationButton)
-
                   .prependTo('#wiki-results')
-                      
-                      
-      $('.test-button').on("click", function(){
-          var currentLocation = $(this).attr("data-name")
-          console.log(currentLocation);     
+                                         
+      $('.location-button').on("click", function(){
+          var currentLocation = $(this).attr("data-name")    
           localStorage.setItem("storeLocation", currentLocation);     
           })
           
