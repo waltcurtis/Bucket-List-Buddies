@@ -717,27 +717,27 @@ function eventToScreen(event){
         } else {
             $("#buddy" + idx).remove();
 
-            var article = $("<article class='transparent'>")
+            var article = $("<article>")
                             .attr("id", "buddy" + idx)
-                            .addClass("buddySelection bg-white m-2");
+                            .addClass("buddySelection bg-white m-2 transparent");
             var h2 = $("<h2>")
-                            .addClass("buddyName h2")
+                            .addClass("buddyName h2 transparent")
                             .text(buddy.buddyName);
-            var rowdiv = $("<div class='transparent'>")
-                            .addClass("row m-0");
-            var actdiv = $("<div class='transparent'>")
-                            .addClass("col-6 border border-solid border-dark")
+            var rowdiv = $("<div>")
+                            .addClass("row m-0 transparent");
+            var actdiv = $("<div>")
+                            .addClass("col-6 border border-solid border-dark transparent")
                             .text("Selected Activity:  " + buddy.selections.activity);
-            var locdiv = $("<div class='transparent'>")
-                            .addClass("col-6 border border-solid border-dark")
+            var locdiv = $("<div>")
+                            .addClass("col-6 border border-solid border-dark transparent")
                             .text("Selected Destination:  " + buddy.selections.location);
-            var rowdiv2 = $("<div class='transparent'>")
-                            .addClass("row m-0");
-            var sdtdiv = $("<div class='transparent'>")
-                            .addClass("col-6 border border-solid border-dark")
+            var rowdiv2 = $("<div>")
+                            .addClass("row m-0 transparent");
+            var sdtdiv = $("<div>")
+                            .addClass("col-6 border border-solid border-dark transparent")
                             .text("Start Date:  " + buddy.selections.startDate);
-            var edtdiv = $("<div class='transparent'>")
-                            .addClass("col-6 border border-solid border-dark")
+            var edtdiv = $("<div>")
+                            .addClass("col-6 border border-solid border-dark transparent")
                             .text("End Date:  " + buddy.selections.endDate);
             var btn = $("<button>")
                             .attr("id", "copySel")
@@ -755,8 +755,8 @@ function eventToScreen(event){
     $("#buddyList").empty();
     event.sharedEmails.forEach(function (email, idx) {
         $("#buddyList").append(
-                $("<div>").addClass("row m-0").append(
-                    $("<span>").addClass("col m-0").text(email)
+                $("<div>").addClass("row m-0 transparent").append(
+                    $("<span>").addClass("col m-0 transparent").text(email)
                 )
         );
     })
@@ -768,13 +768,13 @@ function eventToScreen(event){
         $("#noteFeed")
             .append(
                 $("<span>")
-                    .addClass("pl-2 m-0 text-dark col-3")
+                    .addClass("pl-2 m-0 text-dark col-3 transparent")
                     .text(moment(note.dateTime).format("MMM DD H:mm")),
                 $("<span>")
-                    .addClass("pl-2 m-0 text-info col-3")
+                    .addClass("pl-2 m-0 text-info col-3 transparent")
                     .text(note.buddyName),
                 $("<span>")
-                    .addClass("pl-2 m-0 text-primary col-6")
+                    .addClass("pl-2 m-0 text-primary col-6 transparent")
                     .text(note.noteText)
             )
     })
