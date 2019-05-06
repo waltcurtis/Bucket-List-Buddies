@@ -612,6 +612,12 @@ function moreWikiInfo(extract){
 
 // --------------------Events js--------------------------//
 
+// currentLocation = localStorage.getItem("storageEventName")
+// console.log(currentLocation)
+
+// currentLocation2 = localStorage.getItem("storageEventName2")
+// console.log(currentLocation2)
+
 var db = firebase.database();
 var eventDB = db.ref("/event");
 
