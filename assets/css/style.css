@@ -81,8 +81,7 @@ a:hover{font-weight: bold;}
 .d-flex-r{
     display: flex !important;
     margin: 0 auto;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: row;   
 }
 
 
@@ -358,6 +357,12 @@ table{
   
   .img-responsive{width:100%;}
   .btn{width:100%;}
+
+  /* event divs */
+  .transparent{
+    background-color: rgba(252, 248, 248, 0) !important;
+    border: none !important;      
+  }
 
 
   /*---- main footer ----*/
