@@ -683,6 +683,8 @@ console.log("***** Events Page Load *****");
 // =======================================
 
 function eventToScreen(event){
+    console.log(event.eventName);
+    $("#currEventName").val(event.eventName);
 
     event.eventBuddies.forEach (function(buddy, idx) {
         if (buddy.buddyName == currentBuddy) {
@@ -695,6 +697,7 @@ function eventToScreen(event){
 
             $("#start-date-input").val(moment(buddy.selections.startDate).format("YYYY-MM-DD"));
             $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
+
 
         } else {
             $("#buddy" + idx).remove();
@@ -906,6 +909,8 @@ $("#noteSend").on("click", function() {
 
         if (noteMsg != "") {
             var msg = new NoteObj(currentBuddy, noteMsg);
+            if (typeof currentEvent.notes === "undefined")
+                currentEvent.notes = [];
             currentEvent.notes.push(msg);
 
             modEvent();
@@ -928,10 +933,16 @@ $("#invite").click(function(){
             var reg = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
             if (reg.test(inviteEmail)) {
                 console.log ("validated email");
+                if (typeof currentEvent.sharedEmails === "undefined")
+                    currentEvent.sharedEmails = [];   
                 currentEvent.sharedEmails.push(inviteEmail);
 
                 modEvent();
-                // call to email api
+
+
+                // call to email api        <<<<<-------------     
+            
+            
             } else {
                 console.log ("in-validated email");
             }
@@ -1059,13 +1070,12 @@ $("#newName").on("change", function(){
                             currentActivity = currentEvent.eventBuddies[idx].activity;
                             currentLocation = currentEvent.eventBuddies[idx].location;
 
-                            eventToScreen(currentEvent);
-
                         })
                     })
-        
-                $("#currEventName").text(currentEvent.eventName);
             }
+            eventToScreen(currentEvent);
+            $("#currEventName").text(currentEvent.eventName);
+
         }
     }
     $(this).val() == "";
@@ -1088,10 +1098,6 @@ eventDB.on("child_changed", function(sn) {
             currentEvent.eventBuddies.forEach(function(buddy, idx) {
                 var sels = buddy.selections;
                 updateCounts(sels.activity, sels.location, sels.startDate, sels.endDate);
-    
-                if (buddy.buddyName == currentBuddy) {
-                    buddysEventList.push(currentEvent.eventName);
-                }
             })
 
             if (currentEvent != null  &&  !screenFilled) {
@@ -1110,26 +1116,27 @@ eventDB.on("child_added", function(sn) {
 
         if (currentBuddy == null  ||  currentBuddy.trim() == "") return;
 
-        buddysEventList.length = 0;
-        buddysEventList = [];
-        buddysKeyList.length = 0;
-        buddysKeyList = [];
-
         initCounts();
-
+        
         event.eventBuddies.forEach(function(buddy, idx) {
             var sels = buddy.selections;
             updateCounts(sels.activity, sels.location, sels.startDate, sels.endDate);
 
+            console.log(buddy.buddyName + " | " + currentBuddy)
+            
             if (buddy.buddyName == currentBuddy) {
+                console.log(event.eventName)
                 buddysEventList.push(event.eventName);
                 buddysKeyList.push(key);
-
-                currentEvent = event;
-                currentKey = key;
+                if (currentEvent == null) {
+                    currentKey = key;
+                    currentEvent = event;
+                } 
             }
         })
 
+        console.log("screenFiled: " + screenFilled)
+        console.log("current Event " + currentEvent)
         if (currentEvent != null  &&  !screenFilled) {
             getFavorites();
             eventToScreen(currentEvent);
