@@ -258,7 +258,7 @@
                 <div id="wiki">
                   <ul id="wiki-results" class="d-flex-r nospace"></ul>
                 </div>
-                <div id="placeholder">
+                <div id="placeholder" class="d-flex-c">
                 <!-- first row -->
                 <ul class="d-flex-r nospace">
                     <li class="hover1">
@@ -389,29 +389,24 @@
                                 <!-- Group Selection-->
                                 <div class="col-sm-6 transparent">
                                     <div class="card transparent">
-                                        <div class="eventNameSelector border border-solid border-dark transparent">
+                                        <div class="eventNameSelector p-3 transparent">
                                             <h2 id="currEventName"></h2>
                                             <label>Select or Enter an Event Name to save:
                                                 <input id="newName" type="text" list="eventNameList" name="grpEvents" />
                                             </label>
                                             <datalist id="eventNameList"> </datalist>
                                         </div>
-    
-                                        <div id="grpTopPicks" class="card-body transparent">
-                                            <h2 class="h2 card-title transparent"> Group Selections </h2>
-    
-                                            <div class="row m-0 no-gutters transparent">
-                                                <span id="grpTopAct" class="m-0 offset-1 col-7 transparent"></span>
-                                                <span id="grpActCnt" class="m-0 offset-3 col-1 transparent"></span>
+                                        <div class="card transparent">
+                                            <div class="card-body transparent">
+                                                <h2 class="h2 card-title transparent">Buddy List</h2>
+                                                <div id="buddyList" class="transparent"></div>
+                                                
+                                                <div class="row m-0 transparent">
+                                                <input id="invAddr" type="text" class="col-9" />
+                                                <button id="invite" type="button" class="col-3 btn btn-warning text-wrap">Invite</button>
+                                                </div>
                                             </div>
-                                            
-                                            <div class="row m-0 no-gutters transparent">
-                                                <span id="grpTopDest" class="m-0 p-0 offset-1 col-7 transparent"></span>
-                                                <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1 transparent"></span>
-                                            </div>
-                                            
-                                            <div class="text-center transparent" id="calendar"></div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -419,24 +414,29 @@
                             <!-- buddy list / notes-emails -->
                             <div class="row transparent">
                             <div class="col-sm-6 transparent">
-                                <div class="card transparent">
-                                    <div class="card-body transparent">
-                                        <h2 class="h2 card-title transparent">Buddy List</h2>
-                                        <div id="buddyList" class="transparent"></div>
-                                        
-                                        <div class="row m-0 transparent">
-                                        <input id="invAddr" type="text" class="col-9" />
-                                        <button id="invite" type="button" class="col-3 btn btn-warning text-wrap">Invite Others</button>
+                                <div id="grpTopPicks" class="card-body transparent">
+                                    <h2 class="h2 card-title transparent"> Group Selections </h2>
+
+                                    <div class="row m-0 no-gutters transparent">
+                                        <span id="grpTopAct" class="m-0 offset-1 col-7 transparent"></span>
+                                        <span id="grpActCnt" class="m-0 offset-3 col-1 transparent"></span>
                                     </div>
+                                    
+                                    <div class="row m-0 no-gutters transparent">
+                                        <span id="grpTopDest" class="m-0 p-0 offset-1 col-7 transparent"></span>
+                                        <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1 transparent"></span>
                                     </div>
+                                    
+                                    <div class="text-center transparent mt-2 pt-1 border transparent" id="calendar"></div>
                                 </div>
                             </div>
+                          
                         
                             <div class="col-sm-6 transparent">
                                 <div class="card transparent">
                                     <div class="card-body transparent">
                                         <h2 class="h2 card-title transparent">Group Notes</h2>
-                                        <div class="border border-solid m-0 row transparent" >
+                                        <div class="m-0  p-0 row transparent" >
                                             <input type="text" id="noteText" class="col-9" />
                                             <input type="button" id="noteSend" class="btn col-3" value="Add"/>
                                         </div>
