@@ -148,7 +148,7 @@
         <!-- Message modal after login/register-->
         <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content mt-5">
+                <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="messageModalLabel">Message</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -389,14 +389,13 @@
                                 <!-- Group Selection-->
                                 <div class="col-sm-6 transparent">
                                     <div class="card transparent">
-                                        <div class="eventNameSelector  p-3 transparent">
+                                        <div class="eventNameSelector p-3 transparent">
                                             <h2 id="currEventName"></h2>
                                             <label>Select or Enter an Event Name to save:
                                                 <input id="newName" type="text" list="eventNameList" name="grpEvents" />
                                             </label>
                                             <datalist id="eventNameList"> </datalist>
                                         </div>
-    
                                         <div class="card transparent">
                                             <div class="card-body transparent">
                                                 <h2 class="h2 card-title transparent">Buddy List</h2>
@@ -405,8 +404,9 @@
                                                 <div class="row m-0 transparent">
                                                 <input id="invAddr" type="text" class="col-9" />
                                                 <button id="invite" type="button" class="col-3 btn btn-warning text-wrap">Invite</button>
+                                                </div>
                                             </div>
-                                            </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -427,15 +427,16 @@
                                         <span id="grpDestCnt" class="m-0 p-0 offset-3 col-1 transparent"></span>
                                     </div>
                                     
-                                    <div class="text-center mt-2 pt-2 border transparent" id="calendar"></div>                                                       
+                                    <div class="text-center transparent mt-2 pt-1 border transparent" id="calendar"></div>
                                 </div>
                             </div>
+                          
                         
                             <div class="col-sm-6 transparent">
                                 <div class="card transparent">
                                     <div class="card-body transparent">
                                         <h2 class="h2 card-title transparent">Group Notes</h2>
-                                        <div class="m-0 row transparent" >
+                                        <div class="m-0  p-0 row transparent" >
                                             <input type="text" id="noteText" class="col-9" />
                                             <input type="button" id="noteSend" class="btn col-3" value="Add"/>
                                         </div>
