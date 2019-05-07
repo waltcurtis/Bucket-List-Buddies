@@ -2,6 +2,10 @@
 
 // file: script.js
 $(document).ready(function(){
+
+    var currentActivity = null;
+    var currentLocation = null;
+
     $('#wiki').hide();
     //initialize the firebase app
     var config = {
@@ -92,7 +96,7 @@ $(document).ready(function(){
       }
     });
     $('#logout').on('click', function(e) {
-      e.preventDefault();
+        e.preventDefault();
       firebase.auth().signOut()
     });
     //save contact
@@ -137,7 +141,9 @@ $(document).ready(function(){
           }
         });
         contactsRef.child(user.uid).on('child_added', onChildAdd);
-      } else {
+        currentBuddy = auth.displayName;
+        $("#buddyName").text(currentBuddy);
+    } else {
         // No user is signed in.
         $('body').removeClass('auth-true').addClass('auth-false');
         auth && contactsRef.child(auth.uid).off('child_added', onChildAdd);
@@ -215,39 +221,49 @@ function nextImage(){
 function displayImage() {
     $("#slideshow").html("<img src=" + landingImages[count] + " width='100%' height='100%'>");
     }
-    $(".landing__scroll-box").on("click", function () {
-    $("#activities-button-first-row").on("click",function(){
+
+    $(document).on("click", "#activities-button-first-row", function(){
         var getActivities = $(this).attr("data-entry")
         var url = "index.html#destinations";
-        localStorage.setItem("storageActivityName", getActivities);
+        currentActivity = getActivities;
+        locationApiCall();
         $('#placeholder').hide();
         $('#wiki').show();
         window.location.href = url
-        })
-        $("#activities-button-second-row").on("click",function(){
+        $("#selActivity").text(currentActivity);
+    })
+    $(document).on("click", "#activities-button-second-row", function(){
         var getActivities = $(this).attr("data-entry")
         var url = "index.html#destinations";
-        localStorage.setItem("storageActivityName", getActivities);
+        currentActivity = getActivities;
+        locationApiCall();
         $('#placeholder').hide();
         $('#wiki').show();
         window.location.href = url
-        })
-        $("#activities-button-third-row").on("click",function(){
+        $("#selActivity").text(currentActivity);
+    })
+    $(document).on("click", "#activities-button-third-row", function(){
         var getActivities = $(this).attr("data-entry")
         var url = "index.html#destinations";
-        localStorage.setItem("storageActivityName", getActivities);
+        currentActivity = getActivities;
+        locationApiCall();
         $('#placeholder').hide();
         $('#wiki').show();
         window.location.href = url
-        })
-        $("#activities-button-fourth-row").on("click",function(){
+        $("#selActivity").text(currentActivity);
+    })
+    $(document).on("click", "#activities-button-fourth-row", function(){
         var getActivities = $(this).attr("data-entry")
         var url = "index.html#destinations";
-        localStorage.setItem("storageActivityName", getActivities);
+        currentActivity = getActivities;
+        locationApiCall();
         $('#placeholder').hide();
         $('#wiki').show();
         window.location.href = url
-        })
+        $("#selActivity").text(currentActivity);
+    })
+
+$(".landing__scroll-box").on("click", function () {
     $("#activities-table").addClass("table table-striped table-condensed")
     dataIndex = parseInt($(this).attr("data"));
     clearInterval(imageInterval)
@@ -494,28 +510,33 @@ function displayImage() {
 
 // ----------------------Locations js------------------------//
 
- var currentActivity = localStorage.getItem("storageActivityName")
 
-// Location call
-var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
-// construct url to pass to the ajax call
-var queryPlaces = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
+function locationApiCall() {
+    // Location call
+    var placesAPI = "AIzaSyCcEpCXMOs77i41Ulp2ErUyFWVXFw5yjDs"
+    // construct url to pass to the ajax call
+    var queryPlaces = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+" + currentActivity + "+united+states&key=" + placesAPI;
 
-$.ajax({
-    url: queryPlaces,
-    method: "GET"
-  })
-    // We store all of the retrieved data inside of an object called "response"
-    .then(function(response) {
-      // var resultsLength = response.results.length
-      // have to manually limit results (can't do it in the url for google places api)
+    $("#wiki-results").empty();
       
-      for(var i in response.results.slice(0,5)){
-        // Log the resulting object
-        place = response.results[i]
-        getWikiInfo(place.name);
-    };
-});
+
+    $.ajax({
+        url: queryPlaces,
+        method: "GET"
+    })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+        // var resultsLength = response.results.length
+        // have to manually limit results (can't do it in the url for google places api)
+
+        for(var i in response.results.slice(0,5)){
+            // Log the resulting object
+            place = response.results[i]
+            getWikiInfo(place.name);
+        };
+    });
+}
+
 
 function getWikiInfo(name){ 
     // Wiki call using location
@@ -563,33 +584,25 @@ function moreWikiInfo(extract){
                   .append(location)
                   .append(description)
                   .append(locationButton)
-                  .prependTo('#wiki-results')
+                  .prependTo('#wiki-results');
                                          
-      $('.location-button').on("click", function(){
-          var currentLocation = $(this).attr("data-name")   
-          console.log(currentLocation); 
-          var url = "index.html#events";
-          localStorage.setItem("storeLocation", currentLocation);
-          window.location.href = url
-              
-          })
-          
-      });
+  });
+}
 
-  }; 
-  
+  $(document).on("click", '.location-button', function() {
+    currentLocation = $(this).attr("data-name");   
+    var url = "index.html#events";
+    $("#selDestination").text(currentLocation);
+    window.location.href = url;
+  });
+
+
 // --------------------Events js--------------------------//
-var currentLocation = localStorage.getItem("storeLocation")
-// currentLocation = localStorage.getItem("storageEventName")
-// console.log(currentLocation)
-
-// currentLocation2 = localStorage.getItem("storageEventName2")
-// console.log(currentLocation2)
 
 var db = firebase.database();
 var eventDB = db.ref("/event");
 
-//    var currentBuddy = null;
+var currentBuddy = null;
 var currentEvent = null;
 var currentKey = null;
 
@@ -619,7 +632,7 @@ var screenFilled = false;
 // remember to comment these out once the real ones are available
 // var currentActivity = "Ballet";
 // var currentLocation = "NYC, NY";
-var currentBuddy = "SeanUgar";
+// var currentBuddy = "SeanUgar";
 
 // ====================================
 
@@ -667,50 +680,19 @@ constructor(buddyName, noteText) {
 
 console.log("***** Events Page Load *****");
 
-if (typeof currentActivity === "undefined") {
-    console.log("currentActivity undefined");
-} else {
-    console.log("currActivity: " + currentActivity);
-    if (currentActivity != null  &&  currentActivity.trim().length != "") {
-        //   set selActivity to currActivity
-        $("#selActivity").text(currentActivity);
-    }
-}
-
-if (typeof currentLocation === "undefined") {
-    console.log("currentLocation undefined");
-} else {
-    console.log("currLocation: " + currentLocation);
-    if (currentLocation != null  &&  currentLocation.trim().length != ""){
-        //  set selDestination to currLocation
-            $("#selDestination").text(currentLocation);
-        }
-    }
-
-if (typeof auth === "undefined") {
-    console.log("auth undefined");
-} else {
-    console.log("auth:");
-    // console.log(auth);
-    if (auth != null) {
-        // set currBuddy to username
-        currentBuddy = auth.displayName;
-        if (currentBuddy.trim() != "")
-            $("#buddyName").text(currentBuddy);
-    }
-}   
-
-
 // =======================================
 
 function eventToScreen(event){
 
     event.eventBuddies.forEach (function(buddy, idx) {
         if (buddy.buddyName == currentBuddy) {
-            $("#currentBuddy").text(buddy.buddyName);
+            $("#buddyName").text(buddy.buddyName);
             $("#selActivity").text(buddy.selections.activity);
             $("#selDestination").text(buddy.selections.location);
     
+            currentActivity = buddy.selections.activity;
+            currentLocation = buddy.selections.location;
+
             $("#start-date-input").val(moment(buddy.selections.startDate).format("YYYY-MM-DD"));
             $("#end-date-input").val(moment(buddy.selections.endDate).format("YYYY-MM-DD"));
 
@@ -753,31 +735,35 @@ function eventToScreen(event){
     }) 
 
     $("#buddyList").empty();
-    event.sharedEmails.forEach(function (email, idx) {
-        $("#buddyList").append(
-                $("<div>").addClass("row m-0").append(
-                    $("<span>").addClass("col m-0").text(email)
-                )
-        );
-    })
+    if (event.sharedEmails != null  &&  event.sharedEmails.length > 0) {
+        event.sharedEmails.forEach(function (email, idx) {
+            $("#buddyList").append(
+                    $("<div>").addClass("row m-0").append(
+                        $("<span>").addClass("col m-0").text(email)
+                    )
+            );
+        })
+    }
 
     $("#noteFeed").empty();
-    event.notes.forEach(function(note, idx) {
-        var dt = Date(note.dateTime);
+    if (event.notes != null  &&  event.notes.length > 0) {
+        event.notes.forEach(function(note, idx) {
+            var dt = Date(note.dateTime);
 
-        $("#noteFeed")
-            .append(
-                $("<span>")
-                    .addClass("pl-2 m-0 text-dark col-3")
-                    .text(moment(note.dateTime).format("MMM DD H:mm")),
-                $("<span>")
-                    .addClass("pl-2 m-0 text-info col-3")
-                    .text(note.buddyName),
-                $("<span>")
-                    .addClass("pl-2 m-0 text-primary col-6")
-                    .text(note.noteText)
-            )
-    })
+            $("#noteFeed")
+                .append(
+                    $("<span>")
+                        .addClass("pl-2 m-0 text-dark col-3")
+                        .text(moment(note.dateTime).format("MMM DD H:mm")),
+                    $("<span>")
+                        .addClass("pl-2 m-0 text-info col-3")
+                        .text(note.buddyName),
+                    $("<span>")
+                        .addClass("pl-2 m-0 text-primary col-6")
+                        .text(note.noteText)
+                )
+        })
+    }
 
     $("#grpTopAct").text(favActivity);
     $("#grpActCnt").text(favActivityCnt);
@@ -785,6 +771,7 @@ function eventToScreen(event){
     $("#grpDestCnt").text(favLocationCnt);
     $("#currEventName").text(currentEvent.eventName);
 
+    $("#eventNameList").empty();
     buddysEventList.forEach(function(eventName) {
         var opt = $("<option>").attr("value", eventName);
         if (eventName == currentEvent.eventName) {
@@ -900,8 +887,10 @@ function modEvent() {
             if (p) {
                 p.eventName = currentEvent.eventName;
                 p.eventBuddies = currentEvent.eventBuddies;
-                p.notes = currentEvent.notes;
-                p.sharedEmails = currentEvent.sharedEmails;
+                if (currentEvent.notes != null  &&  currentEvent.notes.length > 0)
+                    p.notes = currentEvent.notes;
+                if (currentEvent.sharedEmails != null  &&  currentEvent.sharedEmails.length > 0)
+                    p.sharedEmails = currentEvent.sharedEmails;
             }
             return p;
         })
@@ -1015,38 +1004,71 @@ $(document).on("click", "#copySel", function() {
 })
 
 $("#newName").on("change", function(){
-    console.log("changed");
-    console.log($(this).val());
 
-    var eventName = $(this).val().trim();
-    if (eventName != "") {
-        // if its a new event name, save to that name
-        // else if existing event grab other event and display
-
-        var pos = buddysEventList.indexOf(eventName);
-        if (pos == -1) {
-            var newEvent = new EventObj(eventName);
-            newEvent.addEventBuddy(currentBuddy);
-            var idx = newEvent.getEventBuddyIdx(currentBuddy);
-            newEvent.eventBuddies[idx].selections.activity = currentActivity;
-            newEvent.eventBuddies[idx].selections.location = currentLocation;
-            currentEvent.eventBuddies[idx].selections.startDate = favStDate;
-            currentEvent.eventBuddies[idx].selections.endDate = favEnDate;
-            eventDB.push(newEvent);
-
-        } else {
-            eventDB
-                .orderByKey(buddysKeyList[pos])
-                .equalTo(buddysKeyList[pos])
-                .once("value", function(sn){
-                    currentEvent = sn.val();
-                    eventToScreen(currentEvent);
-                })
+    // we need a buddy name for the event
+    if (typeof auth === "undefined") {
+        console.log("auth undefined");
+    } else {
+        if (auth != null) {
+            // set currBuddy to username
+            currentBuddy = auth.displayName;
         }
+    }   
+    if (currentBuddy == null  ||  currentBuddy.trim() == "") {
+        // cant be used
+        console.log("currentBuddy: " + currentBuddy);
+    } else {
+        var eventName = $(this).val().trim();
+        if (eventName != "") {
+            // if its a new event name, save to that name
+            // else if existing event grab other event and display
 
-        $("#currEventName").text(currentEvent.eventName);
-        console.log(currentEvent);
+            var pos = buddysEventList.indexOf(eventName);
+            if (pos == -1) {
+                var newEvent = new EventObj(eventName);
+                newEvent.addEventBuddy(currentBuddy);
+
+                var idx = newEvent.getEventBuddyIdx(currentBuddy);
+                newEvent.eventBuddies[idx].selections.activity = currentActivity;
+                newEvent.eventBuddies[idx].selections.location = currentLocation;
+                newEvent.eventBuddies[idx].selections.startDate = favStDate;
+                newEvent.eventBuddies[idx].selections.endDate = favEnDate;
+
+                newEvent.sharedEmails = [];
+                newEvent.notes = [];
+
+                eventDB.push(newEvent);
+                currentEvent = newEvent;
+
+            } else {
+                console.log("get existing event")
+                eventDB
+                    .orderByKey()
+                    .equalTo(buddysKeyList[pos])
+                    .limitToFirst(1)
+                    .once("value", function (sn) {
+                        sn.forEach(function(childSN) {
+                            var key = childSN.key;
+
+                            currentEvent = childSN.val();
+
+                            var existingEvent = new EventObj(currentEvent.eventName);
+                            existingEvent.eventBuddies = currentEvent.eventBuddies;
+
+                            var idx = existingEvent.getEventBuddyIdx(currentBuddy);
+                            currentActivity = currentEvent.eventBuddies[idx].activity;
+                            currentLocation = currentEvent.eventBuddies[idx].location;
+
+                            eventToScreen(currentEvent);
+
+                        })
+                    })
+        
+                $("#currEventName").text(currentEvent.eventName);
+            }
+        }
     }
+    $(this).val() == "";
 })
 
 // =====
@@ -1111,6 +1133,7 @@ eventDB.on("child_added", function(sn) {
         if (currentEvent != null  &&  !screenFilled) {
             getFavorites();
             eventToScreen(currentEvent);
+            
             screenFilled = true;
         }
     }
