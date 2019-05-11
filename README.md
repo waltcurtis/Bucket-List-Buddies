@@ -1,4 +1,4 @@
-Bucket-List Buddies
+Bucket-List Buddies https://clearplaid.github.io/Bucket-List-Buddies/
 
 Dream Big
 Be the architect of your adventure! What do you want to do? Where do you want to do it? Who do you want to do it with? Explore the possibilities, create an event and share it with the people you love!
