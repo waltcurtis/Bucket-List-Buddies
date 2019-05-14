@@ -1,4 +1,6 @@
-Bucket-List Buddies https://clearplaid.github.io/Bucket-List-Buddies/
+Bucket-List Buddies 
+
+https://clearplaid.github.io/Bucket-List-Buddies/
 
 Dream Big:
 
